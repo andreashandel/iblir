@@ -1,0 +1,425 @@
+---
+title: "Hypothesis Tests and Confidence Intervals for Proportions"
+subtitle: "Computer Lab 13"
+output: 
+  learnr::tutorial:
+    progessive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(shiny)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, context="data", include=FALSE}
+Prison <- read.csv("./www/Prison.csv")
+lowbwt <- read.csv("./www/lowbwt.csv")
+```
+
+
+## Introduction {data-progressive=TRUE}
+
+In this lab you will learn how to test hypothesis for proportions in R. 
+
+### Tests for Proportions 
+
+Like the *t* test there are one and two sample versions of the Z tests for proportions. In both cases the proportion is only calculated for dichotomous outcomes.  The one proportion Z-test is used to compare the proportion in a sample to a theoretical one. The two-proportion Z test is used to compare two observed proportions. The R function to conduct Z tests for proportions is [prop.test()](https://www.rdocumentation.org/packages/stats/versions/3.6.0/topics/prop.test). The same function is used for both the one and two proportion tests. The function reports the chi-squared ($X^2$) test statistic. The statistic is related to the z statistic and by taking the square root of the $X^2$ value ($\sqrt{X^2}=z$) you can get the z value. Even though we do not discuss the $X^2$ test statistic in class we will use it in this lab.  
+ 
+## Test for One Proportion {data-progressive=TRUE}
+
+### Study Description
+
+A simple random sample of 100 women who delivered a low birth weight baby at two teaching hospitals in Boston, Massachusetts was collected. We are going to use the data to estimate the proportion of women who experience pre-eclampsia (formerly called toxemia). Untreated pre-eclampsia can lead to serious, complications for both mother and baby.  
+
+
+### Exercise 1: Data and Assumption Check
+
+Like all the other tests we have learned about this semester we need to have a simple random sample (or can be treated as a simple random sample). The conditions of the binomial distribution must be satisfied (two outcomes, probability of success is the same trial to trial, trials are independent). Remember the z test is for normal distributions, but as long as  $np\ge10$ and $n(1-p)\ge10$ we can use the normal approximation of the binomial.
+
+For our data we have a simple random sample. There are only two outcomes for the outcome of pre-eclampsia, the probability is the same for each trial, and the trials are independent (the results for one women does not effect the results of another women). So we meet the first two requirements. Now we need to make sure we have sufficient sample size to approximate the binomial distribution with the normal distribution.
+
+**Data Dictionary**  
+sbp: The mothers systolic blood pressure (mm of Hg)   
+sex: (0,1) 0 baby's sex is female, 1 baby's sex is male    
+pre: (0,1) 1 mother received a diagnosis of pre-eclampsia, 0 means the mother did not receive a diagnosis pre-eclampsia.  
+gestage: Total gestation time (weeks)   
+apgar5: The APGAR score is a test given to newborns soon after birth. values range from (0 to 10) with 10 being the best.   
+
+
+**Instructions** Review the data and check and see if we meet the $np\ge10$ and $n(1-p)\ge10$ to use the normal approximation. Answer the quiz questions.
+```{r, context="render", echo=FALSE}
+
+fluidPage(
+  wellPanel(
+    fluidRow(
+      column(
+        6,
+        selectInput('var', label = "Select Variable to Summarize", 
+                     choices = list("sbp", "sex", "pre", "gestage", "apgar5"), 
+                     selected = "pre")
+        )
+      )
+    ),
+  fluidRow(
+    column(
+      6, 
+      h4(strong("Plot of Selected Variable")),
+      plotOutput(outputId = 'plot', width = "100%")
+      ),
+    column(
+      6,
+      h4(strong("Data")),
+      DT::dataTableOutput('rawdata')
+      )
+    ),
+  fluidRow(
+    column(
+      12,
+      h4(strong("Summary of Selected Variable")),
+      verbatimTextOutput("summary")
+      )
+    )
+  )
+
+
+```
+
+```{r, context="server"}
+
+#Basic plot of the selected variable
+  output$plot <- renderPlot({
+    
+    validate(need(!is.null(input$var), 'Please select a variable to show the plot.'))
+    
+    if(is.numeric(lowbwt[ ,input$var])){
+      x <- lowbwt[ ,input$var]
+      bins <- round((max(x)-min(x))/(3.5*(sd(x)/length(lowbwt[ ,input$var])^(1/3))),0)
+  
+    hist(lowbwt[ ,input$var],
+      breaks = bins,
+      main = paste(input$var),
+      xlab = paste(input$var))
+    }
+    
+    if(is.integer(lowbwt[ ,input$var])||is.factor(lowbwt[ ,input$var])){
+      x<-lowbwt[ ,input$var]
+      x<-table(x)
+      barplot(x,
+              ylab = "Count",
+              xlab = paste(input$var))
+    }
+  })
+
+  # show raw data
+  output$rawdata <- DT::renderDataTable({
+   DT::datatable(lowbwt, options = list(lengthMenu = c(5, 30, 50), pageLength = 5)) 
+  })
+  
+  
+  # show a summary of the selected variable
+  output$summary <- renderPrint({
+    
+    validate(need(!is.null(input$var), 'Please select a variable to show the summary.'))
+    
+    if(is.numeric(lowbwt[ ,input$var])){
+    x <- lowbwt[ ,input$var]
+    summary(x)
+    }
+    
+    
+     if(is.integer(lowbwt[ ,input$var])||is.factor(lowbwt[ ,input$var])){
+       
+    x<-lowbwt[ ,input$var]
+    y<-table(x)
+    c1<-round(addmargins(y),0)
+    c2<-round(summary(x),4)
+    
+    cat(sprintf(" 0 = %i\n 1 = %i\n Total = %i\n Proportion = %.4f", c1[1],c1[2],c1[3],c2[4]))
+       
+    } 
+     
+    
+    
+  })
+  
+```
+
+### Quiz: Questions 1-2
+
+```{r Q1-2}
+quiz(
+  question("What is prevalence of pre-eclampsia among the women?",
+    answer("0.34"),
+    answer("0.21", correct = TRUE),
+    answer("0.50"),
+    answer("0.42"),
+  allow_retry = TRUE
+  ),
+  question("What does $np$ and $n(1-p)$ equal for pre-eclampsia?",
+    answer("$np=21, n(1-p)=79$", correct = TRUE),
+    answer("$np=79, n(1-p)=21$"),
+    answer("$np=12, n(1-p)=42$"),
+    answer("$np=5, n(1-p)=36$"),
+  allow_retry = TRUE
+  )
+)
+```
+
+### Exercise 2: One proportion test
+
+Now that we now we have meet the requirements we can start to test some hypothesis. In r we will you the prop.test() function. The general form of the function is **prop.test(x = "# success", n = "# trials", p = "null value", correct = FALSE)**. The first value to specify is the number of successes (remember you define this). The next value is the total number of trials. The value for the p is the null probability. Finally by setting correct to false prevents R from applying a correction used for small samples. Click the link if you want more info on the [Yates correction](https://www.statisticshowto.datasciencecentral.com/what-is-the-yates-correction/).   
+
+Test the null hypothesis that the proportion of mothers who experience pre-eclampsia during pregnancy is equal to 0.25 against the two-sided alternative hypothesis:
+
+$$\alpha=0.05$$
+
+$$H_{0}: p=0.25$$
+$$H_{A}: p\neq0.25 $$
+
+
+**Instructions** Complete the code below to test the hypothesis and click the run code button. Use the output to answer the quiz questions. If you are having a hard time check out the examples from STHDA [One-Proportion Z-Test in R](http://www.sthda.com/english/wiki/one-proportion-z-test-in-r). 
+
+```{r 1prop, exercise=TRUE}
+
+prop.test(x , n = 100, p = 0.25, correct = FALSE)
+
+
+```
+
+
+### Quiz: Questions 3-4
+
+```{r Q3-4}
+quiz(
+  question("What is the test statistic, degrees of freedom, and p-value?",
+    answer("X-squared = 0.95379, df = 1, p-value = 0.2891"),
+    answer("X-squared = 0.15230, df = 1, p-value = 0.8934"),
+    answer("X-squared = 0.85333, df = 1, p-value = 0.3556", correct = TRUE),
+    answer("X-squared = 0.43533, df = 1, p-value = 0.5892"),
+  allow_retry = TRUE
+  ),
+  question("What may you conclude from the results of the above hypothesis test?",
+    answer("Since p=0.03605, reject the null hypothesis to conclude that there is sufficient evidence that the proportion with pre-eclampsia is different from 0.25."),
+    answer("Since p=0.6553, fail to reject the null hypothesis to conclude that there is sufficient evidence that the proportion with pre-eclampsia is different from 0.52."),
+    answer("Since p=0.5554, reject the null hypothesis to conclude that there is insufficient evidence that the proportion with pre-eclampsia is different from 0.42."),
+    answer("Since p=0.3556, fail to reject the null hypothesis to conclude that there is insufficient evidence that the proportion with pre-eclampsia is different from 0.25.", correct = TRUE),
+  allow_retry = TRUE
+  )
+)
+```
+
+
+
+
+## Two Proportions test {data-progressive=TRUE}
+
+
+
+### Study Description
+
+Smith and coworkers (American Journal of Public Health Supplement 81, 35-40) performed a census of all women who entered the New York State correctional system between September and December of 1988.  Each woman was cross-classified by HIV seropositivity (hiv = 1 if HIV seropositive, hiv = 0 if HIV seronegative) and their histories of intravenous drug use (ivdu = 1 if history of intravenous drug use, ivdu = 0 if no history of intravenous drug use). 
+
+### Exercise 3: Data and Assumption Check
+
+Like all the other tests we have learned about this semester we need to have a simple random sample (or can be treated as a simple random sample). The conditions of the binomial distribution must be satisfied (two outcomes, probability of success is the same trial to trial, trials are independent). Remember the z test is for normal distributions, but as long as  $np\ge10$ and $n(1-p)\ge10$ we can use the normal approximation of the binomial. 
+
+For our data we have a census so we have data for all the incoming female prisoners so we can treat the sample as a simple random sample. There are two outcomes for each question, the probability is the same, and the trials are independent (the results for one women does not effect the results of another women). So we meet the first two requirements. Now we need to make sure we have sufficient sample size to approximate the binomial distribution with the normal distribution.        
+
+**Data Dictionary**  
+hiv = (0,1) 0 is HIV seronegative, and 1 is HIV seropositive  
+ivdu = (0,1) 0 no history of intravenous drug use, 1 history of intravenous drug use    
+
+**Instructions** Review the data and check and see if we meet the $np\ge10$ and $n(1-p)\ge10$ to use the normal approximation. Answer the quiz questions.
+```{r, context="render", echo=FALSE}
+
+fluidPage(
+  wellPanel(
+    fluidRow(
+      column(
+        6,
+        selectInput('var1', label = "Select Variable to Summarize", 
+                     choices = list("hiv", "ivdu"), 
+                     selected = "hiv")
+        )
+      )
+    ),
+  fluidRow(
+    column(
+      6, 
+      h4(strong("Plot of Selected Variable")),
+      plotOutput(outputId = 'plot2', width = "100%")
+      ),
+    column(
+      6,
+      h4(strong("Data")),
+      DT::dataTableOutput('rawdata2')
+      )
+    ),
+  fluidRow(
+    column(
+      6,
+      h4(strong("Summary of Selected Variable")),
+      verbatimTextOutput("summary2")
+      ),
+    column(
+      6,
+      h4(strong("2x2 Table")),
+      verbatimTextOutput("table")
+      )
+    )
+  )
+
+
+```
+
+```{r, context="server"}
+
+#Basic plot of the selected variable
+  output$plot2 <- renderPlot({
+    
+    x<-Prison[ ,input$var1]
+      x<-table(x)
+      barplot(x,
+              ylab = "Count",
+              xlab = paste(input$var1))
+    
+    
+  })
+
+  # show raw data
+  output$rawdata2 <- DT::renderDataTable({
+    DT::datatable(Prison, options = list(lengthMenu = c(5, 30, 50), pageLength = 5)) 
+  })
+  
+  
+  # show a summary of the selected variable
+  output$summary2 <- renderPrint({
+    
+    x<-Prison[ ,input$var1]
+    y<-table(x)
+    c1<-round(addmargins(y),0)
+    c2<-round(summary(x),4)
+    
+    cat(sprintf(" 0 = %i\n 1 = %i\n Total = %i\n Proportion = %.4f", c1[1],c1[2],c1[3],c2[4]))
+    
+    })
+  
+  # 2x2 table of the variables 
+  
+   output$table <- renderPrint({ 
+     
+     # change to ordered factor so that the table is right
+     Prison$hiv<-factor(Prison$hiv, ordered = TRUE, levels = c(1,0))
+     Prison$ivdu<-factor(Prison$ivdu, ordered = TRUE, levels = c(1,0))
+     
+     ftable(Prison)
+
+   })
+  
+```
+
+### Quiz Questions: 5-9
+
+```{r Q5-9}
+quiz(
+  question("What is prevalence of HIV among the women?",
+    answer("0.1853"),
+    answer("0.7137"),
+    answer("0.8147", correct = TRUE),
+    answer("0.2863"),
+  allow_retry = TRUE
+  ),
+  question("What is the prevalence of intravenous drug use in the women?",
+    answer("0.1853"),
+    answer("0.7137", correct = TRUE),
+    answer("0.8147"),
+    answer("0.2863"),
+  allow_retry = TRUE
+  ),
+  question("What is the prevalence of HIV among women **with** a history of intravenous drug use?",
+    answer("0.0797"),
+    answer("0.8147"),
+    answer("0.7137"),
+    answer("0.9203", correct = TRUE),
+  allow_retry = TRUE
+  ),
+  question("What is the prevalence of HIV among women **without** a history of intravenous drug use?",
+    answer("0.5514", correct = TRUE),
+    answer("0.8062"),
+    answer("0.4486"),
+    answer("0.8133"),
+  allow_retry = TRUE
+  ),
+  question("Are any of the values in the 2x2 table less than 10?",
+    answer("Yes"),
+    answer("No", correct = TRUE),
+  allow_retry = TRUE
+  )
+)
+```
+
+
+### Exercise 4: Intravenous Drug Use and HIV Seropositivity
+
+No that we know that our data meets the requirements we can start testing different hypothesis about the proportions. The general form of the function is **prop.test(x = c(x1, x2), n = c(n1, n2), correct = FALSE)**. The first value to specify is the number of successes in each group (the first row in the 2x2 table above). The next value is the total number of trials in each group (the sum of each column in the 2x2 table above). Finally by setting correct to FALSE R will not apply the Yates correction for small samples. 
+
+What is the impact of intravenous drug use on the prevalence of HIV?
+
+Test the null hypothesis that the proportion of HIV+ is the same for women with a history of intravenous drug use as those without a history of intravenous drug use. Use a two-sided alternative hypothesis: 
+
+$$\alpha=0.05$$
+
+
+
+$$H_{0}: p_{~HIV+,~No~IVDU} = p_{~HIV+,~No~IVDU}$$
+$$H_{A}: p_{~HIV+,~No~IVDU}\neq p_{~HIV+,~No~IVDU} $$
+
+
+**Instructions** Complete the code below to test the hypothesis and click the run code button. Use the output to answer the quiz questions. If you are having a hard time check out the examples from STHDA [Two-Proportion Z-Test in R](http://www.sthda.com/english/wiki/two-proportions-z-test-in-r).
+
+```{r 2prop, exercise=TRUE}
+prop.test(x = c( , 75), n = c(339, 136), correct = FALSE)
+```
+
+### Quiz Questions:10-11 
+
+```{r Q10-11}
+quiz(
+  question("What is the test statistic, degrees of freedom, and p-value?",
+    answer("X-squared = 87.502, df = 1, p-value < 2.2e-16", correct = TRUE),
+    answer("X-squared = 78.202, df = 1, p-value < 1.2e-13"),
+    answer("X-squared = 99.247, df = 1, p-value < 2.2e-19"),
+    answer("X-squared = 57.542, df = 1, p-value < 7.2e-10"),
+  allow_retry = TRUE
+  ),
+  question("What may you conclude from the results of the hypothesis test?",
+    answer("Since p < 2.2e-16, reject the null hypothesis, there is sufficient evidence that the prevalence of HIV is not the same for women with a history of IVDU and those without a history of IVDU.", correct = TRUE),
+    answer("Since p < 1.2e-13, fail to reject the null hypothesis that the prevalence of HIV is the same regardless of a woman's IVDU status."),
+    answer("Since p < 2.2e-19, reject the null hypothesis that the prevalence of HIV is much higher in those women with a history of IVDU."),
+    answer("Since p < 7.2e-10, fail to reject the null hypothesis that the prevalence of HIV and IVDU are the same."),
+  allow_retry = TRUE
+  )
+)
+```
+
+
+## Summary
+
+In this lab, you completed 4 exercises and answered 11 quiz questions. 
+
+The lab covered 2 topics:
+
+1. One Proportion tests in R
+2. Two Proportion tests in R
+
+
+You finished the last lab! Don't be too sad, you can still learn more by taking BIOS3000 next semester. **Don't forget to record your answers and take the eLC quiz to get credit**
+
+
+```{r joke, out.width="50%", fig.cap="Hope you had a great semester!"}
+knitr::include_graphics("./images/catNull.jpg")
+```
+

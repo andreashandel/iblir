@@ -1,0 +1,37 @@
+---
+title: "iblir Package Tutorial"
+author: "<a href=http://handelgroup.uga.edu>Andreas Handel</a>"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    fig_caption: yes
+vignette: >
+  %\VignetteIndexEntry{DSAIDE Package Tutorial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+``` {r, include = FALSE}
+packagename = 'iblir'
+```
+
+
+## Summary
+
+Home of the future vignette.
+
+## Contributing to the package
+The package is on GitHub and you can use the usual GitHub process to file bug reports, send feature requests, contribute updates and bug fixes, etc. If you have any comments or feedback, I very much welcome them. Please file a [GitHub issue](https://github.com/ahgroup/DSAIDE/issues) and let me know what you think.
+
+The package is built in a way that makes it (hopefully) easy for others to contribute new simulations/apps. To that end, the package contains [this Markdown file](https://github.com/ahgroup/DSAIDE/blob/master/auxiliary/docsfordevelopers/documentation.md) which provides further information on the details of the package structure. If you plan to develop new apps, or make other substantial contributions, it's best to get in touch with me first via email or GitHub.
+
+## Further information
+See the [package website](https://ahgroup.github.io/DSAIDE/) for useful additional information.
+
+## Contributors
+This R package is developed and maintained by [Andreas Handel](https://www.andreashandel.com/). A full list of contributors and a Bibtex entry for the citation [can be found here](https://ahgroup.github.io/DSAIDE/authors.html).
+
+## Citation
+If the package does in any way help you with your work such that it warrants citing in one of your papers, please cite [this publication in PLoS Computational Biology](https://doi.org/10.1371/journal.pcbi.1005642).
+
+## References

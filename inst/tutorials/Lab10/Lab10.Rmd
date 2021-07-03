@@ -1,0 +1,364 @@
+---
+title: "One Sample T Methods"
+subtitle: "Computer Lab "
+output: 
+  learnr::tutorial:
+    progessive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(shiny)
+library(DT)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, context="data", include=FALSE}
+NurseDiet<- read.csv("./www/NurseDiet.csv")
+
+```
+
+
+## Introduction
+
+In this lab you will use R to compare means using the 1-sample *t* test, and how to make a new variable in R.  
+
+## One Sample t test {data-progressive=TRUE}
+
+The 1-sample *t* test is commonly used to test for a statistical difference between a sample mean and a known or hypothesized value of the mean in the population. The test has the null hypothesis that the population mean is equal to $\mu_{0}$ ($H_{0}: \mu=\mu_{0}$) and the alternative hypothesis that it is not equal to $\mu_{0}$ ($H_{A}: \mu\neq \mu_{0}$).  
+
+
+Before using the 1-sample *t* test there are some assumptions that need to be considered. If the assumptions are not met the results of the test may not be reliable.
+
+1. The data needs to have come from a random sample
+2. The data needs to be normal or meet the requirements of the central limit theorem (CLT) 
+
+For this lab we will use a data set called "NurseDiet". The dietary data is from a random sample of 173 American nurses. Data on the participants nutrition were recorded during four, 1-week intervals spaced evenly over year. There are three variables in the data set which record the mean of the total: saturated fat, fat, and calories consumed.      
+
+### Exercise 1: Checking the data
+**Instructions** In data analysis you always have check the data before performing any analysis. Use the interactive plot and summary app to get a feel for the variables and answer the quiz questions.
+```{r, context="render", echo=FALSE}
+
+fluidPage(
+  wellPanel(
+    fluidRow(
+      column(
+        6,
+        selectInput('var', label = "Select Variable to Summarize", 
+                     choices = list("SatFat", "TotalFat", "Calories"), 
+                     selected = "SatFat")
+        )
+      )
+    ),
+  fluidRow(
+    column(
+      6, 
+      h4(strong("Plot of Selected Variable")),
+      plotOutput(outputId = 'plot', width = "100%")
+      ),
+    column(
+      6,
+      h4(strong("Data")),
+      DT::dataTableOutput('rawdata')
+      )
+    ),
+  fluidRow(
+    column(
+      12,
+      h4("Summary of Selected Variable"),
+      verbatimTextOutput("summary")
+      )
+    )
+  )
+
+
+```
+
+```{r, context="server"}
+
+#Basic plot of the selected variable
+  output$plot <- renderPlot({
+    
+    validate(need(!is.null(input$var), 'Please select a variable to show the plot.'))
+    
+    if(is.numeric(NurseDiet[ ,input$var])){
+      x <- NurseDiet[ ,input$var]
+      bins <- round((max(x)-min(x))/(3.5*(sd(x)/length(NurseDiet[ ,input$var])^(1/3))),0)
+  
+    hist(NurseDiet[ ,input$var],
+      breaks = bins,
+      main = paste(input$var),
+      xlab = paste(input$var))
+    }
+    
+    if(is.integer(NurseDiet[ ,input$var])||is.factor(NurseDiet[ ,input$var])){
+      x<-NurseDiet[ ,input$var]
+      x<-table(x)
+      barplot(x,
+              ylab = "Count",
+              xlab = paste(input$var))
+    }
+  })
+
+  # show raw data
+  output$rawdata <- DT::renderDataTable({
+   DT::datatable(NurseDiet, options = list(lengthMenu = c(5, 30, 50), pageLength = 5)) 
+  })
+  
+  
+  # show a summary of the selected variable
+  output$summary <- renderPrint({
+    
+    validate(need(!is.null(input$var), 'Please select a variable to show the summary.'))
+    
+    x <- NurseDiet[ ,input$var]
+    summary(x)
+    })
+  
+```
+
+### Quiz: Questions 1-2
+
+```{r Q1-2}
+quiz(
+  question("For the nurses in the sample what is the mean total intake of calories?",
+    answer("2518 cal"),
+    answer("1781 cal"),
+    answer("1620 cal", correct = TRUE),
+    answer("1606 cal"),
+  allow_retry = TRUE
+  ),
+  question("For the nurses in the sample what is the highest mean total intake of saturated fat?",
+    answer("42.42 g"),
+    answer("24.16 g"),
+    answer("28.26 g"),
+    answer("46.36 g", correct = TRUE),
+  allow_retry = TRUE
+  )
+)
+```
+
+### Exercise 2: Checking the Assumptions
+
+Before using any statistical method it is important to make sure the assumptions are satisfied. In the case of some assumption it is as simple as knowing how the sample was collected. In the case of the nurse nutrition data we know that it was from a random sample. As far as the normality assumption we definitely meet the sample size requirement to use the CLT. Despite meeting the requirements of the CLT it is still a good idea to check and see if the variable of interest is normally distributed when you are doing an analysis.  
+
+The two common methods for visually checking for normality are with histograms and Q-Q plots. A Q-Q plot allows us to see if our assumption of normality is plausible. It makes it clear how the assumption is violated and also where in the variables distribution there are departures from the normality assumption. We are going to use 2 functions to make a Q-Q plot for the Calories variable. The [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.6.0/topics/qqnorm) function creates the base plot and then we will add a reference line to make it easier to see any departures from normality using the [qqline()](https://www.rdocumentation.org/packages/stats/versions/3.6.0/topics/qqnorm).     
+
+I know it has been a while since you have had to write any R code so if you need to review the first few labs, I have also added an R cheat sheet that you can view by clicking on the tab at the  [datacamp](https://www.datacamp.com/) has a free introduction to R course. As a quick reminder the basic syntax is "data_name"$"variable_name" the dollar sign lets R know to look inside the data set for the variable.  
+
+**Instructions** Finish the code in the chunk below to produce a Q-Q plot of the Calories data. Click the run code button Use the output to answer the quiz questions. 
+
+```{r qqplot, exercise=TRUE, exercise.lines=5}
+#If you can't figure out the variable names use the names() function on the data set
+# remember R cares about capital letters and the spelling has to match
+# All you need to do is add the variable after the $ 
+
+qqnorm(NurseDiet)
+qqline(NurseDiet)
+
+```
+
+### Quiz: Question 3
+
+```{r Q3}
+quiz(
+  question("Between which values of the Theoretical Quantiles is the data normal?",
+    answer("Between -1.5 and 1 the values are close to normal", correct = TRUE),
+    answer("There are no departures for normality"),
+    answer("Below -1 and above 1 the values are close to normal"),
+    answer("It is not normal over any values of the theoretical quantiles"),
+  allow_retry = TRUE
+  )
+)
+```
+
+### Exercise 3: 1-sample *t* Test
+
+Now that we know the assumptions for the test are meet we can apply the test to answer the following question. 
+
+Dietary standards for total fat and saturated fat are based on the assumption that 2000 calories of food are consumed each day.  This exercise will take you through the steps to test the null hypothesis that the mean caloric intake of the nurses is equal to 2000 calories against the two-sided alternative that the mean caloric intake of the nurses is not equal to 2000 calories : 
+$$\alpha=0.05$$
+$$\mu_{0}=2000$$
+
+$$H_{0}: \mu=2000$$
+$$H_{A}: \mu\neq 2000$$
+
+We will test the hypothesis using the [t.test()](https://www.rdocumentation.org/packages/stats/versions/3.6.0/topics/t.test) function in R. There are three options in the function that need to be specified. The general form is **t.test(x, mu=#, alternative= type)**, where "x" is the data, "#" is the value of the null ($\mu_{0}$), and finally "type" which can be one of these three "two.sided", "less", or "greater".      
+
+**Instructions:** Complete the code below and click the run code button. Use the output to answer the quiz questions. If you are having a hard time check out the example from STHDA [*t* tests in R](http://www.sthda.com/english/wiki/one-sample-t-test-in-r) 
+
+```{r ttest, exercise=TRUE}
+# Complete the code by setting the mu= to the correct value  for the problem 
+
+t.test(NurseDiet$Calories, mu= , alternative="two.sided")
+
+```
+
+### Quiz: Questions 4-7
+
+```{r Q4-7}
+quiz(
+  question("Which values match the results of your test?",
+    answer("t = -5.46, df = 173, p-value < 2.2e+16"),
+    answer("t = -3835.7, df = 172, p-value < 2.2e-16"),
+    answer("t = -42.42, df = 172, p-value < 1.2e-32"),
+    answer("t = -15.46, df = 172, p-value < 2.2e-16", correct = TRUE),
+  allow_retry = TRUE
+  ),
+  question("What was the mean of the total calorie intake?",
+    answer("1939.103 cal"),
+    answer("1734.931 cal"),
+    answer("1242.842 cal"),
+    answer("1619.873 cal", correct = TRUE),
+  allow_retry = TRUE
+  ),
+  question("What is the conclusion from the results of the test?",
+    answer("Since p < $\\alpha$, we reject the null hypothesis, and conclude that there is evidence the true mean is not 2000 calories.", correct = TRUE),
+    answer("Since p > $\\alpha$, we fail to reject the null hypothesis, and conclude that there is no evidence the true mean is not 2000 calories."),
+    answer("Since p < $\\alpha$, we reject the null hypothesis, and conclude that there is evidence the true mean is greater than 2000 calories."),
+    answer("Since p < $\\alpha$, we fail to reject the null hypothesis, and conclude that there is evidence the true mean is less than 2000 calories."),
+  allow_retry = TRUE
+  ),
+  question("What is the 95% confidence interval for the mean total intake of calories?",
+    answer("95% CI (1517.269, 1768.420)"),
+    answer("95% CI (1571.339, 1668.407)", correct = TRUE),
+    answer("95% CI (1031.671, 1996.710)"),
+    answer("95% CI (561.273, 1340.007)"),
+  allow_retry = TRUE
+  )
+  
+)
+```
+
+## Making a new variable in R
+
+In many cases data collected from a sample is used to calculate a new value. Body mass index (BMI) is not directly measured but calculated using this formula $\frac{weight(lb))}{height(in))^{2}}\times703$. In the "NurseDiet" data set there is no variable that quantifies the excess fat in the diet of those nurses sampled. For a daily consumption of 2000 calories, the daily recommended maximum intake of total fat is 65 grams. We will use this formula to calculate excess fat: $$excess~fat = total~fat-\left (65\times\frac{total~calories}{2000}  \right )$$  
+
+### Exercise 4: New variable
+**Instructions:** Complete the code to calculate a new variable. Use the results to answer the quiz question.
+```{r new_var, exercise=TRUE}
+
+NurseDiet$ExcFat<-NurseDiet$TotalFat-(65*(   /2000))
+
+summary()
+
+```
+
+### Quiz: Question 8
+
+```{r Q8}
+quiz(
+  question("What is the mean and max of the new ExcFat variable?",
+    answer("$\\mu$ = 17.420, max = 41.360"),
+    answer("$\\mu$ = 12.770, max = 26.915"),
+    answer("$\\mu$ = 15.970, max = 43.975", correct = TRUE),
+    answer("$\\mu$ = 19.709, max = 34.795"),
+  allow_retry = TRUE
+  )
+)
+```
+
+
+### Exercise 5: *t* Test for New Variable
+
+We believe that the nurses consume excess fat in their diets as a result of their working schedules.To test whether we have evidence for this claim, carry out a test of the following hypotheses:
+
+$$\alpha=0.05$$
+$$\mu_{0}=0$$
+
+$$H_{0}: \mu=0$$
+$$H_{A}: \mu\neq 0$$
+Before we do the test we have to check the normality assumption
+**Instructions:** Write the code required to make a Q-Q plot of the new variables ExcFat. Use the example code in the chunk as a guide. Use the plot to answer the quiz question.
+
+```{r newvarpplot-setup}
+NurseDiet$ExcFat<-NurseDiet$TotalFat-(65*(NurseDiet$Calories/2000))
+```
+
+```{r newvarpplot, exercise=TRUE, exercise.lines=10}
+# Example Code
+ #qqnorm(data$variable)
+ #qqline(data$variable)
+
+
+```
+
+
+**Instructions:** Once you have check to see if the variable is normal. Complete the code to test the hypothesis for the new variable ExcFat. Use the results to answer the quiz question.
+
+```{r new_var_test-setup}
+NurseDiet$ExcFat<-NurseDiet$TotalFat-(65*(NurseDiet$Calories/2000))
+```
+
+```{r new_var_test, exercise=TRUE}
+# There are three things you have to specify
+# t.test(x, mu=#, alternative= type)
+
+t.test( , mu= , alternative= )
+
+```
+
+### Quiz: Questions 9-13
+
+```{r Q10-13}
+quiz(
+  question("Between which values of the Theoretical Quantiles is the ExcFat data normal?",
+    answer("There are no departures from normality"),
+    answer("Between -1.5 and 2 the values are close to normal", correct = TRUE),
+    answer("above 1 all the values are normal"),
+    answer("It is not normal over any values of the theoretical quantiles"),
+  allow_retry = TRUE
+  ),
+  question("Which values match the results of your test?",
+    answer("t = 5.46, df = 173, p-value < 2.2e+15"),
+    answer("t = 3835.7, df = 172, p-value < 2.2e-16"),
+    answer("t = 24.593, df = 172, p-value < 2.2e-16", correct = TRUE),
+    answer("t = 15.46, df = 171, p-value < 2.2e-12"),
+  allow_retry = TRUE
+  ),
+  question("What was the mean of the total excess fat?",
+    answer("15.96951 g", correct = TRUE),
+    answer("17.34931 g"),
+    answer("12.42842 g"),
+    answer("16.19873 g"),
+  allow_retry = TRUE
+  ),
+  question("What is the conclusion from the results of the test?",
+    answer("Since p < $\\alpha$, we reject the null hypothesis, and conclude that there is evidence the true mean is not 0 grams of excess fat.", correct = TRUE),
+    answer("Since p > $\\alpha$, we fail to reject the null hypothesis, and conclude that there is no evidence the true mean is not 0 grams of excess fat."),
+    answer("Since p < $\\alpha$, we reject the null hypothesis, and conclude that there is evidence the true mean is greater than 0 grams of excess fat."),
+    answer("Since p < $\\alpha$, we fail to reject the null hypothesis, and conclude that there is evidence the true mean is less than 0 grams of excess fat."),
+  allow_retry = TRUE
+  ),
+  question("What is the 95% confidence interval for the mean total intake of calories?",
+    answer("95% CI (15.17269, 17.68420)"),
+    answer("95% CI (15.71339, 16.68407)"),
+    answer("95% CI (14.68776, 17.25125)", correct = TRUE),
+    answer("95% CI (5.612730, 13.40007)"),
+  allow_retry = TRUE
+  )
+  
+)
+```
+
+## Summary
+
+In this lab, you completed 5 exercises and answered 13 quiz questions. 
+
+The lab covered 2 topics:
+
+1. 1-sample *t*-tests
+2. Making new variables in R
+
+
+You are done with lab! Well done! **Don't forget to record your answers and take the eLC quiz to get credit.** 
+
+
+```{r joke, fig.cap="Yes, a biostatistician's strength flows from the R.(Yoda)"}
+knitr::include_graphics("./images/1samptest.jpg")
+```
+
+
+

@@ -1,0 +1,293 @@
+---
+title: "Box Plots"
+subtitle: "Computer Lab 3"
+output: 
+  learnr::tutorial:
+    progessive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(shiny)
+library(DT)
+library(labelled)
+library(ggplot2)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Introduction {data-progressive=TRUE}
+```{r, context="data", include=FALSE}
+HeartFailure <- read.csv("./www/heart.csv")
+
+CleanHeartFailure<- readRDS("./www/cleanheartfailure.Rda")
+```
+
+In this lab, you will learn how to create and interpret box plots. 
+
+What is a Box plot? They are a visual representation of the minimum, Q1, median (Q2), Q3, and maximum values of a variable. Just like histograms, box plots should only be used with continuous or discrete variables. Box plots are similar to histograms in that they both display the distribution of a variable, but box plots make it to more straightforward to identify the actual value of the minimum, Q1, median (Q2), Q3, and maximum. Finding the actual value for a variable from a histogram is not possible because of the bins (think about it. if there are 12 observations in the 80-85 age interval there is no way to know if the specific max age only that it is some were between 80-85 years). 
+
+
+### Making Box plots
+
+You guessed it we are going to use R to make some basic box plots. We will use the boxplot() function check out [RDocumentation](https://www.rdocumentation.org/packages/graphics/versions/3.6.0/topics/boxplot) for more information. A box plot is constructed by drawing lines that correspond to the values of Q1 (the first quartile), the median (Q2), and Q3 (the third quartile) and then "boxing" in the median. Then "whiskers" are added that represents the min and max values in most cases, but if there are suspected outliers the whisker stops short, and the suspected outlier is represented by a dot or star. The definition R uses (and other stats software) for outliers is any observed value more than 1.5 times the IQR below Q1 or above Q3. So if your data has Q1=7 and Q3=10 the IQR=3 so any observations lower than 2.5 or higher than 14.5 would be a suspected outlier and represented by a dot or star.   
+
+### Interpreting Box plots 
+
+Several specific quantities are present visually. The image below shows you the parts different parts of the box plot.  
+
+```{r labeledboxplot, fig.cap="**From:** Towards Data Science [https://towardsdatascience.com/understanding-boxplots-5e2df7bcbd51]", dpi=320, fig.align='center', echo=FALSE}
+knitr::include_graphics("./images/boxplot.png")
+```
+
+The skewness of the data can also be assessed with a box plot look at the example below. In this example the dots are not outliers, instead each dot represents the value for each observation. 
+
+```{r skewboxplot, fig.cap="**From:** BioTuring's Blog [https://blog.bioturing.com/2018/05/22/more-on-how-to-compare-box-plots/]", dpi=320, fig.align='center', echo=FALSE}
+knitr::include_graphics("./images/skewboxplot.png")
+```
+
+
+## Making and Interpreting Box Plots {data-progressive=TRUE}
+
+To make a basic box plot, we will use the boxplot() function. The code to create a basic box plot is **boxplot(dataset\$variablename)** , so for example to make a box plot of age the code would be **boxplot(HeartFailure\$age)**.   
+
+The data is the same as the previous labs. The data dictionary is also included.   
+
+#### Data Dictionary
+__age:__ age in years  
+__sex:__ (1 = male; 0 = female)  
+__trestbps:__ resting blood pressure (in mm Hg on admission to the hospital)  
+__chol:__ serum cholesterol in mg/dl  
+__fbs:__ (fasting blood sugar > 120 mg/dl) (1 = true; 0 = false)  
+__thalach:__ maximum heart rate achieved  
+__exang:__ exercise induced angina (1 = yes; 0 = no)  
+__oldpeak:__ ST depression induced by exercise relative to rest  
+
+
+```{r showdata, exercise=TRUE, exercise.eval=TRUE, exercise.lines = 5}
+#show the last 10 observations in the dataset
+tail(HeartFailure,10)
+```
+
+
+In the exercises below, you will make a box plot to answer the questions using R's boxplot() function. I made the first one for you, so all you have to do is run the code and use the box plot to answer the question. For the additional problems, all you need to do is copy and paste the code into the next code box, replace the variable name, and click the "Run Code". Use the box plots you create to answer the questions below.    
+
+```{r boxplot1, exercise=TRUE, exercise.lines = 10}
+# age is a continous/discrete variable so using a box plot is appropriate.
+# adding "horizontal = TRUE" lets R know I want the box plot to be horizontal
+# If you want to make the box plot vertical just delete ", horizontal = TRUE"
+boxplot(HeartFailure$age, horizontal = TRUE)
+
+# Use the summary() function to make it easier to get the exact values of the different parts of the box plot
+summary(HeartFailure$age)
+
+```
+
+### Quiz: Questions 1-3
+```{r Q1-3}
+quiz(
+  question("Is the distribution of age skewed?",
+    answer("Yes, to the left"),
+    answer("No, seems pretty centered", correct = TRUE),
+    answer("Yes, to the right"),
+  allow_retry = TRUE
+  ),
+  question("What is the median age?",
+    answer("55", correct = TRUE),
+    answer("54.37"),
+    answer("47.5"),
+    answer("56"),
+  allow_retry = TRUE
+  ),
+  question("What is the IQR for age?",
+    answer("29"),
+    answer("61"),
+    answer("47.5"),
+    answer("13.5", correct = TRUE),
+  allow_retry = TRUE
+  )
+)
+```
+
+```{r boxplot2, exercise=TRUE, exercise.lines = 5}
+# make a box plot for chol.
+
+
+```
+### Quiz: Questions 4-6
+```{r Q4-6}
+quiz(
+  question("Are there outliers in the cholesterol variable?",
+    answer("Yes, to the left"),
+    answer("No"),
+    answer("Yes, to the right", correct = TRUE),
+  allow_retry = TRUE
+  ),
+  question("What is the what is the highest non-outlier value for cholesterol?",
+    answer("Around 350", correct = TRUE),
+    answer("Around 290"),
+    answer("Around 550"),
+    answer("There are no outliers"),
+  allow_retry = TRUE
+  ),
+  question("What is the IQR for cholesterol?",
+    answer("438"),
+    answer("-63.5"),
+    answer("126"),
+    answer("63.5", correct = TRUE),
+  allow_retry = TRUE
+  )
+)
+```
+
+```{r boxplot3, exercise=TRUE, exercise.lines = 5}
+# make a box plot for trestbps. Use the summary function so you can get the exact value
+
+
+```
+### Quiz: Questions 7-9
+```{r Q7-9}
+quiz(
+  question("What is the range for trestbps?",
+    answer("120"),
+    answer("106", correct = TRUE),
+    answer("20"),
+    answer("76"),
+  allow_retry = TRUE
+  ),
+  question("Is the distribution of trestbps skewed?",
+    answer("Yes, to the left"),
+    answer("No"),
+    answer("Yes, to the right", correct = TRUE),
+  allow_retry = TRUE
+  ),
+  question("What is the IQR for trestbps?",
+    answer("20", correct = TRUE),
+    answer("26"),
+    answer("60"),
+    answer("8.4"),
+  allow_retry = TRUE
+  )
+)
+```
+
+```{r boxplot4, exercise=TRUE, exercise.lines = 5}
+# make a box plot for oldpeak.
+
+
+```
+### Quiz: Questions 10-12
+```{r Q10-12}
+quiz(
+  question("Is the distribution of oldpeak skewed?",
+    answer("Yes, to the left"),
+    answer("No, the median seems pretty centered"),
+    answer("Yes, to the right", correct = TRUE),
+  allow_retry = TRUE
+  ),
+  question("What is the median for oldpeak?",
+    answer("1.60"),
+    answer("0"),
+    answer("1.04"),
+    answer("0.8", correct = TRUE),
+  allow_retry = TRUE
+  ),
+  question("What is the IQR of oldpeak?",
+    answer("2"),
+    answer("1.60", correct = TRUE),
+    answer("0"),
+    answer("0.24"),
+  allow_retry = TRUE
+  )
+)
+```
+
+
+## Comparing Groups with Box Plots {data-progressive=TRUE}
+
+Box plots are also very useful to make comparisons between groups. The first step is to stratify (fancy word for divide) the data based on the value of a variable. A box plot is created for each stratum, and they are plotted next to each so you can quickly compare them. In our case, we have three categorical variables that we will use to stratify our data. See if you can find any variables that have major difference between groups.   
+
+**Instructions** Use the dropdown menu to select different variables to compare by different strata. Use the plot to answer the quiz questions.   
+```{r, context="render", echo=FALSE}
+
+fluidRow(column(4, selectInput("group", "Compare By:",
+                               choices=c("sex","fbs","exang"))),
+         column(4, selectInput("var", "Variable:",
+                               choices=c("age","chol","trestbps","thalach","oldpeak")))
+
+)
+
+plotOutput("BoxPlot")
+
+```
+
+
+```{r, context="server"}
+
+
+  # Creating boxplot based on selections
+
+output$BoxPlot <- renderPlot({
+      #Extract the variables from UI into local variables 
+      CleanHeartFailure$group<- CleanHeartFailure[ ,input$group]
+      CleanHeartFailure$var<- CleanHeartFailure[ ,input$var]
+      
+      #Make the stratafied box plot
+      ggplot(CleanHeartFailure, 
+             aes(x=group, y=var))+
+        geom_boxplot()+
+        xlab(var_label(CleanHeartFailure$group))+ 
+        ylab(var_label(CleanHeartFailure$var))+
+        theme(plot.title = element_text(size = 14, face = "bold", hjust = 0.5), 
+                         plot.subtitle = element_text(size = 14, face = "bold"),
+                         axis.title.x = element_text(size = 16, face = "bold"),
+                         axis.title.y = element_text(size = 16, face = "bold"),
+                         axis.text = element_text(size = 14),
+                         legend.position = "none",
+                         panel.background = element_rect(fill = "white", color = "black"),
+                         panel.grid.major = element_blank(),
+                         panel.grid.minor = element_blank())
+      
+  })
+
+
+```
+
+
+### Quiz: Questions 13-14
+```{r Q13-14}
+quiz(
+  question("Does cholesterol seem to be different for males and females?", 
+           answer("Yes, the median and IQR for females is higher", correct = TRUE), 
+           answer("No, they might as well be the same boxplot"), 
+           answer("No, the difference is not statistically significant"), 
+           answer("Yes, the difference is statistically significant"),
+  allow_retry = TRUE
+          ),
+  question("Is there any difference in resting blood pressure for patients based on fbs?",
+    answer("No, the difference is not statistically significant"),
+    answer("No, the medians are almost exactly the same"),
+    answer("Yes, the difference is statistically significant"),
+    answer("Yes, the median, Q1, and Q3 are higher for the Yes group", correct = TRUE),
+  allow_retry = TRUE
+  )
+)
+```
+
+## Summary 
+
+In this lab, You completed 5 exercises and answered 14 quiz questions. 
+
+1. You learned how to make and interpret a box plot 
+
+2. You used box plots to see if there were any differences between different strata  
+
+Great job! You are done with the lab! **Don't forget to record your answers and take the eLC quiz so you get credit**  
+
+```{r joke, fig.cap="from: https://xkcd.com/539/"}
+
+knitr::include_graphics("./images/boyfriend.png")
+
+```

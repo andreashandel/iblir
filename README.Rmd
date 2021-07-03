@@ -15,49 +15,48 @@ knitr::opts_chunk$set(
 # DSAIDE <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/ahgroup/DSAIDE/workflows/R-CMD-check/badge.svg)](https://github.com/ahgroup/DSAIDE/actions)
-[![Coverage status](https://codecov.io/gh/ahgroup/DSAIDE/branch/master/graph/badge.svg?token=OGO3sVEcPD)](https://codecov.io/gh/ahgroup/DSAIDE)
-[![test-coverage](https://github.com/ahgroup/DSAIDE/workflows/test-coverage/badge.svg)](https://github.com/ahgroup/DSAIDE/actions)
-[![CRAN status](https://www.r-pkg.org/badges/version/DSAIDE)](https://cran.r-project.org/package=DSAIDE)
-[![CRAN checks](https://cranchecks.info/badges/summary/DSAIDE)](https://cran.r-project.org/web/checks/check_results_DSAIDE.html)
-[![metacran monthly downloads](https://cranlogs.r-pkg.org/badges/DSAIDE)](https://cran.r-project.org/package=DSAIDE)
-[![metacran downloads](https://cranlogs.r-pkg.org/badges/grand-total/DSAIDE?color=ff69b4)](https://cran.r-project.org/package=DSAIDE)
+[![R-CMD-check](https://github.com/andreashandel/iblir/workflows/R-CMD-check/badge.svg)](https://github.com/andreashandel/iblir/actions)
+[![test-coverage](https://github.com/andreashandel/iblir/workflows/test-coverage/badge.svg)](https://github.com/andreashandel/iblir/actions)
+[![Codecov coverage](https://codecov.io/gh/andreashandel/iblir/branch/main/graph/badge.svg)](https://codecov.io/gh/andreashandel/iblir?branch=main)
 <!-- badges: end -->
 
-**Dynamical Systems Approach to Infectious Disease Epidemiology (Ecology/Evolution).**
+**This package is still under active development. If you see this message, assume that several parts of the package don't quite work yet.**
 
 ## Description
-DSAIDE is an R package containing a set of simulation models (apps) that teach infectious disease epidemiology (ecology/evolution) from a dynamical systems modeling perspective. 
-
-All models can be explored through a graphical user interface, no reading or writing code is required. Each app comes with documentation and instructions which teach important concepts of infectious disease epidemiology (ecology/evolution) and show how to use simulation models to understand such concepts. 
-
-It is also possible to go beyond the graphical interface and directly access and modify all simulations to adapt them to your needs.
+`iblir` is an R package containing a set of `learnr` tutorials that cover basic biostatistical concepts.
 
 
 ## Getting Started
-While the main idea is to install the R package and use it locally, if you want to get a quick glimpse at the package to see if this package is for you, you can give it [a quick try online, without having to install it](https://shiny.ovpr.uga.edu/DSAIDE/). If you like what you see, you can install it and start using it with these 3 commands:
+
+Start by installing R and RStudio.
+The package is not yet on CRAN, so you need to install it from GitHub as follows.
+
 ``` 
-install.packages('DSAIDE')
-library('DSAIDE')
-dsaidemenu()
+install.packages('remotes')
+remotes::install_github('andreashandel/iblir')
 ```
-For an introduction to the package, step-by-step instructions on getting started, and more information on the different ways you can use the package [see the _Get Started_ tutorial (vignette)](https://ahgroup.github.io/DSAIDE/articles/DSAIDE.html).
+
+Then load the package 
+
+```
+library('iblir')
+```
+
+To start the tutorials/labs, you type
+```
+run_tutorial('LabN', package = 'iblir')
+```
+where N is the lab number, e.g. `Lab1`, `Lab2`.
+
+A startup message also tells you this.
 
 
 ## Further information
-* The [package tutorial (vignette)](https://ahgroup.github.io/DSAIDE/articles/DSAIDE.html) contains detailed instructions on the different ways the package can be used.
-* [I published a paper describing the package](https://doi.org/10.1371/journal.pcbi.1005642). The package has since been updated and changed, but the paper still describes the overall idea and context well.  
-* I regularly teach two courses related to infectious diseases and modeling. All materials for those courses [are freely available online](https://andreashandel.github.io/IDEMAcourse/). 
-* As part of these courses, [I wrote a freely available online textbook](https://andreashandel.github.io/IDEMAbook/). It is not (and probably never will be) finished, some chapters are fairly empty, but some topics are covered in enough detail that I use it for teaching. 
-* I have full solutions and quiz sheets for all of the __What to do__ tasks for each app. If you are an instructor using this package as part of a class, email me if you are interested in having access to the materials.
-* Contributions to the package are very welcome! If you want to take a deeper look at the package, see [this Markdown file](https://github.com/ahgroup/DSAIDE/blob/master/auxiliary/docsfordevelopers/documentation.md) which provides further information on the details of the package structure. I'd be excited to receive any contributions from individuals who want to help improve the package. If you plan to develop new apps, or make other substantial contributions, it might be best to get in touch with me first.
-* A 'companion' package to this one, called Dynamical Systems Approaches for Immune Response Modeling (DSAIRM), focuses on models for analyzing with-host infection dynamics. It has the same structure as DSAIDE. [See the DSAIRM site for more information.](https://ahgroup.github.io/DSAIRM/)
-* I send out a monthly newsletter in which (among other things) I announce any noteworthy updates to my R packages. If you want to stay updated, [you can sign up here](https://www.andreashandel.com/susbscribe/).
+
+To come.
 
 ## Citation and Contributors
-If the package does in any way help you with your work such that it warrants citing it, please cite [this publication in PLoS Computational Biology](https://doi.org/10.1371/journal.pcbi.1005642). 
 
-This R package is developed and maintained by [Andreas Handel](https://www.andreashandel.com/). A full list of contributors and a Bibtex entry for the citation [can be found here](https://ahgroup.github.io/DSAIDE/authors.html).
+The main content of this package was developed by [Brian McKay](). The package is maintained by [Brian McKay]() and [Andreas Handel](https://www.andreashandel.com/). A full list of contributors and a Bibtex entry for the citation [can be found here](https://andreashandel.github.io/iblir/authors.html).
 
-This project was/is partially supported by NIH grants R01GM124280 and R01GM12480-03S1.
 

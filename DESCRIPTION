@@ -14,9 +14,14 @@ LazyData: TRUE
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports:
-    ggplot2 (>= 2.2)
+    DT,
+    ggplot2,
+    labelled,
+    rsconnect,
+    shiny
 Depends:
-    R (>= 3.6)
+    R (>= 3.6),
+    learnr
 Suggests: 
     covr,
     devtools,

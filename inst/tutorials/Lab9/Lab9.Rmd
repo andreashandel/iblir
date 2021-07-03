@@ -1,0 +1,675 @@
+---
+title: "Random Sampling and Central Limit Theorem"
+subtitle: "Computer Lab 9"
+output: 
+  learnr::tutorial:
+    progessive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(shiny)
+library(shinythemes)
+library(DT)
+library(ggplot2)
+library(tidyverse)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, context="data", include=FALSE}
+UGA18<- readRDS("./www/UGA18.Rda")
+```
+
+
+## Introduction
+
+In this lab you will review variable distributions. Then we will explore why we use random samples, and the Central Limit Theorem (CTL) to make claims about the whole population. 
+
+## Distribution Review {data-progressive=TRUE}
+
+So hopefully you are starting to feel comfortable with the distributions we have been discussion in class. 
+
+So why do we care about the distribution? The distributions determine the methods that you will apply when answering question. So the practical reason to care is so that you do well in the this class. In the bigger picture, using a generalized distribution allows us to make estimates beyond our sample of unobserved values, as well as making inferences about the population. In the exercise you will determine the best distribution to describe the variables in the data set.
+
+### Exercise 1: Variable Distributions
+  
+For this exercise we will use some made up data for the whole UGA undergraduate population from 2018. During that year there were 29,611 students enrolled in undergraduate studies.     
+
+The data set is named UGA18 and includes the following variables:   
+**Sex:** Student sex (Male, Female)  
+**Age:** Student age (years)   
+**Weight:** Student weight (pounds)  
+**Height:** Student height (inches)  
+**Classes:** Number of classes for the current semester in college      
+
+ 
+**Instructions** Use the interactive plot and summary below to determine the distributions for each of the variables. Then answer quiz questions 1-5.
+```{r, context="render", echo=FALSE}
+
+fluidPage(
+  title = 'Data about UGA undergraduates from 2018 (made up)',
+  fluidRow(
+    column(
+      3,
+      selectInput('var', label = "Select Variable to Summarize", 
+                     choices = list("sex", "age", "weight", "height", "classes"), 
+                     selected = "sex")
+      )
+    ),
+  fluidRow(
+    column(
+      6, 
+      h4("Plot of Selected Variable"),
+      plotOutput(outputId = 'plot', width = "100%")
+      ),
+    column(
+      6,
+      h4("Data"),
+      DT::dataTableOutput('rawdata')
+      )
+    ),
+  fluidRow(
+    column(
+      12,
+      h4("Summary of Selected Variable"),
+      verbatimTextOutput("summary")
+      )
+    )
+  )
+
+
+```
+
+```{r, context="server"}
+
+#Basic plot of the selected variable
+  output$plot <- renderPlot({
+    
+    validate(need(!is.null(input$var), 'Please select a variable to show the plot.'))
+    
+    if(is.numeric(UGA18[ ,input$var])){
+      x <- UGA18[ ,input$var]
+      bins <- round((max(x)-min(x))/(3.5*(sd(x)/29611^(1/3))),0)
+  
+    hist(UGA18[ ,input$var],
+      breaks = bins,
+      main = paste(input$var),
+      xlab = paste(input$var))
+    }
+    
+    if(is.integer(UGA18[ ,input$var])||is.factor(UGA18[ ,input$var])){
+      x<-UGA18[ ,input$var]
+      x<-table(x)
+      barplot(x,
+              ylab = "Count",
+              xlab = paste(input$var))
+    }
+  })
+
+  # show raw data
+  output$rawdata <- DT::renderDataTable({
+   DT::datatable(UGA18, options = list(lengthMenu = c(5, 30, 50), pageLength = 5)) 
+  })
+  
+  
+  # show a summary of the selected variable
+  output$summary <- renderPrint({
+    
+    validate(need(!is.null(input$var), 'Please select a variable to show the summary.'))
+    
+    x <- UGA18[ ,input$var]
+    summary(x)
+    })
+  
+```
+
+### Quiz: Questions 1-6
+
+```{r Q1-6}
+quiz(
+  question("These summaries are showing the population parameters.",
+    answer("True", correct = TRUE),
+    answer("False"),
+  allow_retry = TRUE
+  ),
+  question("Which distribution should we use to describe the variable **sex**?",
+    answer("Uniform"),
+    answer("Binomial", correct = TRUE),
+    answer("Normal"),
+    answer("Poisson"),
+  allow_retry = TRUE
+  ),
+  question("Which distribution should we use to describe the variable **age**?",
+    answer("Uniform", correct = TRUE),
+    answer("Binomial"),
+    answer("Normal"),
+    answer("Poisson"),
+  allow_retry = TRUE
+  ),
+  question("Which distribution should we use to describe the variable **weight**?",
+    answer("Uniform"),
+    answer("Binomial"),
+    answer("Normal", correct = TRUE),
+    answer("Poisson"),
+  allow_retry = TRUE
+  ),
+  question("Which distribution should we use to describe the variable **height**?",
+    answer("Uniform"),
+    answer("Binomial"),
+    answer("Normal", correct = TRUE),
+    answer("Poisson"),
+  allow_retry = TRUE
+  ),
+  question("Which distribution should we use to describe the variable **classes**?",
+    answer("Uniform"),
+    answer("Binomial"),
+    answer("Normal"),
+    answer("Poisson", correct = TRUE),
+  allow_retry = TRUE
+  )
+)
+```
+
+## Random Samples {data-progressive=TRUE}
+
+Ok now that you have a good handle on the variables in the data we can start to explore the importance of random sampling.  
+
+I can almost guarantee that you have done some sort of sampling in your life. When you go some where to get ice cream you probably tried a couple flavors before making a decision. The simple definition for a sample is a smaller part of a whole that gives you information (data) so that you have an idea of what to expect of the whole.  
+
+In your personal life you chose samples because you think you will like them, which is great. Imagine if you could not get samples and after the first bite of your triple scope waffle cone you find out that you don't like it. In science choosing samples because you think they will give the result you want is called fraud. Even a researcher with the best intentions can unintentionally influence the results of an experiment if proper sampling methods are not used. The ultimate goal with any sampling method is to collect a sample that is representative of the population and for many situations the best way to do that is by randomly selecting members of a population. 
+
+Getting data on an entire population in most cases is not practical or even necessary. Imagine your trying to decided on an ice cream flavor, you don't have to eat a whole gallon to decide if you like it, instead a small representative sample is enough to make a good decision. In a more real world example, imagine trying to collect data on the height of every undergraduate student enrolled at UGA (there were 29611 in 2018). Collecting data on the entire population would take a really long time and would be very expensive.  
+
+So just like ice cream were you use a sample to know if you like it, in biostatistics a random sample can give you a very good idea of the "True" values of the populations parameters.  There are a number of methods to get a random for a basic overview check out [Health Knowledge](https://www.healthknowledge.org.uk/public-health-textbook/research-methods/1a-epidemiology/methods-of-sampling-population). The National Health and Nutrition Examination Survey [NHANES](https://www.cdc.gov/nchs/nhanes/hlthprofess.htm) relies on a random sample and you whether you know it or not you have benefited from the information generated. You can see the complete list of data accomplishments on the their [website](https://www.cdc.gov/nchs/nhanes/dataaccomp.htm), but here are just a few: growth charts (height and weight percentiles), acceptable cholesterol levels (low, normal, high), vitamin and mineral fortifications (adding iron to grains and cereals). 
+
+
+
+### Exercise 2: Random Sampling
+
+As stated above having access to an entire population is not always possible or practical. So now image that you do not have access to the whole UGA population but for what ever reason you are still interested in the sex, age, weight, height, and number of classes taken during the first semester of the undergraduate population. You don't have the time or money to collect data on the entire population so you will have to take a random sample. In the exercise below you will use random samples of different sizes and see how the estimates of different parameters change.  
+
+
+The data set is named UGA18 and includes the following variables:    
+**Sex:** Student sex (Male, Female)    
+**Age:** Student age (years)    
+**Weight:** Student weight (pounds)     
+**Height:** Student height (inches)    
+**Classes:** Number of classes for the current semester in college    
+
+**Instructions:** Select a variable and then specify the size of the random sample you want to select from the UGA population. Use the random sample generator to answer the quiz questions.  
+```{r, context="render"}
+  
+fluidPage(  
+  wellPanel(
+    fluidRow(
+      h4("Select the Size of the Random Sample"),
+      column(
+        6, 
+        numericInput("samp1", label = "Specify a Random Sample Size:",
+                   value = 5, step = 10)
+        )
+      )
+    ),
+  fluidRow(
+    h4("Compare the Population Parameter to the Statistics of a Random Sample"),
+    column(
+      12, 
+      DT::dataTableOutput("data2")
+      )
+    )
+  )
+  
+
+```
+
+### Quiz: Questions 7-9
+
+```{r Q7-9}
+quiz(
+  question("What is the smallest sample size gives you an absolute difference less than 1 for all the variables?",
+    answer("n = 122 Students"),
+    answer("n = 3 Students"),
+    answer("n = 21 Students", correct = TRUE),
+    answer("n = 57 Students"),
+  allow_retry = TRUE
+  ),
+  question("Set the sample size to 100. Record the absolute difference for all the variables. Now set the sample size to 10,000. For all the variables what are differences between the absolute differences of the two random samples?",
+    answer("0.009, 0.095, 0.239, 0.517, 0.077", correct = TRUE),
+    answer("0.006, 0.905, 0.923, 0.157, 0.577"),
+    answer("0.029, 0.193, 0.536, 0.527, 0.127"),
+    answer("0.927, 0.346, 0.749, 0.187, 0.420"),
+  allow_retry = TRUE
+  ),
+  question("It is worth the extra time and money to collect the data for a sample of 10,000 compared to 100.",
+    answer("True"),
+    answer("False", correct = TRUE),
+  allow_retry = TRUE
+  )
+)
+```
+
+
+
+### Exercise 3: Size of Random Sample  
+
+I am always surprised how well a relatively small sample can produce really good estimates of population parameters. In the last exercise we were looking at one sample at a time. In this exercise we will look at a range of sample sizes to get a better understanding of how sample estimates change as sample size increase.  
+
+**Instructions:** Using the interactive plot below by selecting different variables. The plot that is generated will show the estimates from different random sample sizes (1 to 5,000). **Pay attention to the y axis**. Use the plots to answer the quiz questions. 
+
+```{r, context="render"}
+fluidPage(
+  wellPanel(
+    fluidRow(
+      column(
+        4,
+        selectInput("var1", label = "Select Variable to Summarize", 
+                     choices = c("sex", "age", "weight", "height", "classes"), 
+                     selected = "sex")
+        ),
+      column(
+        4,
+        numericInput("xLow", label = "Set X axis lower limit:", 
+                   value = 1, step = 100)
+        ),
+      column(
+        4,
+        numericInput("xUp", label = "Set X axis upper limit:",
+                   value = 5000, step = 100)
+        )
+      )
+    ),
+  fluidRow(
+    h4("Random Samples of Varying Size"),
+    column(
+      12, 
+      plotOutput(outputId = 'plot1')
+      )
+    )
+  )
+  
+```
+
+**Explanation of Plot:**   
+The <span style="color:darkgreen">**green**</span> line shows the population parameter value for the variable you selected. Notice that is constant it will only change if the population changes.   
+The <span style="color:blue">**blue**</span> line is the estimate from each of the random samples ranging in size from 1 to 5000. Notice that as the sample size increases the blue lines have less and less variation, and get closer and closer to the parameter value.   
+The <span style="color:red">**red**</span> line is a smoothed line since it can be hard to see trends when there is so much variation. The red line was made by taking the mean of the means of 7 samples at a time. For example if we had 21 means we would end up with 3 means that are then connected by a "smooth" line. If you want to know more about "smoothing" data check out Rafael's book [Introduction to Data Science](https://rafalab.github.io/dsbook/smoothing.html).      
+
+### Quiz: Questions 10-12
+
+```{r Q10-12}
+quiz(
+  question("Look at the plots for all the variables. For all the variables what happens to the estimates as the sample size increases? (X axis 1 to 5000)",
+    answer("Nothing worth mentioning"),
+    answer("The graph is different for all the variables"),
+    answer("There is not a clear pattern"),
+    answer("The estimates become less variable and get closer to the parameter value as the sample size increases", correct = TRUE),
+  allow_retry = TRUE
+  ),
+  question("Why is the estimated mean age very close to the true mean even with a very small sample? (X axis to 1 and 100)",
+    answer("It is impossible to know"),
+    answer("Just lucky"),
+    answer("The range of possible values is small", correct = TRUE),
+    answer("Mostly do to biased sampling"),
+  allow_retry = TRUE
+  ),
+  question("Why does the estimated mean weight take so long to before the red line is consistently near the true mean? (X axis to 1 and 1000)?",
+    answer("The weight variable has the most variation", correct = TRUE),
+    answer("weight is hard to measure accurately"),
+    answer("Because no one reported their actual weight"),
+    answer("Bad luck"),
+  allow_retry = TRUE
+  )
+)
+```
+
+
+
+```{r, context="server"}
+
+ output$plot1 <- renderPlot({
+    
+    validate(need(!is.na(input$xUp), 'Please provide an upper bound for the plot'),
+             need(!is.na(input$xLow), 'Please provide an lower bound for the plot'),
+             need(input$xLow<input$xUp, 'The lower bound has to be smaller than the upper bound'),
+             need(input$xLow>=1, 'Make sure the lower bound is greater than or equal to 1. The smallest sample possible is 1!'))    
+
+    if(input$var1!="sex"){
+    
+      set.seed(1987)
+      
+      smean<-NULL
+      
+      vs<-UGA18[ ,input$var1]
+      
+      for (i in 1:5000){
+        sx<-sample(vs,i, replace = F)
+        smean[i]<-mean(sx)
+        }
+      
+      x = input$xLow:input$xUp
+y = smean[input$xLow:input$xUp]
+
+DF<-data.frame(x, y)
+
+span <- 7
+fit <- with(DF,
+            ksmooth(x, y,  x.points = x, kernel="normal", bandwidth = span))
+DF %>% mutate(smooth=fit$y) %>%
+  ggplot(aes(x = x, y = y)) + 
+  geom_hline(aes(yintercept = mean(UGA18[ ,input$var1]), color="line1"),size=1.5) +
+  geom_line(size = .5, aes(color="line2"), alpha=0.80) +
+  geom_line(aes(x = x, y = smooth, color="line3"), alpha=0.80, size=1.5)+
+  scale_x_continuous(limits = c(input$xLow, input$xUp))+
+  scale_y_continuous(limits = c(min(DF$y), max(DF$y)))+
+  scale_color_manual(
+    values = c("line1"="darkgreen",
+               "line2"="blue",
+               "line3"="red"),
+    labels=c("line1"= "Parameter Value",
+             "line2"= "Mean for each Sample Size",
+             "line3"= "Smoothed Mean"))+
+  labs(x = "Size of Random Samples",
+       y = paste("Estimated Mean (",input$var1,")",sep=""),
+       color= "Lines:")+
+  theme(axis.title.x = element_text(face="bold", colour="black", size = 12),
+        axis.title.y = element_text(face="bold", colour="black", size = 12),
+        axis.text.x = element_text(colour="black", size = 12),
+        axis.text.y = element_text(colour="black", size = 12),
+        legend.title = element_text(face="bold", size = 14),
+        legend.text = element_text(size=14),
+        legend.key = element_rect(fill = "white", size = 1.25),
+        legend.position = "bottom", 
+        panel.background = element_rect(fill = "white", color = "black"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+    
+    } else {
+      
+      set.seed(1987)
+      
+      smean<-NULL
+      
+      vs<-UGA18[ ,input$var1]
+      
+      for (i in 1:5000){
+        sx<-sample(vs,i, replace = F)
+        sx1<-sx%in%c("Male")
+        smean[i]<-mean(sx1)
+        }
+      
+      x = input$xLow:input$xUp
+y = smean[input$xLow:input$xUp]
+
+DF<-data.frame(x, y)
+
+span <- 7
+fit <- with(DF,
+            ksmooth(x, y,  x.points = x, kernel="normal", bandwidth = span))
+DF %>% mutate(smooth=fit$y) %>%
+  ggplot(aes(x = x, y = y)) + 
+  geom_hline(aes(yintercept = mean(UGA18[ ,input$var1]=="Male"), color="line1"),size=1.5) +
+  geom_line(size = .5, aes(color="line2"), alpha=0.80) +
+  geom_line(aes(x = x, y = smooth, color="line3"), alpha=0.80, size=1.5)+
+  scale_x_continuous(limits = c(input$xLow, input$xUp))+
+  scale_y_continuous(limits = c(min(DF$y), max(DF$y)))+
+  scale_color_manual(
+    values = c("line1"="darkgreen",
+               "line2"="blue",
+               "line3"="red"),
+    labels=c("line1"= "Parameter Value",
+             "line2"= "Proportion Male for each Sample Size",
+             "line3"= "Smoothed Proportion"))+
+  labs(x = "Size of Random Samples",
+       y = "Estimated Proportion of Males",
+       color= "Lines:")+
+  theme(axis.title.x = element_text(face="bold", colour="black", size = 12),
+        axis.title.y = element_text(face="bold", colour="black", size = 12),
+        axis.text.x = element_text(colour="black", size = 12),
+        axis.text.y = element_text(colour="black", size = 12),
+        legend.title = element_text(face="bold", size = 14),
+        legend.text = element_text(size=14),
+        legend.key = element_rect(fill = "white", size = 1.25),
+        legend.position = "bottom", 
+        panel.background = element_rect(fill = "white", color = "black"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+    
+    }
+  })
+
+
+
+  # Nice comparison of the population parameter and a sample statistic for random samples of varying size
+  output$data2 <- DT::renderDataTable({
+    
+    validate(need(input$samp1<=10000, 'Please select a sample of 10000 or less. Generating random samples larger than 10000 takes a while!'),
+           need(input$samp1>=1, 'Samples less than 1 are not possible!'))
+    
+    set.seed(1987)
+
+    sx<-UGA18[sample(nrow(UGA18), input$samp1, replace = F), ]
+    
+    r2<-c("Proportion Male:", round(mean(UGA18[ ,"sex"]=="Male"), 3), round(mean(sx[ ,"sex"]=="Male"), 3), round(abs(round(mean(UGA18[ ,"sex"]=="Male"), 3)-round(mean(sx[ ,"sex"]=="Male"), 3)),3))
+    
+    r3<-c("Mean Age:", round(mean(UGA18[ ,"age"]), 3),round(mean(sx[ ,"age"]), 3), round(abs(round(mean(UGA18[ ,"age"]), 3)-round(mean(sx[ ,"age"]), 3)),3))
+    
+    r4<-c("Mean Weight:", round(mean(UGA18[ ,"weight"]), 3),round(mean(sx[ ,"weight"]), 3), round(abs(round(mean(UGA18[ ,"weight"]), 3)-round(mean(sx[ ,"weight"]), 3)),3))
+    
+    r5<-c("Mean Height:", round(mean(UGA18[ ,"height"]), 3),round(mean(sx[ ,"height"]), 3), round(abs(round(mean(UGA18[ ,"height"]), 3)-round(mean(sx[ ,"height"]), 3)),3))
+    
+    r6<-c("Mean Number of Classes:", round(mean(UGA18[ ,"classes"]), 3),round(mean(sx[ ,"classes"]), 3), round(abs(round(mean(UGA18[ ,"classes"]), 3)-round(mean(sx[ ,"classes"]), 3)),3))
+    
+    sxsum<-rbind(r2,r3,r4,r5,r6)
+    
+    sxsum<-as.matrix(sxsum)
+    
+    sxsum<-as.data.frame(sxsum, row.names = NULL) 
+    
+    colnames(sxsum)<-c("Variables","Population Parameter Values", "Sample Statistic Values", "Absolute Difference")
+    
+    rownames(sxsum)<-c(NULL)
+    
+    
+    DT::datatable(sxsum, options=list(searching=FALSE, paging=FALSE))
+    
+    })
+
+```
+
+## Central Limit Theorem {data-progressive=TRUE}
+
+If you only remember one thing from this lab this should be it. **According to the central limit theorem, the distribution of the means from repeated samples of a population will be have an approximately normal distribution irrespective of the distribution if individual observations in the population. As long as the sample size is larger than 40**. In our UGA data set we have variables that have a normal, Poisson, binomial, and uniformly distributed. But according to the CTL if we took repeated samples of the same size and calculated the means of those samples the distribution of those means will be normally distributed.      
+
+We are going to put this to the test in our next exercise.
+
+### Exercise 4: Visualizing the CTL
+
+**Instructions** choose different sample sizes and the number of times they are resampled. Use the plot to answer the quiz questions 
+
+```{r, context="render"}
+fluidPage(
+  wellPanel(
+    fluidRow(
+      column(
+        3,
+        selectInput("var2", label = "Select Variable", 
+                     choices = c("sex", "age", "weight", "height", "classes"), 
+                     selected = "sex")
+        ),
+      column(
+        3,
+        numericInput("samp2", label = "Sample size:", 
+                   value = 40, step = 50)
+        ),
+      column(
+        6,
+        numericInput("sampN", label = "Number of Repeated Samples:",
+                   value = 100, step = 50)
+        )
+      )
+    ),
+  fluidRow(
+    h4("Distribution of Sample Means"),
+    column(
+      12, 
+      plotOutput(outputId = 'plot2')
+      )
+    )
+  )
+  
+```
+
+**Explanation of Plot:**  
+The histogram shows the distribution of the means from all the repeated samples. The smoothed curve is the density of different mean values of the repeated samples. The vertical green line shows the value of the population parameter for the selected variable.  
+
+```{r, context='server'}
+
+output$plot2 <- renderPlot({
+  
+  
+  validate(need(input$sampN>=1, 'You have to have at least 1 repeated sample'),
+           need(input$samp2>=1, 'The smallest sample possible is 1!'))
+  
+  
+  
+  if(input$var2!="sex"){
+    
+    set.seed(1987)
+  
+    rsmean<-NULL
+    
+      for (i in 1:input$sampN){
+        rsx<-UGA18[sample(nrow(UGA18), input$samp2, replace = F), input$var2]
+        rsmean[i]<-mean(rsx)
+        }
+  
+  #set bin width based on the data
+  binN <- round((max(rsmean)-min(rsmean))/(3.5*(sd(rsmean)/length(rsmean)^(1/3))),0)
+  
+  # Data frame of means
+  DF<-data.frame(rsmean)
+  
+  # Curve of the theoretical sampling distribution Xbar~N(mu,sd/sqrt(n))
+  
+  #xvs <- seq(min(UGA18[,input$var2]), max(UGA18[,input$var2]), length.out=length(UGA18[,input$var2]))
+  #CurveDF <-data.frame(x = xvs, y = dnorm(xvs, mean(UGA18[,input$var2]), sd(UGA18[,input$var2])/sqrt(input$sampN)))
+  
+  
+ ggplot(DF) + 
+   geom_histogram(bins=binN, color="blue", fill="blue", alpha=.75, aes(x = rsmean, y = ..density..)) +
+   geom_density(alpha=.5, color="red", fill="red", aes(x = rsmean)) + 
+   labs(x = "Means", y = "Density") +
+   geom_vline(xintercept = mean(UGA18[,input$var2]), color="darkgreen", size=1.5)+
+   theme(axis.title.x = element_text(face="bold", colour="black", size = 14),
+        axis.title.y = element_text(face="bold", colour="black", size = 14),
+        axis.text.x = element_text(colour="black", size = 12),
+        axis.text.y = element_text(colour="black", size = 12),
+        panel.background = element_rect(fill = "white", color = "black"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+   
+  }else{
+    
+    set.seed(1987)
+  
+    rsmean<-NULL
+    
+    for (i in 1:input$sampN){
+        rsx<-UGA18[sample(nrow(UGA18), input$samp2, replace = F), input$var2]
+        rsx1<-rsx%in%c("Male")
+        rsmean[i]<-mean(rsx1)
+        }
+    
+    #set bin width based on the data
+    binN <- round((max(rsmean)-min(rsmean))/(3.5*(sd(rsmean)/length(rsmean)^(1/3))),0)
+    
+    DF<-data.frame(rsmean)
+    
+    ggplot(DF) + 
+      geom_histogram(bins=binN, colour="blue", fill="blue", alpha=.75, aes(x = rsmean, y = ..density..)) +
+      geom_density(alpha=.5, fill="red", color="red",aes(x = rsmean)) + 
+      labs(x = "Proportion Male", y = "Density") +
+      geom_vline(xintercept = mean(UGA18[,input$var2]=="Male"), color="darkgreen", size=1.5) +
+      theme(axis.title.x = element_text(face="bold", colour="black", size = 14),
+        axis.title.y = element_text(face="bold", colour="black", size = 14),
+        axis.text.x = element_text(colour="black", size = 12),
+        axis.text.y = element_text(colour="black", size = 12), 
+        panel.background = element_rect(fill = "white", color = "black"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+    }
+
+  
+})
+
+
+
+```
+
+
+### Quiz: Questions 13-17
+
+```{r Q13-17}
+quiz(
+  question("Does it work for Age? (Sample size:40, Repeated Samples:10000)",
+    answer("Yes it looks normal, but age is already normally distributed"),
+    answer("No the curve is not even approximately bell shaped, and age is uniformly distributed"),
+    answer("Yes it looks normal, even though age is uniformly distributed", correct = TRUE),
+    answer("There is not enough information to say"),
+  allow_retry = TRUE
+  ),
+  question("Does it work for Weight? (Sample size:40, Repeated Samples:10000)",
+    answer("There is not enough information to say"),
+    answer("Yes it looks normal, weight has a skewed distributed", correct = TRUE),
+    answer("No the curve is not even approximately bell shaped, and weight is skewed"),
+    answer("Yes it looks normal, but weight is uniformly distributed"),
+  allow_retry = TRUE
+  ),
+  question("Does it work for Height? (Sample size:40, Repeated Samples:10000)",
+    answer("No the curve is not even a little bell shaped"),
+    answer("Yes it looks normal, even though height seems to have a Poisson distribution"),
+    answer("There is not enough information to say"),
+    answer("Yes it looks normal, height is normally distributed", correct = TRUE),
+  allow_retry = TRUE
+  ),
+  question("Does it work for Classes? (Sample size:40, Repeated Samples:10000)",
+    answer("Yes it looks normal, even though the classes variable is Poisson distributed", correct = TRUE),
+    answer("No one really knows"),
+    answer("Yes it looks normal, but classes was already normally distributed"),
+    answer("Look more like a negative binomial distribution"),
+  allow_retry = TRUE
+  ),
+  question("Does it work for Sex? (Sample size:40, Repeated Samples:10000)",
+    answer("No!"),
+    answer("Kinda of normal, it is a little jagged", correct = TRUE),
+    answer("Yes it looks perfectly normal"),
+    answer("Still looks like a binomial distribution"),
+  allow_retry = TRUE
+  )
+)
+```
+
+
+## Summary
+
+In this lab, you completed 4 exercises and answered 17 quiz questions. 
+
+The lab covered 3 topics:
+
+1. Review of distributions
+2. Random sampling
+3. Central Limit Theorem
+
+You are done with lab! Time for some ice cream samples! **Don't forget to record your answers and take the eLC quiz to get credit**
+
+```{r joke}
+
+knitr::include_graphics("./images/meanception.jpg")
+
+```
+
+ Ok, now that you are done. Here is a rabbit hole to explore that deals with a very practical reason for good sampling.
+
+ How do clothing companies decide on sizes? What determines if a shirt is a small, medium, or large? 

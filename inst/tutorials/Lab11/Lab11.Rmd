@@ -1,0 +1,402 @@
+---
+title: "Paired t Test"
+subtitle: "Computer Lab 11"
+output: 
+  learnr::tutorial:
+    progessive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(shiny)
+library(shinythemes)
+library(ggpubr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, context="data", include=FALSE}
+Tennis3<-readRDS("./www/Tennis3.Rda")
+```
+
+
+## Introduction
+
+In this lab you learn how to implement a paired *t* test, and visualize paired data in R. 
+
+
+
+
+## Paired *t* Tests {data-progressive=TRUE}
+
+The paired t-test is a statistical procedure used to test whether the mean difference between two sets of observations is zero. In a paired t-test, each subject is measured twice, resulting in pairs of observations. The difference between paired samples is often referred too as delta ($\delta$) which in most cases is used to represent change. In our case we are interested to see if there was a significant change/difference in the mean difference between to matched populations. The null hypothesis is that the true mean difference is zero ($H_{0}:~\mu_{1}-\mu_{2}=0$). The two-sided alternative hypothesis assumes the mean difference is not equal to zero ($H_{A}:~\mu_{1}-\mu_{2}\neq 0$).  
+
+Why do we use paired t tests? 
+
+### Paired Samples
+
+Before you use any statistical test you need to make sure you are using the right test for the data you have. The **paired *t* test** requires paired data. 
+
+What is paired data? Paired data is defined as any circumstance in which each data point in one set of observations is **uniquely** matched to a data point in a second set of observations. Examples of studies that create paired data are pre/post samples in which variables are measured before and after an intervention. Cross over trials, and matched samples also create paired data. In all these cases there is a clear connect between unique pairs in the data. It is critical that you can identify the data type so that you do not use the wrong methods. The table below shows a very basic example of data from a paired design. The differences are calculated between pairs. The data we use is the difference column not data from sample 1 or sample 2 individually.
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+.tg .tg-ye28{background-color:#333333;color:#000000;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-0lax">Pair</th>
+    <th class="tg-0lax">Measure 1</th>
+    <th class="tg-0lax">Measure 2</th>
+    <th class="tg-0lax">Difference (delta)</th>
+  </tr>
+  <tr>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">0</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">5</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">3</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">0</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">7</td>
+    <td class="tg-0lax">5</td>
+    <td class="tg-0lax">2</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">5</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">1</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">6</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">1</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">7</td>
+    <td class="tg-0lax">5</td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">1</td>
+  </tr>
+  <tr>
+    <td class="tg-ye28"></td>
+    <td class="tg-ye28"></td>
+    <td class="tg-ye28"></td>
+    <td class="tg-ye28"></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Measure 1 (Mean)</td>
+    <td class="tg-0lax">Measure 2 (Mean)</td>
+    <td class="tg-0lax">Mean Difference</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">3.71</td>
+    <td class="tg-0lax">2.57</td>
+    <td class="tg-0lax">1.14</td>
+  </tr>
+</table> 
+
+
+The exercises in this lab will use data from a cross over study. Read the description of how the data was collected and then complete the exercises. 
+
+### Study Description
+
+A crossover experiment was carried out to test the efficacy of Motrin for relieving pain due to tennis elbow.  82 volunteers in a sample were randomly assigned to two treatment groups.  Volunteers assigned to group 1 took Motrin for 3 weeks, followed by a 2-week washout period, and then took placebo for 3 weeks.  Volunteers assigned to group 2 took placebo for 3 weeks, followed by a 2-week washout period, and then took Motrin for 3 weeks.  Each volunteer was asked to fill out a questionnaire at three different times. First participants were asked to compare their pain level while they were playing tennis with their pain level at baseline.  Next participants were asked to compare their pain level 12 hours after they finished playing tennis to their baseline.  Finally, at the end of the treatment period the participants were asked about their overall impression on the drugs efficacy in reducing pain compared to baseline. The pain level was assessed using the following 6-point Likert scale. The values of the Likert scale correspond to the following changes from baseline pain: 1 = worse, 2 = unchanged, 3 = slightly improved (25%), 4 = moderately improved (50%), 5 = mostly improved (75%), 6 = completely improved (100%). 
+
+
+### Exercise 1: Data and Assumption Check
+
+**Data Dictionary**  
+Age: Age of the participant in years      
+Motrin1: Change in pain while playing tennis (Likert scale response while taking Motrin)  
+Motrin2: Change in pain 12 hours after playing tennis (Likert scale response while taking Motrin)   
+Motrin3: Over all change in pain at the end of the treatment period (Likert scale response after taking Motrin for 3 weeks)    
+Placebo1: Change in pain while playing tennis (Likert scale response while taking placebo)  
+Placebo2: Change in pain 12 hours after playing tennis (Likert scale response while taking placebo)  
+Placebo3: Over all change in pain at the end of the treatment period (Likert scale response after taking placebo for 3 weeks)  
+Delta1: Difference between Motrin and placebo while playing tennis (Motrin1 minus Placebo1)  
+Delta2: Difference between Motrin and placebo 12 hours after playing tennis (Motrin2 minus Placebo2)  
+Delta3: Difference between Motrin and placebo at the end of the treatment period (Motrin3 minus Placebo3)  
+
+**Instructions** Review the data and variable distributions. Answer the quiz questions. 
+
+```{r, context="render", echo=FALSE}
+
+fluidPage(
+  wellPanel(
+    fluidRow(
+      column(
+        6,
+        selectInput('var', label = "Select Variable to Summarize", 
+                     choices = list("Age", "Motrin1", "Motrin2", "Motrin3", "Placebo1", "Placebo2", "Placebo3", "Delta1", "Delta2", "Delta3"), 
+                     selected = "Age")
+        )
+      )
+    ),
+  fluidRow(
+    column(
+      12,
+      h4(strong("Data")),
+      DT::dataTableOutput('rawdata')
+      )
+    ),
+  fluidRow(
+    column(
+      6, 
+      h4(strong("Plot of Selected Variable")),
+      plotOutput(outputId = 'plot', width = "100%")
+      ),
+    column(
+      6,
+      h4(strong("Summary of Selected Variable")),
+      verbatimTextOutput("summary")
+      )
+    )
+  )
+
+
+```
+
+```{r, context="server"}
+
+#Basic plot of the selected variable
+  output$plot <- renderPlot({
+    
+    validate(need(!is.null(input$var), 'Please select a variable to show the plot.'))
+    
+    if(is.numeric(Tennis3[ ,input$var])){
+      x <- Tennis3[ ,input$var]
+      bins <- round((max(x)-min(x))/(3.5*(sd(x)/length(Tennis3[ ,input$var])^(1/3))),0)
+  
+    hist(Tennis3[ ,input$var],
+      breaks = bins,
+      main = paste(input$var),
+      xlab = paste(input$var))
+    }
+    
+    if(is.integer(Tennis3[ ,input$var])||is.factor(Tennis3[ ,input$var])){
+      x<-Tennis3[ ,input$var]
+      x<-table(x)
+      barplot(x,
+              ylab = "Count",
+              xlab = paste(input$var))
+    }
+  })
+
+  # show raw data
+  output$rawdata <- DT::renderDataTable({
+   DT::datatable(Tennis3, options = list(lengthMenu = c(5, 30, 50), pageLength = 5)) 
+  })
+  
+  
+  # show a summary of the selected variable
+  output$summary <- renderPrint({
+    
+    validate(need(!is.null(input$var), 'Please select a variable to show the summary.'))
+    
+    x <- Tennis3[ ,input$var]
+    summary(x)
+    })
+  
+```
+
+### Quiz: Questions 1-3
+
+```{r Q1-3}
+quiz(
+  question("Which variables need to have a normal distribution for the paired t test? (Select all the apply)",
+    answer("Age"),
+    answer("Motrin1"),
+    answer("Motrin2"),
+    answer("Motrin3"),
+    answer("Placebo1"),
+    answer("Placebo2"),
+    answer("Placebo3"),
+    answer("Delta1", correct = TRUE),
+    answer("Delta2", correct = TRUE),
+    answer("Delta3", correct = TRUE),
+  allow_retry = TRUE
+  ),
+  question("Since the data is not normal can we use the Central Limit Theorem?",
+    answer("Yes, our sample size is > 40", correct = TRUE),
+    answer("No, we don't meet the requirements of the CLT"),
+  allow_retry = TRUE
+  ),
+  question("Does our data meet the simple random sample requirement?",
+    answer("Yes. It is a biologic process and the treatment is randomized", correct = TRUE),
+    answer("Yes. They are randomized"),
+    answer("No. We shouldn't do the test"),
+    answer("You don't need a random sample for the paired t test"),
+  allow_retry = TRUE
+  )
+)
+```
+
+### Exercise 2: Does Motrin reduce pain while playing tennis? 
+
+Now that you have a feel for the data and have check the assumptions for the paired *t* test we can start testing different hypothesis. We will use the same [t.test()](https://www.rdocumentation.org/packages/stats/versions/3.6.0/topics/t.test) function from lab 10. There are two ways to get the results of the paired *t* test using this function. If the differences have already be calculated then it follows the same form as the one sample *t* test  `t.test(delta, mu=#, alternative= type)`, where "delta" is the the difference, "#" is the value of the null ($\mu_{0}=0$), and finally "type" which can be one of these three "two.sided", "less", or "greater". If you don't have the differences then this is the general form you will follow `t.test(data$x1, data$x2, paired=TRUE, alternative= type)`. You will give two variables to R, `data$x1` and `data$x2` which are the paired data to be compared (in our case, change in pain, Motrin vs Placebo). Setting "paired=TRUE" lets R know to take the difference between the two variables (TRUE has to be in all capital letters or it will not work). The "type" is the same as before (two sided, less than, greater than). You can use either of these two ways to test the hypothesis (**Note:** if you use the first way, the results will still be labeled as "one-sample", it is fine and if you think about it, you did only give it 1 sample).       
+
+
+Perform a paired t-test of the null hypothesis that Motrin has no impact on pain during maximum activity (Motrin1 vs. Placebo1) against the two-sided alternative at the 0.05 significance level.
+
+$$\alpha=0.05$$
+
+$$H_{0}: \mu_{Motrin1}-\mu_{Placebo1}=0$$
+$$H_{A}: \mu_{Motrin1}-\mu_{Placebo1}\neq0$$
+
+**Instructions:** Complete the code below for both the ways to test the hypothesis and click the run code button. Use the output to answer the quiz questions. If you are having a hard time check out the example from STHDA [paired *t* tests in R](http://www.sthda.com/english/wiki/paired-samples-t-test-in-r)
+
+```{r pairedtest1, exercise=TRUE, exercise.lines=7}
+# We use the same t.test() function from lab 10
+# Complete the code for both ways so you can 
+
+t.test(Tennis3$Motrin1,Tennis3$Placebo1, paired = , alternative = "two.sided")
+
+t.test(  , mu=0, alternative = "two.sided")
+
+```
+
+### Quiz: Questions 4-6
+
+```{r Q4-6}
+quiz(
+  question("What is the test statistic, degrees of freedom, and p-value of the test?",
+    answer("t = 12.101, df = 82, p-value = 1.253e-12"),
+    answer("t = 9.1163, df = 81, p-value = 9.983e-04"),
+    answer("t = 4.1061, df = 81, p-value = 9.551e-05", correct = TRUE),
+    answer("t = 2.6041, df = 83, p-value = 3.511e-05"),
+  allow_retry = TRUE
+  ),
+  question("What is the 95% confidence interval for the mean difference between the treatment groups?",
+    answer("95% CI (0.4337173, 1.2492095)", correct = TRUE),
+    answer("95% CI (0.6237121, 1.9220692)"),
+    answer("95% CI (0.3637334, 2.1492462)"),
+    answer("95% CI (0.3433317, 1.4920852)"),
+  allow_retry = TRUE
+  ),
+  question("Can you infer that Motrin causes a change in pain level while playing tennis?",
+    answer("Yes, the patients were randomized to treatment groups.", correct = TRUE),
+    answer("No, the sample was made up of volunteers"),
+    answer("Yes, we used the right test"),
+    answer("No, the sample was two small"),
+  allow_retry = TRUE
+  )
+)
+```
+
+### Exercise 3: Does Motrin reduce pain after playing tennis? 
+
+Perform a paired t-test of the null hypothesis that Motrin has no impact on pain after playing tennis (Motrin2 vs. Placebo2) against the two-sided alternative at the 0.05 significance level.
+
+$$\alpha=0.05$$
+
+$$H_{0}: \mu_{Motrin}-\mu_{Placebo}=0$$
+$$H_{A}: \mu_{Motrin}-\mu_{Placebo}\neq0$$
+
+**Instructions:** Write the code to required to test the hypothesis and click the run code button. Use the output to answer the quiz questions. If you are having a hard time use the code above or check out the example from STHDA [paired *t* tests in R](http://www.sthda.com/english/wiki/paired-samples-t-test-in-r)
+
+```{r pairedtest2, exercise=TRUE, exercise.lines=5}
+# Write your code here. Used Motrin2 vs Placebo2, Or Delta2
+
+
+
+```
+
+### Quiz: Questions 7-9
+
+```{r Q7-9}
+quiz(
+  question("What is the test statistic, degrees of freedom, and p-value of the test?",
+    answer("t = 4.3157, df = 83, p-value = 0.1201424"),
+    answer("t = 4.0417, df = 81, p-value = 0.0001201", correct = TRUE),
+    answer("t = 3.1954, df = 80, p-value = 0.3400242"),
+    answer("t = 4.0417, df = 82, p-value = 0.5487313"),
+  allow_retry = TRUE
+  ),
+  question("What is the 95% confidence interval for the mean difference between the treatment groups?",
+    answer("95% CI (0.3216711, 2.2334603)"),
+    answer("95% CI (0.2210420, 1.2375043)"),
+    answer("95% CI (0.4210623, 1.3245043)"),
+    answer("95% CI (0.4210323, 1.2375043)", correct = TRUE),
+  allow_retry = TRUE
+  ),
+  question("Can you infer that Motrin causes a change in pain level after playing tennis?",
+    answer("No, the sample was made up of volunteers"),
+    answer("Yes, we used the right test"),
+    answer("Yes, the patients were randomized to treatment groups", correct = TRUE),
+    answer("No, the sample was two small"),
+  allow_retry = TRUE
+  )
+)
+```
+
+## Visualizing Paired Data {data-progressive=TRUE}
+
+We will use a function called [ggpaired()](https://rpkgs.datanovia.com/ggpubr/reference/ggpaired.html) to visualize the over all change in pain at the end of treatment periods (Motrin3 vs Placebo3). Remember the higher the Likert scale score the greater the reduction in pain. 
+
+### Exercise 4: Visualizing paired data
+
+**Instructions:** The code below is complete, just click run code and use the plot to answer the quiz questions. 
+
+```{r plot, exercise=TRUE, exercise.lines=5}
+
+ggpaired(Tennis3, cond1="Placebo3", cond2 = "Motrin3", fill = "condition", line.color="gray", line.size = 0.4, palette = "npg")
+
+```
+
+**Explanation of Plot:** The plot shows the distribution of Likert scale values reported by patients at the end of three weeks of treatment with either placebo or Motrin. The lines show the change in the reported Likert scale values between pairs. If the line has a positive slope from placebo to Motrin that indicates the participant had a greater reduction in pain when on Motrin. A line with a negative slope from placebo to Motrin indicates the participant had a greater reduction in pain when on placebo. A line with no slope (aka flat) indicates no change in pain.  
+
+### Quiz: Question 10
+
+```{r Q10}
+quiz(
+  question("Based on the plot did everyone report having less pain with Motrin compared to placebo?",
+    answer("Yes, all the participants had higher scores when on Motrin"),
+    answer("No, some participants had higher scores when on placebo and others had no change", correct = TRUE),
+    answer("No, there are only 23 lines so not all the participants are shown"),
+    answer("Yes, everyone knows Motrin reduces pain"),
+  allow_retry = TRUE
+  )
+)
+```
+
+
+## Summary
+
+In this lab, you completed 4 exercises and answered 10 quiz questions. 
+
+The lab covered 2 topics:
+
+1. Paired *t* tests in R
+2. Visualizing paired data in R
+
+Great work you are done with lab! **Don't forget to record your answers and take the eLC quiz to get credit**  
+
+If you have time here is another rabbit hole to explore. The placebo effect is real and if you want to know more about it a good place to start is the article in [The Scientist](https://www.the-scientist.com/research/the-biological-basis-of-the-placebo-effect-52396) magazine.
+
+```{r joke, out.width="50%", fig.cap="Don't be like Andy. Ask questions!!"}
+knitr::include_graphics("./images/pvalue_meme.jpg")
+```
+
+
+

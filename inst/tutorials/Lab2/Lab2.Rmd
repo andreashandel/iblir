@@ -1,0 +1,308 @@
+---
+title: "Histograms"
+subtitle: "Computer Lab 2"
+output: 
+  learnr::tutorial:
+    progessive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(learnr)
+```
+
+## Introduction
+
+```{r, context="data", include=FALSE}
+HeartFailure <- read.csv("./www/heart.csv")
+```
+
+In this lab, you will practice creating and interpreting data visualizations for different variables types. 
+
+## Histograms {data-progressive=TRUE}
+
+Why do we do make histograms? The practical reason is that data visualization is often better than a table for quickly assessing the essential features of a variable. With a histogram, you can quickly identify the value that occurs the most often in the data (highest bar). You can see the range of values and if your data is skewed or not. You can find any observations that are possible outliers or even errors (a heart rate of 0 is not a possible value in living patients). 
+
+### Making Histograms
+
+To create a histogram, you have to split the data into intervals called bins. Then we count the number of observations (frequency or count) in each bin. The number of observations in each interval determines the height of the bar for each interval (as long as all the bins are the same size). 
+
+Thankfully this is no longer done by hand. Instead, we will use the hist() function in R. This function creates very basic histograms quickly. It also automatically choices the number of bins that it thinks is best for the variable (works most of the time, but it is not perfect). If you want to know more about the hist() function, check out [RDocumentation](https://www.rdocumentation.org/packages/graphics/versions/3.6.0/topics/hist) for more information. R is excellent, but it is not smart and will let you make a histogram with just about any variable. It is up to you to make sure you are using the appropriate variables with the hist() function.  
+
+```{r histVStable, exercise=TRUE, exercise.eval=TRUE, exercise.lines = 8}
+# age is a continous/discrete variable so using a histogram is appropriate.
+hist(HeartFailure$age)
+
+# cut age up into 11 bins since that is the number the hist() function uses 
+# Tell R you want a table of the age variable. 
+table(cut(HeartFailure$age, breaks = c(25,30,35,40,45,50,55,60,65,70,75,80)))
+```
+
+### Interpreting Histograms
+
+Using the histogram above as an example use the steps to interpret a histogram and get a feel for what to look for. 
+
+Steps to Interpret a Histogram:  
+  1. Find the central bin (for normally distributed data it will be one of the tallest)  
+  2. Look to see if the data is skewed left or right   
+  3. Look at the range of the data (first and last bin)  
+  4. Identify possible outliers (first or last bins that are not close to the other bins) or errors (values that are not biologically possible)  
+
+In the next section, you will make and interpret some histograms. 
+
+## Histogram Exercises {data-progressive=TRUE}
+
+To make a basic histogram, we will use the hist() function. The code to create a basic histogram is **hist(dataset\$variablename)**, so for example to make a histogram of age the R code would be **hist(HeartFailure\$age)**.   
+
+### Exercise 1: Choosing the right variables
+**Instructions:** Take a quick look at the data we will be using by running the code chunk. Use the output to answer the quiz questions. It is the same data from the first lab. The data dictionary is also included.   
+
+#### Data Dictionary
+__age:__ age in years  
+__sex:__ (1 = male; 0 = female)  
+__trestbps:__ resting blood pressure (in mm Hg on admission to the hospital)  
+__chol:__ serum cholesterol in mg/dl  
+__fbs:__ (fasting blood sugar > 120 mg/dl) (1 = true; 0 = false)  
+__thalach:__ maximum heart rate achieved  
+__exang:__ exercise induced angina (1 = yes; 0 = no)  
+__oldpeak:__ ST depression induced by exercise relative to rest  
+
+```{r showdata, exercise=TRUE, exercise.lines = 5}
+# The head() function allows you to print a specific number of rows starting from the top of the data
+# The tail() function does the same thing but from the bottom
+head(HeartFailure,10)
+# You just have to click Run Code to see the data
+```
+
+### Quiz: Questions 1-2
+**Don't forget to write your answers down so that you can answer the questions on the eLC quiz for this lab. Question 1 here will correspond to question 1 on the eLC quiz**
+```{r Q1-2}
+quiz(
+question("Which variables should **NOT** be visualized with a histogram? (select all that apply))",
+    answer("chol", message = "Cholesterol can be visualized with a histogram."),
+    answer("fbs", correct = TRUE),
+    answer("trestbps", message = "Resting blood pressure can be visualized with a histogram."),
+    answer("sex", correct = TRUE),
+    answer("age", message = "Age can be visualized with a histogram."),
+    answer("thalach", message = "Maximum heart rate can be visualized with a histogram."),
+    answer("exang", correct = TRUE, message ="Great work!"),
+    answer("oldpeak", message = "ST depression can be visualized with a histogram."),
+  allow_retry = TRUE
+  ),
+question("What type of visualization should you use for **categorical** variables?",
+    answer("Histograms", message ="It is tempting but not the appropriate visualization method"),
+    answer("Bar Charts", correct = TRUE, message ="The bars don't touch so it is clear that values between the integers are not possible"),
+    answer("Box Plots", message ="Boxplots are for continuous variables"),
+    answer("Density Plot", message ="Density plots are for continuous variables"),
+  allow_retry = TRUE
+  )
+)
+```
+
+
+  
+
+### Exercise 2: Histogram for Age
+**Instructions:** In the exercises below, you will make a histogram to answer the questions using R's hist() function. I made the first one for you, so all you have to do is run the code and use the histogram to answer the question. For the additional problems, copy and paste the code into the next code box, replace the variable name, and click the "Run Code". Use the histograms to answer the quiz questions.
+```{r histogram1, exercise=TRUE, exercise.lines = 5}
+# age is a continous/discrete variable so using a histogram is appropriate.
+hist(HeartFailure$age)
+
+```
+
+### Quiz: Question 3
+```{r Q3}
+
+  question("Which age bin is the most central in the distribution of age?",
+    answer("35-40"),
+    answer("75-80"),
+    answer("50-55", message ="You are one with the data!", correct = TRUE),
+    answer("60-65"),
+  allow_retry = TRUE
+  )
+```
+
+### Exercise 3: Histogram for Cholesterol
+
+```{r histogram2, exercise=TRUE, exercise.lines = 5}
+# make a histogram for chol.
+
+
+```
+### Quiz: Question 4
+```{r Q4}
+  question("Are there any outlying observations for cholesterol?",
+    answer("True", correct = TRUE),
+    answer("False"),
+  allow_retry = TRUE
+    
+  )
+```
+
+### Exercise 4: Histogram for Resting Blood Pressure
+
+```{r histogram3, exercise=TRUE, exercise.lines = 5}
+# make a histogram for trestbps.
+
+
+```
+### Quiz: Question 5
+```{r Q5}
+  question("How would you describe the distribution of resting blood pressure?",
+    answer("Normal"),
+    answer("Skewed left"),
+    answer("Skewed right with a possible outlier", correct = TRUE),
+    answer("Skewed left with an outlier"),
+  allow_retry = TRUE
+  )
+
+```
+
+### Exercise 5: Histogram for ST depression induced by exercise
+
+```{r histogram4, exercise=TRUE, exercise.lines = 5}
+# make a histogram for oldpeak.
+
+
+```
+### Quiz: Question 6
+```{r Q6}
+  question("Which values are the most common for oldpeak?",
+    answer("0-0.5", correct = TRUE),
+    answer("1.5-2"),
+    answer("3.5-4"),
+    answer("2.5-3"),
+  allow_retry = TRUE
+  )
+
+```
+
+## Impact of Bin Selection {data-progressive=TRUE}
+
+As long as all the bins are the same (their widths don't vary), they can be defined by how many there are or by their width. Regardless of how the bins are defined, it is crucial that there are not too few or too many. There are no hard set rules for how many bins you should use, but there are four standard calculations (see below) to help you decide on the number of the bins. ($n$ in the formulas below are the number of observations) 
+
+1. The "Sturges" method was introduced in 1926. Number of bins $\approx(\log_{2}{n})+1$    
+2. The "Rice" method was introduced in 1944. Number of bins $\approx2n^{\frac{1}{3}}$  
+3. The "Scott" method was introduced in 1979. Number of bins $\approx\frac{\text{max}(value)-\text{min}(value)}{3.5\times\frac{\text{stdev}(values)}{\sqrt[3]{n}}}$   
+4. The "Freedman-Diaconis" method was introduced in 1981. Number of bins $\approx\frac{\text{max}(value)-\text{min}(value)}{2\times\frac{\text{IQR}(values)}{\sqrt[3]{n}}}$      
+
+**It is important to note:** 
+
+Methods 1 and 2 (Sturges and Rice) only account for the number of observations recorded for a variable. As a result, the number of suggested bins will be the same for all the variables as long as there are no missing observations. 
+
+Methods 3 and 4 (Scott and Freedman-Diaconis) use the characteristics of the variable (min, max, and standard deviation or interquartile range (IQR)). So the suggested number of bins will be different for each variable. 
+
+### Exercise 6: Calculating suggested number of bins
+**Instructions:** Look at the code below. R can be used as a calculator, and I have calculated the suggested bin numbers for the four methods. Round the numbers to the nearest whole number
+```{r bins, exercise=TRUE, exercise.lines = 15}
+# The print() function prints whatever is inside. 
+# I am using the print(), so it is clear which method was used to generate the suggested number of bins 
+
+# Here are the suggested bin sizes using the formula's above
+# 1 Struges method.
+print("Sturges Method")
+log2(303)+1
+
+# 2 Rice method.
+print("Rice Method")
+2*303^(1/3)
+
+# 3 Scott method for age
+print("Scott Method")
+(max(HeartFailure$age)-min(HeartFailure$age))/(3.5*(sd(HeartFailure$age)/303^(1/3)))
+
+# 4 Freedman-Diaconis for age
+print("Freedman-Diaconis Method")
+(max(HeartFailure$age)-min(HeartFailure$age))/(2*(IQR(HeartFailure$age)/303^(1/3)))
+
+```
+### Quiz: Question 7
+**To answer the question below change the code for method 4 to calculate the suggested number of bins for the "oldpeak" variable**
+```{r Q7}
+  question("Based on the Freedman-Diaconis method how many bins should you use for the *oldpeak* variable?",
+    answer("18"),
+    answer("13", correct = TRUE),
+    answer("42"),
+    answer("22"),
+  allow_retry = TRUE
+  )
+```
+
+
+### Exercise 7: Impact of bin selection
+Select different variables and see how the number of bins impacts the appearance by moving the slider to increase or decrease the number of bins. Refer to the data dictionary to make sure you are using the right variable type. See what happens when you make a histogram with the wrong variable type. Change the variables in the bin formulas above and see what the histograms look like when you use each of the four indicated bin numbers. Remember you only have to change methods 3 and 4. After you have had some fun playing with the histograms answer question 8.     
+
+#### Data Dictionary
+__age:__ age in years  
+__sex:__ (1 = male; 0 = female)  
+__trestbps:__ resting blood pressure (in mm Hg on admission to the hospital)  
+__chol:__ serum cholesterol in mg/dl  
+__fbs:__ (fasting blood sugar > 120 mg/dl) (1 = true; 0 = false)  
+__thalach:__ maximum heart rate achieved  
+__exang:__ exercise induced angina (1 = yes; 0 = no)  
+__oldpeak:__ ST depression induced by exercise relative to rest 
+
+```{r, context="render", echo=FALSE}
+
+fluidRow(column(4, sliderInput("n_breaks", "Number of Bins:",
+                               min = 1, max = 100, value = 5)),
+         column(4, selectInput("var", "Variable:",
+                               choices=colnames(HeartFailure)))
+
+)
+
+plotOutput("plot1")
+
+```
+
+
+```{r, context="server"}
+
+  # Creating histogram based on selections
+output$plot1 <- renderPlot({
+  
+  x <- HeartFailure[ ,input$var]
+  
+  bins <- seq(min(x), max(x), length.out = input$n_breaks + 1)
+  
+    hist(HeartFailure[ ,input$var],
+      breaks = bins,
+      main = print(input$var),
+      xlab = print(input$var))
+    
+  })
+
+
+```
+
+
+### Quiz: Question 8
+```{r Q8}
+  question("It there a perfect number of bins that will work for all variables?",
+    answer("No", correct = TRUE),
+    answer("Sometimes"),
+    answer("42"),
+    answer("Yes"),
+  allow_retry = TRUE
+  )
+```
+
+## Summary
+In this lab, you completed 7 exercises and answered 8 quiz questions. 
+
+The lab covered 3 topics:
+
+1. Making histograms   
+2. Interpreting histograms 
+3. Importance of selecting the right number of bins
+
+Excellent work! You are done with the lab. **Don't forget to record your answers and take the eLC quiz to get credit**
+
+```{r joke}
+
+knitr::include_graphics("./images/histogramMeme.jpg")
+
+```
+

@@ -1,0 +1,53 @@
+---
+title: "Tutorial"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r, context="data", include=FALSE}
+heart_failure <- read.csv("./www/heart.csv")
+
+```
+
+
+```{r, context="render", echo=FALSE}
+
+# Create a new Row in the UI for selectInputs
+ fluidRow(column(4, selectInput("sex", "Sex:", 
+                                c("All",unique(as.character(heart_failure$sex))))), 
+          column(4, selectInput("fbs", "Fasting Blood Sugar >120 mg/dl:", 
+                                c("All", unique(as.character(heart_failure$fbs))))), 
+          column(4, selectInput("exang", "Exercise Induced Angina:", 
+                                c("All", unique(as.character(heart_failure$exang)))))
+         )
+ # Create a new row for the table.
+  DT::dataTableOutput("table") 
+```
+
+
+```{r, context="server"}
+
+  # Filter data based on selections
+  output$table <- DT::renderDataTable(DT::datatable({
+    data <- heart_failure
+    if (input$sex != "All") {
+      data <- data[data$sex == input$sex,]
+    }
+    if (input$fbs != "All") {
+      data <- data[data$fbs == input$fbs,]
+    }
+    if (input$exang != "All") {
+      data <- data[data$exang == input$exang,]
+    }
+    data
+  }))
+
+
+
+```

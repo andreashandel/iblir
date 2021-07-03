@@ -1,0 +1,331 @@
+---
+title: "Life Tables"
+subtitle: "Computer Lab 5"
+output: 
+  learnr::tutorial:
+    progessive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(knitr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, context="data", include=FALSE}
+
+lifeEx1<- read.csv("./www/lifeexpectancy1900to2016sex.csv")
+
+survTY<- readRDS("./www/survTY.Rda")
+
+```
+
+## Introduction 
+In this lab, you will work with data from life tables. 
+
+You will learn what life tables are used for, how to visualize the data from life tables, and how to calculate values in the table.  
+
+
+## Life Expectancy {data-progressive=TRUE}
+
+Life tables are used to calculate life expectancy for a population. Life expectancy at birth is one statistic you commonly hear reported in the news. The CDC releases a yearly report for the US population and for two years in a row life expectancy in the US has decreased [Read the report](https://www.cdc.gov/nchs/data/nvsr/nvsr67/nvsr67_07-508.pdf). The at least some of the decrease in life expectancy has been attributed to preventable causes like drug overdose. The good news is that if the decrease is due to preventable cause we can do something about it. 
+
+Most people don't really understand what life expectancy a birth is. Life expectancy at birth is defined as how long, on average, a newborn can expect to live, if current death rates do not change. The second part is a pretty strong assumption. It is unlikely that the same mortality patterns for ages 1-100+ stay the same through out the whole life of a new born. Mortality patterns are not static so the actual life expectancy maybe more or less. The "true" life expectancy of a new born can only be calculated once everyone born that year have died, but that measure is not really used for public health since it is not helpful. The best way to interpret life expectancy at birth is that if nothing changes (in med)  
+
+Life expectancy is used as a marker of a populations total health, and is often used to compare the health in different nations. Increases in life expectancy are generally related increases in sanitation (think clean drinking water), improvements in standard of living (better housing, access to food), access to medical care, and breakthroughs in medical science or quitting harmful behaviors (like smoking in the US). Check out [Our World in Data](https://ourworldindata.org/life-expectancy) and you can see life expediencies for countries across the globe from 1543 to 2015. 
+
+### Exercise 1 
+**Instructions:** Play around with the interactive plot. You can see the change in life expectancy over a range years for everyone and you can also stratified by sex. Use the plot below to answer quiz questions 1-3 (**set the year range to 1900 and 2015 to answer the questions** ). 
+
+```{r, context="render", echo=FALSE}
+
+fluidRow(column(12, sliderInput("years", "Year Range:",
+                               min = 1900, max = 2015, value = c(1950,2000), sep ="")),
+         column(4, checkboxGroupInput("var", "Life Expectancy For:",
+                               choices=c("Males","Females","Everyone")))
+
+)
+
+plotOutput("plot1")
+
+```
+
+
+```{r, context="server"}
+
+  # Creating histogram based on selections 
+output$plot1 <- renderPlot({
+  
+  # Make sure they select a variable to plot
+  validate(need(!is.null(input$var), 'Please please a box to show a plot.'))
+  
+  # Get the data in the right shape
+  data<-gather(select(lifeEx1,"Year",c(input$var)), group, value, -Year)
+  
+  data$group<-as.factor(data$group)
+  # Select the Years to plot
+  data<- filter(data, Year>=input$years[1] & Year<=input$years[2])
+  
+  # Make a plot title for the selected years
+  mtitle<-sprintf("Life Expectancy at Birth in the US (%i-%i)",input$years[1],input$years[2])
+  
+  
+  # Make the plot based in the data
+  ggplot(data=data, aes(x=Year, y=value, group=data$group, color=data$group))+ 
+    geom_line()+
+    labs(title = paste(mtitle), color="Life Expectancy For")+
+    ylab("Life Expectancy at Birth (years)")+
+    scale_x_continuous(breaks = seq(input$years[1],input$years[2],by=round(log2(input$years[2]-input$years[1])+1,0)))+
+    theme(plot.title = element_text(size = 14, face = "bold", hjust = 0.5), 
+                         plot.subtitle = element_text(size = 14, face = "bold"),
+                         axis.title.x = element_text(size = 16, face = "bold"),
+                         axis.title.y = element_text(size = 16, face = "bold"),
+                         axis.text = element_text(size = 14),
+                         legend.text = element_text(size = 12),
+                         panel.background = element_rect(fill = "white", color = "black"),
+                         panel.grid.major = element_blank(),
+                         panel.grid.minor = element_blank())
+   
+  })
+
+
+```
+
+
+### Quiz: Questions 1-3
+
+```{r Q1-3}
+quiz(
+  question("What do you think caused the major dip in life expectancy between 1919-1924?", 
+    answer("World War 1", message = "America was only involved for the last part"), 
+    answer("Bubonic Plague", message = "Thankfully that has never been a major problem in America"),
+    answer("Influenza",message = "The 1918 Flu pandemic was a big deal.", correct = TRUE),
+    answer("Famine", message = "Thankfully america has not experienced a famine in recent history."),
+  allow_retry = TRUE
+  ),
+  question("Why do you think the lines smooth out and increase after 1950?",
+    answer("Antibiotics, Vaccines, and Increased Standard of Living", message = "The student has become the master!", correct = TRUE),
+    answer("More and Better Doctors"),
+    answer("More accurate data collection"),
+    answer("The positive influence of Leave it to Beaver"),
+  allow_retry = TRUE
+  ),
+  question("During which years was life expectancy for males and females the most similar?",
+    answer("2004-2012", message = "Make sure you have the year range set correctly"),
+    answer("1900-1908", message ="The lines are not as close as other years"),
+    answer("1940-1948", message ="The lines are not as close as other years"),
+    answer("1916-1924", message ="The lines are almost on top of each other. Can you think of a reason why?", correct = TRUE),
+  allow_retry = TRUE
+  )
+)
+```
+
+
+## Survival Curves {data-progressive=TRUE}
+
+Another common representation of life table data is the survival curve or survivor-ship which is what the CDC calls it. These curves show the proportion of individuals who survived to each age group. The graph below represents three general survival curves. The type one curve is typical of humans who have only a few offspring and invest a lot of effort keeping them alive. The type 2 curve is a diagonal which means that mortality rate is more or less constant regardless of the age. The third type is concave this indicates that the greatest risk of mortality is early in life. Sea turtles, amphibians, and other animals who have huge number of offspring often have survival curves with this shape.  
+
+
+```{r surcurve, out.height="450px", out.width="750px", fig.cap="Image By Rayhusthwaite at English Wikipedia, CC BY 3.0, https://commons.wikimedia.org/w/index.php?curid=6623210" }
+knitr::include_graphics("./images/Survivorship_Curves.jpg")
+```
+
+
+### Exercise 2
+
+**Instructions:** Play around with the interactive plot. You can see the change in survival for different decades and you can also stratified by sex and race. If you select more than 6 strata the 7th one will not be displayed. Use the plot to answer quiz questions 4-6. 
+```{r, context="render", echo=FALSE}
+
+fluidRow(column(4, checkboxGroupInput("year", "Years:",
+                               choices=unique(survTY$Year))),
+         column(4, checkboxGroupInput("strata", "Over All Survival Curve For:",
+                               choices=unique(survTY$Race.Sex)))
+
+)
+
+plotOutput("plot2")
+
+```
+
+
+```{r, context="server"}
+
+  # Creating histogram based on selections
+output$plot2 <- renderPlot({
+  
+  # Make sure they select a variable to plot
+  validate(need(!is.null(input$year), 'Please please a year to show a plot.'),
+           need(!is.null(input$strata), 'Please please a group to show a plot.'))
+
+  
+  # Select the Years to plot
+  data1<-filter(survTY, Race.Sex%in%input$strata & Year%in%input$year)
+  
+  # Make the plot based in the data
+ ggplot(data=data1, aes(x=Age, y=SurvivalP, color= Year, shape = Race.Sex, group=interaction(Year,Race.Sex)))+
+  geom_point(alpha=0.3, size=3)+
+  geom_line(alpha=0.3)+
+    labs(title = "Survival Curves for Selected Years and Strata", color="Year", shape="Race and Sex")+
+    ylab("Proportion Surviving")+
+    theme(plot.title = element_text(size = 14, face = "bold", hjust = 0.5), 
+                         plot.subtitle = element_text(size = 14, face = "bold"),
+                         axis.title.x = element_text(size = 16, face = "bold"),
+                         axis.title.y = element_text(size = 16, face = "bold"),
+                         axis.text = element_text(size = 14),
+                         legend.text = element_text(size = 12),
+                         legend.direction = "horizontal",
+                         legend.position = "bottom",
+                         panel.background = element_rect(fill = "white", color = "black"),
+                         panel.grid.major = element_blank(),
+                         panel.grid.minor = element_blank())
+   
+  })
+
+
+```
+
+
+### Quiz: Questions 4-6
+```{r Q4-6}
+quiz(
+  question("(Select: All, 2015, and 1900) The survival curve for 1900 looks like the most like which of the general curve types?", 
+    answer("Type 1", message = "Make sure you are looking at the 1900 curve not the on for 2015"), 
+    answer("Type 2", message = "Exactly, we were barely doing better than the birds!", correct = TRUE),
+    answer("Type 3",message = "That would be terrible, so I am glad you are not right"),
+  allow_retry = TRUE
+  ),
+  question("(Select: All Male, All Female, and 2015) What age range does survival for men and women begin to differ for 2015?",
+    answer("20-30", message = "Nailed it! Any idea why?", correct = TRUE),
+    answer("60-75", message = "They are different but the curves start to separate earlier"),
+    answer("75-90", message = "They are different but the curves start to separate earlier"),
+    answer("40-55", message = "They are different but the curves start to separate earlier"),
+  allow_retry = TRUE
+  ),
+  question("(Select: All, and all the years) In which decades did survival for those 50 years old seem to increase the most?",
+    answer("1930-1950", message = "You got it!", correct = TRUE),
+    answer("1900-1910", message = "There was an improvement but it is smaller than other decades."),
+    answer("1990-2010", message = "There was very little change for people 50 years old during this time."),
+    answer("1910-1920", message = "There was very little change for people 50 years old during this time."),
+  allow_retry = TRUE
+  )
+)
+```
+
+
+## Hazard Function {data-progressive=TRUE}
+
+In the previous topic we look at the proportion of people surviving. If instead we look at the proportion of people dying we call it a hazard function. The simple definition of the hazard function is a method to estimate a persons chance or probability of death at a given age. More specifically, the hazard function allows us to visualize which ages have the highest or lowest probability of death.
+
+### Exercise 3
+
+**Instructions:** Play around with the interactive plot. You can see the change in the mortality hazard for different decades and you can also stratified by sex and race. If you select more than 6 strata the 7th one will not be displayed. Use the plot to answer quiz questions 7-10. 
+```{r, context="render", echo=FALSE}
+
+fluidRow(column(4, checkboxGroupInput("year1", "Years:",
+                               choices=unique(survTY$Year))),
+         column(4, checkboxGroupInput("strata1", "Over All Survival Curve For:",
+                               choices=unique(survTY$Race.Sex)))
+
+)
+
+plotOutput("plot3")
+
+```
+
+
+```{r, context="server"}
+
+  # Creating histogram based on selections
+output$plot3 <- renderPlot({
+  
+  # Make sure they select a variable to plot
+  validate(need(!is.null(input$year1), 'Please please a year to show a plot.'),
+           need(!is.null(input$strata1), 'Please please a group to show a plot.'))
+
+  
+  # Select the Years to plot
+  data2<-filter(survTY, Race.Sex%in%input$strata1 & Year%in%input$year1)
+  
+  # Make the plot based in the data
+ ggplot(data=data2, aes(x=Age, y=qx, color= Year, shape = Race.Sex, group=interaction(Year,Race.Sex)))+
+  geom_point(alpha=0.3, size=3)+
+  geom_line(alpha=0.3)+
+    labs(title = "Hazard for Selected Years and Strata", color="Year", shape="Race and Sex")+
+    ylab("Proportion Dying")+
+    theme(plot.title = element_text(size = 14, face = "bold", hjust = 0.5), 
+                         plot.subtitle = element_text(size = 14, face = "bold"),
+                         axis.title.x = element_text(size = 16, face = "bold"),
+                         axis.title.y = element_text(size = 16, face = "bold"),
+                         axis.text = element_text(size = 14),
+                         legend.text = element_text(size = 12),
+                         legend.direction = "horizontal",
+                         legend.position = "bottom",
+                         panel.background = element_rect(fill = "white", color = "black"),
+                         panel.grid.major = element_blank(),
+                         panel.grid.minor = element_blank())
+   
+  })
+
+
+```
+
+
+### Quiz: Questions 7-10
+```{r Q7-10}
+quiz(
+  question("(Select: All and 1900) What ages are the mortality hazards the highest?",
+    answer("0-1 and 55+", message = "Thank goodness we live in the time of modern medicine", correct = TRUE),
+    answer("5-40", message = "Make sure you made the right selections. This is actually the time with the lowest mortality hazard"),
+    answer("60+", message = "Don't forget about the hazard early in life"),
+    answer("10+", message = "Make sure you made the right selections."),
+  allow_retry = TRUE
+  ),
+  question("(Select: All, 2015, and 1900) Which ages have had the smallest change in their mortality hazard?", 
+    answer("0-5", message = "Make sure you have the right years selected. We have made great strides in early child hood mortality since 1900"), 
+    answer("5-15", message = "The next question would be why?", correct = TRUE),
+    answer("65-75",message = "Make sure you have the right years selected."),
+    answer("45-55",message = "Make sure you have the right years selected. They are close but other ages are much closer"),
+  allow_retry = TRUE
+  ),
+  question("(Select: All, and all the years) Which age has consistently had the lowest mortality hazard?",
+    answer("1", message = "This has generally been one of the more risky times in life!"),
+    answer("35", message = "There was an improvement but it is smaller than other decades."),
+    answer("10", message = "I wonder why?", correct = TRUE),
+    answer("5", message = "There was very little change for children 5 years old but there is another age with even less change."),
+  allow_retry = TRUE
+  ),
+  question("(Select: White All, African American All, and, 2015) After 60 years at what age do the lines cross?",
+    answer("80", message ="Make sure you made the right selections"),
+    answer("100", message ="Actually these dots will always be the same. Only because data is only reported as 100+ since it would be to easy to identify people."),
+    answer("90", message ="Make sure you made the right selections"),
+    answer("85", message ="Excellent work interpreting the data!", correct = TRUE),
+  allow_retry = TRUE
+  )
+)
+```
+
+
+## Summary 
+
+In this lab, you completed 3 exercises and answered 10 quiz questions. 
+
+The lab covered 3 topics:
+
+1. Life expectancy at birth 
+2. Survival curves 
+3. Hazard curves
+
+Give yourself a high five! You are done with the lab. **Don't forget to record your answers and take the eLC quiz to get credit** 
+
+
+```{r joke, fig.cap="The universe is probably littered with the one-planet graves of cultures which made the sensible economic decision that there's no good reason to go into space. Only to be discovered, studied, and remembered by the ones who made the irrational decision. from: https://xkcd.com/893/ "}
+
+knitr::include_graphics("./images/65_years.png")
+
+```
+
