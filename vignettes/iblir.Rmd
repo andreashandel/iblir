@@ -20,18 +20,136 @@ packagename = 'iblir'
 
 Home of the future vignette.
 
-## Contributing to the package
-The package is on GitHub and you can use the usual GitHub process to file bug reports, send feature requests, contribute updates and bug fixes, etc. If you have any comments or feedback, I very much welcome them. Please file a [GitHub issue](https://github.com/ahgroup/DSAIDE/issues) and let me know what you think.
+## Getting Started
 
-The package is built in a way that makes it (hopefully) easy for others to contribute new simulations/apps. To that end, the package contains [this Markdown file](https://github.com/ahgroup/DSAIDE/blob/master/auxiliary/docsfordevelopers/documentation.md) which provides further information on the details of the package structure. If you plan to develop new apps, or make other substantial contributions, it's best to get in touch with me first via email or GitHub.
+The package is not yet on CRAN, so you need to install it from GitHub as follows.
+
+``` 
+install.packages('remotes')
+remotes::install_github('andreashandel/iblir')
+```
+
+Then load the package 
+
+```
+library('iblir')
+```
+
+To start the tutorials/labs, you type
+```
+run_tutorial('LabN', package = 'iblir')
+```
+where N is the lab number, e.g. `Lab1`, `Lab2`.
+
+A startup message also tells you this.
+
+
+## Content
+
+
+LAB 1: Introduction to the online lab format and Introduction to R and “Data”.  
+
+LAB 2: Focuses on interpreting and making histograms in R. 
+1.	Interpreting Histograms 
+2.	Which variable types to use with histograms
+3.	Making histograms 
+4.	Impact of bin selection and 4 methods to help get the right size
+
+LAB 3: Focuses on interpreting and making box plots in R
+1.	Interpreting Box plots
+2.	Making Box plots
+3.	Comparing box plots
+
+LAB 4: Introduces students to the steps of a basic data analysis
+1.	Data Cleaning 
+2.	Variable types in R
+3.	Making Tables 
+4.	Making Figures with numeric summaries
+
+LAB 5: Life Tables
+1.	Life expectancy 
+2.	Survival Curves
+3.	Hazard Functions
+
+LAB 6: Diagnostic and Screening Tests
+1.	Diagnostic and Screening tests
+2.	Sensitivity, Specificity, and Accuracy
+3.	ROC curves 
+4.	AUC calculations
+5.	Cut-off values
+
+LAB 7: Discrete Distributions
+1.	The Binomial Distribution
+a.	Calculating Probability and Percentiles
+2.	The Poisson Distribution
+a.	Calculating Probability and Percentiles
+
+LAB 8: Normal Distribution
+1.	Calculating Probability and Percentiles
+
+LAB 9: Random Sampling and Central Limit Theorem
+1.	Review of distributions
+a.	Setting to show that they can be approximated by normal distribution
+2.	Random sampling
+a.	So that getting good estimates with random samples does not require very large samples in many cases 
+3.	Central Limit Theorem 
+a.	Apply it to the data in the exercises and see if resulting distributions are normal
+
+LAB 10: One Sample T Methods
+1.	1-sample t-tests
+a.	Hypothesis testing and Confidence Intervals
+2.	Making new variables in R
+a.	Using a variable in the data set to make a new one
+
+LAB 11: Paired t Test
+1.	Paired t-tests in R
+a.	Hypothesis tests and Confidence Intervals
+2.	Visualizing paired data in R
+
+LAB 12: Two Sample t-test
+1.	Two-sample t-test in R 
+a.	Hypothesis tests and Confidence Intervals
+2.	Violin Plots in R
+
+LAB 13: Hypothesis Tests and Confidence Intervals for Proportions
+1.	One Proportion tests in R
+a.	Hypothesis tests and Confidence Intervals
+2.	Two Proportion tests in R
+a.	Hypothesis tests and Confidence Intervals
+
+
+
+## Deploptments
+
+There are several ways the labs can be used
+
+
+### Local
+
+
+### RStudio Cloud
+
+
+### Own Shiny server
+
+
+### shinyapps.io
+
+
+
+
+## Contributing to the package
+The package is on GitHub and you can use the usual GitHub process to file bug reports, send feature requests, contribute updates and bug fixes, etc. If you have any comments or feedback, I very much welcome them. Please file a [GitHub issue](https://github.com/andreashandel/iblir/issues) and let me know what you think.
+
 
 ## Further information
-See the [package website](https://ahgroup.github.io/DSAIDE/) for useful additional information.
+See the [package website](https://andreashandel.github.io/iblir/) for useful additional information.
+
 
 ## Contributors
-This R package is developed and maintained by [Andreas Handel](https://www.andreashandel.com/). A full list of contributors and a Bibtex entry for the citation [can be found here](https://ahgroup.github.io/DSAIDE/authors.html).
 
-## Citation
-If the package does in any way help you with your work such that it warrants citing in one of your papers, please cite [this publication in PLoS Computational Biology](https://doi.org/10.1371/journal.pcbi.1005642).
+The main content of this package was developed by [Brian McKay](https://brianmckay.netlify.app/). The package is maintained by [Brian McKay](https://brianmckay.netlify.app/) and [Andreas Handel](https://www.andreashandel.com/). A full list of contributors and a Bibtex entry for the citation [can be found here](https://andreashandel.github.io/iblir/authors.html).
+
+
 
 ## References

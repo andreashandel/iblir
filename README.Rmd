@@ -57,6 +57,6 @@ To come.
 
 ## Citation and Contributors
 
-The main content of this package was developed by [Brian McKay](). The package is maintained by [Brian McKay]() and [Andreas Handel](https://www.andreashandel.com/). A full list of contributors and a Bibtex entry for the citation [can be found here](https://andreashandel.github.io/iblir/authors.html).
+The main content of this package was developed by [Brian McKay](https://brianmckay.netlify.app/). The package is maintained by [Brian McKay](https://brianmckay.netlify.app/) and [Andreas Handel](https://www.andreashandel.com/). A full list of contributors and a Bibtex entry for the citation [can be found here](https://andreashandel.github.io/iblir/authors.html).
 
 

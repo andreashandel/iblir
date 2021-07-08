@@ -80,7 +80,7 @@
       <h1 data-toc-skip>iblir Package Tutorial</h1>
                         <h4 class="author"><a href="http://handelgroup.uga.edu">Andreas Handel</a></h4>
             
-            <h4 class="date">2021-07-03</h4>
+            <h4 class="date">2021-07-08</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/andreashandel/iblir/blob/master/vignettes/iblir.Rmd"><code>vignettes/iblir.Rmd</code></a></small>
       <div class="hidden name"><code>iblir.Rmd</code></div>
@@ -94,26 +94,71 @@
 <a href="#summary" class="anchor"></a>Summary</h2>
 <p>Home of the future vignette.</p>
 </div>
+<div id="getting-started" class="section level2">
+<h2 class="hasAnchor">
+<a href="#getting-started" class="anchor"></a>Getting Started</h2>
+<p>The package is not yet on CRAN, so you need to install it from GitHub as follows.</p>
+<pre><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages('remotes')
+remotes::install_github('andreashandel/iblir')</a></code></pre>
+<p>Then load the package</p>
+<pre><code><a href="https://andreashandel.github.io/iblir/">library('iblir')</a></code></pre>
+<p>To start the tutorials/labs, you type</p>
+<pre><code>run_tutorial('LabN', package = 'iblir')</code></pre>
+<p>where N is the lab number, e.g. <code>Lab1</code>, <code>Lab2</code>.</p>
+<p>A startup message also tells you this.</p>
+</div>
+<div id="content" class="section level2">
+<h2 class="hasAnchor">
+<a href="#content" class="anchor"></a>Content</h2>
+<p>LAB 1: Introduction to the online lab format and Introduction to R and “Data”.</p>
+<p>LAB 2: Focuses on interpreting and making histograms in R. 1. Interpreting Histograms 2. Which variable types to use with histograms 3. Making histograms 4. Impact of bin selection and 4 methods to help get the right size</p>
+<p>LAB 3: Focuses on interpreting and making box plots in R 1. Interpreting Box plots 2. Making Box plots 3. Comparing box plots</p>
+<p>LAB 4: Introduces students to the steps of a basic data analysis 1. Data Cleaning 2. Variable types in R 3. Making Tables 4. Making Figures with numeric summaries</p>
+<p>LAB 5: Life Tables 1. Life expectancy 2. Survival Curves 3. Hazard Functions</p>
+<p>LAB 6: Diagnostic and Screening Tests 1. Diagnostic and Screening tests 2. Sensitivity, Specificity, and Accuracy 3. ROC curves 4. AUC calculations 5. Cut-off values</p>
+<p>LAB 7: Discrete Distributions 1. The Binomial Distribution a. Calculating Probability and Percentiles 2. The Poisson Distribution a. Calculating Probability and Percentiles</p>
+<p>LAB 8: Normal Distribution 1. Calculating Probability and Percentiles</p>
+<p>LAB 9: Random Sampling and Central Limit Theorem 1. Review of distributions a. Setting to show that they can be approximated by normal distribution 2. Random sampling a. So that getting good estimates with random samples does not require very large samples in many cases 3. Central Limit Theorem a. Apply it to the data in the exercises and see if resulting distributions are normal</p>
+<p>LAB 10: One Sample T Methods 1. 1-sample t-tests a. Hypothesis testing and Confidence Intervals 2. Making new variables in R a. Using a variable in the data set to make a new one</p>
+<p>LAB 11: Paired t Test 1. Paired t-tests in R a. Hypothesis tests and Confidence Intervals 2. Visualizing paired data in R</p>
+<p>LAB 12: Two Sample t-test 1. Two-sample t-test in R a. Hypothesis tests and Confidence Intervals 2. Violin Plots in R</p>
+<p>LAB 13: Hypothesis Tests and Confidence Intervals for Proportions 1. One Proportion tests in R a. Hypothesis tests and Confidence Intervals 2. Two Proportion tests in R a. Hypothesis tests and Confidence Intervals</p>
+</div>
+<div id="deploptments" class="section level2">
+<h2 class="hasAnchor">
+<a href="#deploptments" class="anchor"></a>Deploptments</h2>
+<p>There are several ways the labs can be used</p>
+<div id="local" class="section level3">
+<h3 class="hasAnchor">
+<a href="#local" class="anchor"></a>Local</h3>
+</div>
+<div id="rstudio-cloud" class="section level3">
+<h3 class="hasAnchor">
+<a href="#rstudio-cloud" class="anchor"></a>RStudio Cloud</h3>
+</div>
+<div id="own-shiny-server" class="section level3">
+<h3 class="hasAnchor">
+<a href="#own-shiny-server" class="anchor"></a>Own Shiny server</h3>
+</div>
+<div id="shinyapps-io" class="section level3">
+<h3 class="hasAnchor">
+<a href="#shinyapps-io" class="anchor"></a>shinyapps.io</h3>
+</div>
+</div>
 <div id="contributing-to-the-package" class="section level2">
 <h2 class="hasAnchor">
 <a href="#contributing-to-the-package" class="anchor"></a>Contributing to the package</h2>
-<p>The package is on GitHub and you can use the usual GitHub process to file bug reports, send feature requests, contribute updates and bug fixes, etc. If you have any comments or feedback, I very much welcome them. Please file a <a href="https://github.com/ahgroup/DSAIDE/issues">GitHub issue</a> and let me know what you think.</p>
-<p>The package is built in a way that makes it (hopefully) easy for others to contribute new simulations/apps. To that end, the package contains <a href="https://github.com/ahgroup/DSAIDE/blob/master/auxiliary/docsfordevelopers/documentation.md">this Markdown file</a> which provides further information on the details of the package structure. If you plan to develop new apps, or make other substantial contributions, it’s best to get in touch with me first via email or GitHub.</p>
+<p>The package is on GitHub and you can use the usual GitHub process to file bug reports, send feature requests, contribute updates and bug fixes, etc. If you have any comments or feedback, I very much welcome them. Please file a <a href="https://github.com/andreashandel/iblir/issues">GitHub issue</a> and let me know what you think.</p>
 </div>
 <div id="further-information" class="section level2">
 <h2 class="hasAnchor">
 <a href="#further-information" class="anchor"></a>Further information</h2>
-<p>See the <a href="https://ahgroup.github.io/DSAIDE/">package website</a> for useful additional information.</p>
+<p>See the <a href="https://andreashandel.github.io/iblir/">package website</a> for useful additional information.</p>
 </div>
 <div id="contributors" class="section level2">
 <h2 class="hasAnchor">
 <a href="#contributors" class="anchor"></a>Contributors</h2>
-<p>This R package is developed and maintained by <a href="https://www.andreashandel.com/">Andreas Handel</a>. A full list of contributors and a Bibtex entry for the citation <a href="https://ahgroup.github.io/DSAIDE/authors.html">can be found here</a>.</p>
-</div>
-<div id="citation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#citation" class="anchor"></a>Citation</h2>
-<p>If the package does in any way help you with your work such that it warrants citing in one of your papers, please cite <a href="https://doi.org/10.1371/journal.pcbi.1005642">this publication in PLoS Computational Biology</a>.</p>
+<p>The main content of this package was developed by <a href="https://brianmckay.netlify.app/">Brian McKay</a>. The package is maintained by <a href="https://brianmckay.netlify.app/">Brian McKay</a> and <a href="https://www.andreashandel.com/">Andreas Handel</a>. A full list of contributors and a Bibtex entry for the citation <a href="https://andreashandel.github.io/iblir/authors.html">can be found here</a>.</p>
 </div>
 <div id="references" class="section level2">
 <h2 class="hasAnchor">

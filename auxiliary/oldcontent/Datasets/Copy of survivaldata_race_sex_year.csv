@@ -1,0 +1,2377 @@
+Age ,Race Sex,Year,Survival
+0,All,2015,100000
+1,All,2015,99411
+5,All,2015,99312
+10,All,2015,99254
+15,All,2015,99181
+20,All,2015,98943
+25,All,2015,98503
+30,All,2015,97980
+35,All,2015,97357
+40,All,2015,96609
+45,All,2015,95619
+50,All,2015,94158
+55,All,2015,91867
+60,All,2015,88559
+65,All,2015,84055
+70,All,2015,78066
+75,All,2015,69559
+80,All,2015,57811
+85,All,2015,42192
+90,All,2015,24285
+95,All,2015,9292
+100,All,2015,1935
+0,All Male,2015,100000
+1,All Male,2015,99361
+5,All Male,2015,99250
+10,All Male,2015,99185
+15,All Male,2015,99101
+20,All Male,2015,98774
+25,All Male,2015,98135
+30,All Male,2015,97399
+35,All Male,2015,96569
+40,All Male,2015,95615
+45,All Male,2015,94409
+50,All Male,2015,92657
+55,All Male,2015,89881
+60,All Male,2015,85842
+65,All Male,2015,80330
+70,All Male,2015,73317
+75,All Male,2015,63777
+80,All Male,2015,51163
+85,All Male,2015,35290
+90,All Male,2015,18475
+95,All Male,2015,6037
+100,All Male,2015,999
+0,All Female,2015,100000
+1,All Female,2015,99462
+5,All Female,2015,99376
+10,All Female,2015,99326
+15,All Female,2015,99265
+20,All Female,2015,99121
+25,All Female,2015,98891
+30,All Female,2015,98591
+35,All Female,2015,98179
+40,All Female,2015,97640
+45,All Female,2015,96867
+50,All Female,2015,95700
+55,All Female,2015,93895
+60,All Female,2015,91312
+65,All Female,2015,87800
+70,All Female,2015,82827
+75,All Female,2015,75340
+80,All Female,2015,64422
+85,All Female,2015,48948
+90,All Female,2015,29772
+95,All Female,2015,12204
+100,All Female,2015,2724
+0,White All,2015,100000
+1,White All,2015,99508
+5,White All,2015,99419
+10,White All,2015,99365
+15,White All,2015,99296
+20,White All,2015,99072
+25,White All,2015,98652
+30,White All,2015,98137
+35,White All,2015,97518
+40,White All,2015,96782
+45,White All,2015,95808
+50,White All,2015,94374
+55,White All,2015,92125
+60,White All,2015,88900
+65,White All,2015,84518
+70,White All,2015,78581
+75,White All,2015,70065
+80,White All,2015,58217
+85,White All,2015,42381
+90,White All,2015,24255
+95,White All,2015,9091
+100,White All,2015,1809
+0,White Male,2015,100000
+1,White Male,2015,99467
+5,White Male,2015,99368
+10,White Male,2015,99307
+15,White Male,2015,99228
+20,White Male,2015,98928
+25,White Male,2015,98328
+30,White Male,2015,97612
+35,White Male,2015,96794
+40,White Male,2015,95862
+45,White Male,2015,94674
+50,White Male,2015,92952
+55,White Male,2015,90218
+60,White Male,2015,86274
+65,White Male,2015,80922
+70,White Male,2015,73995
+75,White Male,2015,64463
+80,White Male,2015,51743
+85,White Male,2015,35608
+90,White Male,2015,18550
+95,White Male,2015,5895
+100,White Male,2015,914
+0,White Female,2015,100000
+1,White Female,2015,99551
+5,White Female,2015,99473
+10,White Female,2015,99426
+15,White Female,2015,99367
+20,White Female,2015,99222
+25,White Female,2015,98995
+30,White Female,2015,98693
+35,White Female,2015,98284
+40,White Female,2015,97754
+45,White Female,2015,96999
+50,White Female,2015,95864
+55,White Female,2015,94109
+60,White Female,2015,91612
+65,White Female,2015,88204
+70,White Female,2015,83268
+75,White Female,2015,75765
+80,White Female,2015,64752
+85,White Female,2015,49097
+90,White Female,2015,29718
+95,White Female,2015,11966
+100,White Female,2015,2566
+0,African American All,2015,100000
+1,African American All,2015,98861
+5,African American All,2015,98708
+10,African American All,2015,98626
+15,African American All,2015,98529
+20,African American All,2015,98194
+25,African American All,2015,97574
+30,African American All,2015,96863
+35,African American All,2015,96021
+40,African American All,2015,94972
+45,African American All,2015,93595
+50,African American All,2015,91622
+55,African American All,2015,88560
+60,African American All,2015,84017
+65,African American All,2015,77782
+70,African American All,2015,70220
+75,African American All,2015,60498
+80,African American All,2015,48499
+85,African American All,2015,34490
+90,African American All,2015,20023
+95,African American All,2015,8516
+100,African American All,2015,2334
+0,African American Male,2015,100000
+1,African American Male,2015,98760
+5,African American Male,2015,98580
+10,African American Male,2015,98488
+15,African American Male,2015,98373
+20,African American Male,2015,97868
+25,African American Male,2015,96926
+30,African American Male,2015,95878
+35,African American Male,2015,94720
+40,African American Male,2015,93348
+45,African American Male,2015,91674
+50,African American Male,2015,89341
+55,African American Male,2015,85685
+60,African American Male,2015,80218
+65,African American Male,2015,72521
+70,African American Male,2015,63506
+75,African American Male,2015,52519
+80,African American Male,2015,39756
+85,African American Male,2015,26155
+90,African American Male,2015,13658
+95,African American Male,2015,4982
+100,African American Male,2015,1110
+0,African American Female,2015,100000
+1,African American Female,2015,98966
+5,African American Female,2015,98840
+10,African American Female,2015,98767
+15,African American Female,2015,98691
+20,African American Female,2015,98532
+25,African American Female,2015,98247
+30,African American Female,2015,97871
+35,African American Female,2015,97329
+40,African American Female,2015,96579
+45,African American Female,2015,95473
+50,African American Female,2015,93833
+55,African American Female,2015,91320
+60,African American Female,2015,87630
+65,African American Female,2015,82709
+70,African American Female,2015,76456
+75,African American Female,2015,67857
+80,African American Female,2015,56513
+85,African American Female,2015,42015
+90,African American Female,2015,25628
+95,African American Female,2015,11474
+100,African American Female,2015,3273
+0,All,2000,100000
+1,All,2000,99305
+5,All,2000,99176
+10,All,2000,99097
+15,All,2000,98998
+20,All,2000,98664
+25,All,2000,98203
+30,All,2000,97751
+35,All,2000,97201
+40,All,2000,96422
+45,All,2000,95274
+50,All,2000,93601
+55,All,2000,91232
+60,All,2000,87642
+65,All,2000,82330
+70,All,2000,74891
+75,All,2000,64644
+80,All,2000,50885
+85,All,2000,34515
+90,All,2000,18496
+95,All,2000,6879
+100,All,2000,1479
+0,All Male,2000,100000
+1,All Male,2000,99239
+5,All Male,2000,99095
+10,All Male,2000,99008
+15,All Male,2000,98890
+20,All Male,2000,98426
+25,All Male,2000,97747
+30,All Male,2000,97114
+35,All Male,2000,96385
+40,All Male,2000,95389
+45,All Male,2000,93940
+50,All Male,2000,91818
+55,All Male,2000,88897
+60,All Male,2000,84551
+65,All Male,2000,78241
+70,All Male,2000,69491
+75,All Male,2000,57688
+80,All Male,2000,42769
+85,All Male,2000,26527
+90,All Male,2000,12473
+95,All Male,2000,3855
+100,All Male,2000,645
+0,All Female,2000,100000
+1,All Female,2000,99375
+5,All Female,2000,99261
+10,All Female,2000,99190
+15,All Female,2000,99111
+20,All Female,2000,98915
+25,All Female,2000,98682
+30,All Female,2000,98418
+35,All Female,2000,98052
+40,All Female,2000,97493
+45,All Female,2000,96648
+50,All Female,2000,95425
+55,All Female,2000,93609
+60,All Female,2000,90767
+65,All Female,2000,86433
+70,All Female,2000,80219
+75,All Female,2000,71311
+80,All Female,2000,58455
+85,All Female,2000,41830
+90,All Female,2000,23936
+95,All Female,2000,9560
+100,All Female,2000,2183
+0,White All,2000,100000
+1,White All,2000,99429
+5,White All,2000,99313
+10,White All,2000,99239
+15,White All,2000,99146
+20,White All,2000,98826
+25,White All,2000,98406
+30,White All,2000,98000
+35,White All,2000,97506
+40,White All,2000,96799
+45,White All,2000,95759
+50,White All,2000,94242
+55,White All,2000,92050
+60,White All,2000,88655
+65,White All,2000,83518
+70,White All,2000,76219
+75,White All,2000,66022
+80,White All,2000,52160
+85,White All,2000,35461
+90,White All,2000,18964
+95,White All,2000,6971
+100,White All,2000,1454
+0,White Male,2000,100000
+1,White Male,2000,99373
+5,White Male,2000,99243
+10,White Male,2000,99163
+15,White Male,2000,99052
+20,White Male,2000,98616
+25,White Male,2000,98003
+30,White Male,2000,97436
+35,White Male,2000,96774
+40,White Male,2000,95859
+45,White Male,2000,94530
+50,White Male,2000,92588
+55,White Male,2000,89883
+60,White Male,2000,85773
+65,White Male,2000,79657
+70,White Male,2000,71039
+75,White Male,2000,59245
+80,White Male,2000,44121
+85,White Male,2000,27425
+90,White Male,2000,12840
+95,White Male,2000,3899
+100,White Male,2000,625
+0,White Female,2000,100000
+1,White Female,2000,99488
+5,White Female,2000,99385
+10,White Female,2000,99319
+15,White Female,2000,99245
+20,White Female,2000,99049
+25,White Female,2000,98835
+30,White Female,2000,98602
+35,White Female,2000,98282
+40,White Female,2000,97790
+45,White Female,2000,97049
+50,White Female,2000,95962
+55,White Female,2000,94293
+60,White Female,2000,91615
+65,White Female,2000,87449
+70,White Female,2000,81400
+75,White Female,2000,72595
+80,White Female,2000,59721
+85,White Female,2000,42848
+90,White Female,2000,24491
+95,White Female,2000,9680
+100,White Female,2000,2147
+0,African American All,2000,100000
+1,African American All,2000,98578
+5,African American All,2000,98382
+10,African American All,2000,98271
+15,African American All,2000,98139
+20,African American All,2000,97701
+25,African American All,2000,96946
+30,African American All,2000,96143
+35,African American All,2000,95164
+40,African American All,2000,93809
+45,African American All,2000,91770
+50,African American All,2000,88761
+55,African American All,2000,84657
+60,African American All,2000,79007
+65,African American All,2000,71704
+70,African American All,2000,62349
+75,African American All,2000,50987
+80,African American All,2000,37964
+85,African American All,2000,24677
+90,African American All,2000,13204
+95,African American All,2000,5368
+100,African American All,2000,1491
+0,African American Male,2000,100000
+1,African American Male,2000,98437
+5,African American Male,2000,98219
+10,African American Male,2000,98093
+15,African American Male,2000,97930
+20,African American Male,2000,97275
+25,African American Male,2000,96103
+30,African American Male,2000,94940
+35,African American Male,2000,93641
+40,African American Male,2000,91945
+45,African American Male,2000,89439
+50,African American Male,2000,85653
+55,African American Male,2000,80529
+60,African American Male,2000,73588
+65,African American Male,2000,64980
+70,African American Male,2000,54253
+75,African American Male,2000,41693
+80,African American Male,2000,28497
+85,African American Male,2000,16532
+90,African American Male,2000,7625
+95,African American Male,2000,2565
+100,African American Male,2000,563
+0,African American Female,2000,100000
+1,African American Female,2000,98723
+5,African American Female,2000,98550
+10,African American Female,2000,98456
+15,African American Female,2000,98354
+20,African American Female,2000,98141
+25,African American Female,2000,97785
+30,African American Female,2000,97314
+35,African American Female,2000,96632
+40,African American Female,2000,95588
+45,African American Female,2000,93979
+50,African American Female,2000,91680
+55,African American Female,2000,88517
+60,African American Female,2000,84044
+65,African American Female,2000,77941
+70,African American Female,2000,69778
+75,African American Female,2000,59361
+80,African American Female,2000,46453
+85,African American Female,2000,32053
+90,African American Female,2000,18347
+95,African American Female,2000,7989
+100,African American Female,2000,2351
+0,All,1990,100000
+1,All,1990,99064
+5,All,1990,98877
+10,All,1990,98766
+15,All,1990,98635
+20,All,1990,98215
+25,All,1990,97671
+30,All,1990,97070
+35,All,1990,96322
+40,All,1990,95373
+45,All,1990,94154
+50,All,1990,92370
+55,All,1990,89658
+60,All,1990,85537
+65,All,1990,79519
+70,All,1990,71357
+75,All,1990,60449
+80,All,1990,47084
+85,All,1990,31770
+90,All,1990,17046
+95,All,1990,6282
+100,All,1990,1424
+0,All Male,1990,100000
+1,All Male,1990,98961
+5,All Male,1990,98754
+10,All Male,1990,98627
+15,All Male,1990,98464
+20,All Male,1990,97854
+25,All Male,1990,97049
+30,All Male,1990,96166
+35,All Male,1990,95091
+40,All Male,1990,93761
+45,All Male,1990,92139
+50,All Male,1990,89865
+55,All Male,1990,86492
+60,All Male,1990,81378
+65,All Male,1990,73971
+70,All Male,1990,64107
+75,All Male,1990,51385
+80,All Male,1990,36749
+85,All Male,1990,21815
+90,All Male,1990,9878
+95,All Male,1990,2927
+100,All Male,1990,529
+0,All Female,1990,100000
+1,All Female,1990,99172
+5,All Female,1990,99006
+10,All Female,1990,98911
+15,All Female,1990,98814
+20,All Female,1990,98597
+25,All Female,1990,98325
+30,All Female,1990,98013
+35,All Female,1990,97596
+40,All Female,1990,97033
+45,All Female,1990,96222
+50,All Female,1990,94932
+55,All Female,1990,92881
+60,All Female,1990,89742
+65,All Female,1990,85075
+70,All Female,1990,78522
+75,All Female,1990,69287
+80,All Female,1990,56986
+85,All Female,1990,41115
+90,All Female,1990,23666
+95,All Female,1990,9346
+100,All Female,1990,2251
+0,White All,1990,100000
+1,White All,1990,99233
+5,White All,1990,99068
+10,White All,1990,98966
+15,White All,1990,98843
+20,White All,1990,98455
+25,White All,1990,97972
+30,White All,1990,97451
+35,White All,1990,96810
+40,White All,1990,96000
+45,White All,1990,94932
+50,White All,1990,93326
+55,White All,1990,90833
+60,White All,1990,86943
+65,White All,1990,81123
+70,White All,1990,73106
+75,White All,1990,62175
+80,White All,1990,48583
+85,White All,1990,32850
+90,White All,1990,17571
+95,White All,1990,6416
+100,White All,1990,1423
+0,White Male,1990,100000
+1,White Male,1990,99138
+5,White Male,1990,98956
+10,White Male,1990,98839
+15,White Male,1990,98686
+20,White Male,1990,98134
+25,White Male,1990,97430
+30,White Male,1990,96662
+35,White Male,1990,95731
+40,White Male,1990,94588
+45,White Male,1990,93167
+50,White Male,1990,91124
+55,White Male,1990,88022
+60,White Male,1990,83182
+65,White Male,1990,75962
+70,White Male,1990,66181
+75,White Male,1990,53308
+80,White Male,1990,38245
+85,White Male,1990,22720
+90,White Male,1990,10214
+95,White Male,1990,2988
+100,White Male,1990,523
+0,White Female,1990,100000
+1,White Female,1990,99333
+5,White Female,1990,99187
+10,White Female,1990,99099
+15,White Female,1990,99007
+20,White Female,1990,98795
+25,White Female,1990,98547
+30,White Female,1990,98283
+35,White Female,1990,97939
+40,White Female,1990,97472
+45,White Female,1990,96768
+50,White Female,1990,95608
+55,White Female,1990,93730
+60,White Female,1990,90789
+65,White Female,1990,86339
+70,White Female,1990,79984
+75,White Female,1990,70834
+80,White Female,1990,58454
+85,White Female,1990,42274
+90,White Female,1990,24270
+95,White Female,1990,9495
+100,White Female,1990,2239
+0,African American All,1990,100000
+1,African American All,1990,98187
+5,African American All,1990,97884
+10,African American All,1990,97720
+15,African American All,1990,97539
+20,African American All,1990,96925
+25,African American All,1990,95972
+30,African American All,1990,94809
+35,African American All,1990,93260
+40,African American All,1990,91239
+45,African American All,1990,88689
+50,African American All,1990,85285
+55,African American All,1990,80635
+60,African American All,1990,74335
+65,African American All,1990,66154
+70,African American All,1990,56192
+75,African American All,1990,44872
+80,African American All,1990,33149
+85,African American All,1990,21352
+90,African American All,1990,11646
+95,African American All,1990,4729
+100,African American All,1990,1376
+0,African American Male,1990,100000
+1,African American Male,1990,98023
+5,African American Male,1990,97688
+10,African American Male,1990,97501
+15,African American Male,1990,97268
+20,African American Male,1990,96301
+25,African American Male,1990,94809
+30,African American Male,1990,93070
+35,African American Male,1990,90827
+40,African American Male,1990,87948
+45,African American Male,1990,84467
+50,African American Male,1990,79984
+55,African American Male,1990,74095
+60,African American Male,1990,66334
+65,African American Male,1990,56795
+70,African American Male,1990,45690
+75,African American Male,1990,33755
+80,African American Male,1990,22549
+85,African American Male,1990,12709
+90,African American Male,1990,5972
+95,African American Male,1990,1971
+100,African American Male,1990,466
+0,African American Female,1990,100000
+1,African American Female,1990,98356
+5,African American Female,1990,98087
+10,African American Female,1990,97946
+15,African American Female,1990,97818
+20,African American Female,1990,97566
+25,African American Female,1990,97140
+30,African American Female,1990,96514
+35,African American Female,1990,95599
+40,African American Female,1990,94364
+45,African American Female,1990,92676
+50,African American Female,1990,90277
+55,African American Female,1990,86793
+60,African American Female,1990,81886
+65,African American Female,1990,75031
+70,African American Female,1990,66278
+75,African American Female,1990,55684
+80,African American Female,1990,43622
+85,African American Female,1990,30089
+90,African American Female,1990,17536
+95,African American Female,1990,7687
+100,African American Female,1990,2364
+0,All,1980,100000
+1,All,1980,98740
+5,All,1980,98495
+10,All,1980,98347
+15,All,1980,98196
+20,All,1980,97741
+25,All,1980,97110
+30,All,1980,96477
+35,All,1980,95808
+40,All,1980,94926
+45,All,1980,93599
+50,All,1980,91526
+55,All,1980,88348
+60,All,1980,83726
+65,All,1980,77107
+70,All,1980,68248
+75,All,1980,56799
+80,All,1980,43180
+85,All,1980,27960
+90,All,1980,14154
+95,All,1980,5043
+100,All,1980,1150
+0,All Male,1980,100000
+1,All Male,1980,98607
+5,All Male,1980,98333
+10,All Male,1980,98160
+15,All Male,1980,97972
+20,All Male,1980,97316
+25,All Male,1980,96361
+30,All Male,1980,95430
+35,All Male,1980,94501
+40,All Male,1980,93345
+45,All Male,1980,91649
+50,All Male,1980,89007
+55,All Male,1980,84936
+60,All Male,1980,79012
+65,All Male,1980,70646
+70,All Male,1980,59681
+75,All Male,1980,46272
+80,All Male,1980,31810
+85,All Male,1980,18020
+90,All Male,1980,7732
+95,All Male,1980,2279
+100,All Male,1980,423
+0,All Female,1980,100000
+1,All Female,1980,98880
+5,All Female,1980,98666
+10,All Female,1980,98544
+15,All Female,1980,98432
+20,All Female,1980,98184
+25,All Female,1980,97883
+30,All Female,1980,97551
+35,All Female,1980,97140
+40,All Female,1980,96531
+45,All Female,1980,95570
+50,All Female,1980,94060
+55,All Female,1980,91760
+60,All Female,1980,88414
+65,All Female,1980,83520
+70,All Female,1980,76720
+75,All Female,1980,67186
+80,All Female,1980,54372
+85,All Female,1980,37772
+90,All Female,1980,20578
+95,All Female,1980,7862
+100,All Female,1980,1927
+0,White All,1980,100000
+1,White All,1980,98898
+5,White All,1980,98675
+10,White All,1980,98536
+15,White All,1980,98391
+20,White All,1980,97939
+25,White All,1980,97340
+30,White All,1980,96774
+35,White All,1980,96192
+40,White All,1980,95427
+45,White All,1980,94257
+50,White All,1980,92384
+55,White All,1980,89427
+60,White All,1980,85031
+65,White All,1980,78585
+70,White All,1980,69801
+75,White All,1980,58299
+80,White All,1980,44409
+85,White All,1980,28768
+90,White All,1980,14471
+95,White All,1980,5067
+100,White All,1980,1105
+0,White Male,1980,100000
+1,White Male,1980,98769
+5,White Male,1980,98519
+10,White Male,1980,98357
+15,White Male,1980,98176
+20,White Male,1980,97525
+25,White Male,1980,96616
+30,White Male,1980,95783
+35,White Male,1980,94980
+40,White Male,1980,93984
+45,White Male,1980,92494
+50,White Male,1980,90105
+55,White Male,1980,86303
+60,White Male,1980,80625
+65,White Male,1980,72393
+70,White Male,1980,61384
+75,White Male,1980,47712
+80,White Male,1980,32788
+85,White Male,1980,18538
+90,White Male,1980,7891
+95,White Male,1980,2279
+100,White Male,1980,404
+0,White Female,1980,100000
+1,White Female,1980,99035
+5,White Female,1980,98841
+10,White Female,1980,98725
+15,White Female,1980,98618
+20,White Female,1980,98374
+25,White Female,1980,98093
+30,White Female,1980,97802
+35,White Female,1980,97445
+40,White Female,1980,96913
+45,White Female,1980,96065
+50,White Female,1980,94710
+55,White Female,1980,92594
+60,White Female,1980,89451
+65,White Female,1980,84764
+70,White Female,1980,78139
+75,White Female,1980,68712
+80,White Female,1980,55770
+85,White Female,1980,38774
+90,White Female,1980,20996
+95,White Female,1980,7900
+100,White Female,1980,1858
+0,African American All,1980,100000
+1,African American All,1980,97885
+5,African American All,1980,97522
+10,African American All,1980,97322
+15,African American All,1980,97134
+20,African American All,1980,96652
+25,African American All,1980,95804
+30,African American All,1980,94680
+35,African American All,1980,93288
+40,African American All,1980,91439
+45,African American All,1980,88834
+50,African American All,1980,85044
+55,African American All,1980,79816
+60,African American All,1980,72913
+65,African American All,1980,64391
+70,African American All,1980,54617
+75,African American All,1980,43274
+80,African American All,1980,31711
+85,African American All,1980,19939
+90,African American All,1980,10713
+95,African American All,1980,4463
+100,African American All,1980,1360
+0,African American Male,1980,100000
+1,African American Male,1980,97703
+5,African American Male,1980,97300
+10,African American Male,1980,97061
+15,African American Male,1980,96826
+20,African American Male,1980,96132
+25,African American Male,1980,94827
+30,African American Male,1980,93125
+35,African American Male,1980,91080
+40,African American Male,1980,88490
+45,African American Male,1980,84997
+50,African American Male,1980,80065
+55,African American Male,1980,73413
+60,African American Male,1980,64980
+65,African American Male,1980,55061
+70,African American Male,1980,44213
+75,African American Male,1980,32717
+80,African American Male,1980,22017
+85,African American Male,1980,12383
+90,African American Male,1980,5708
+95,African American Male,1980,2009
+100,African American Male,1980,513
+0,African American Female,1980,100000
+1,African American Female,1980,98073
+5,African American Female,1980,97751
+10,African American Female,1980,97590
+15,African American Female,1980,97450
+20,African American Female,1980,97180
+25,African American Female,1980,96754
+30,African American Female,1980,96150
+35,African American Female,1980,95338
+40,African American Female,1980,94137
+45,African American Female,1980,92322
+50,African American Female,1980,89563
+55,African American Female,1980,85653
+60,African American Female,1980,80293
+65,African American Female,1980,73266
+70,African American Female,1980,64729
+75,African American Female,1980,53831
+80,African American Female,1980,41686
+85,African American Female,1980,28004
+90,African American Female,1980,16260
+95,African American Female,1980,7312
+100,African American Female,1980,2398
+0,All,1970,100000
+1,All,1970,97998
+5,All,1970,97668
+10,All,1970,97460
+15,All,1970,97261
+20,All,1970,96716
+25,All,1970,96000
+30,All,1970,95307
+35,All,1970,94482
+40,All,1970,93322
+45,All,1970,91587
+50,All,1970,88972
+55,All,1970,85110
+60,All,1970,79529
+65,All,1970,71933
+70,All,1970,61984
+75,All,1970,49705
+80,All,1970,35285
+85,All,1970,20908
+90,All,1970,9297
+95,All,1970,2786
+100,All,1970,542
+0,All Male,1970,100000
+1,All Male,1970,97755
+5,All Male,1970,97395
+10,All Male,1970,97151
+15,All Male,1970,96904
+20,All Male,1970,96126
+25,All Male,1970,95040
+30,All Male,1970,94072
+35,All Male,1970,92997
+40,All Male,1970,91541
+45,All Male,1970,89369
+50,All Male,1970,86070
+55,All Male,1970,81139
+60,All Male,1970,73958
+65,All Male,1970,64318
+70,All Male,1970,52296
+75,All Male,1970,38797
+80,All Male,1970,24921
+85,All Male,1970,13168
+90,All Male,1970,5107
+95,All Male,1970,1326
+100,All Male,1970,222
+0,All Female,1970,100000
+1,All Female,1970,98254
+5,All Female,1970,97955
+10,All Female,1970,97784
+15,All Female,1970,97636
+20,All Female,1970,97331
+25,All Female,1970,96966
+30,All Female,1970,96544
+35,All Female,1970,95966
+40,All Female,1970,95097
+45,All Female,1970,93793
+50,All Female,1970,91852
+55,All Female,1970,89066
+60,All Female,1970,85139
+65,All Female,1970,79698
+70,All Female,1970,71955
+75,All Female,1970,61107
+80,All Female,1970,46445
+85,All Female,1970,29538
+90,All Female,1970,14160
+95,All Female,1970,4565
+100,All Female,1970,954
+0,White All,1970,100000
+1,White All,1970,98224
+5,White All,1970,97930
+10,White All,1970,97733
+15,White All,1970,97546
+20,White All,1970,97036
+25,White All,1970,96406
+30,White All,1970,95824
+35,White All,1970,95152
+40,White All,1970,94190
+45,White All,1970,92681
+50,White All,1970,90306
+55,White All,1970,86688
+60,White All,1970,81323
+65,White All,1970,73889
+70,White All,1970,63991
+75,White All,1970,51586
+80,White All,1970,36659
+85,White All,1970,21578
+90,White All,1970,9433
+95,White All,1970,2743
+100,White All,1970,487
+0,White Male,1970,100000
+1,White Male,1970,97994
+5,White Male,1970,97671
+10,White Male,1970,97441
+15,White Male,1970,97208
+20,White Male,1970,96480
+25,White Male,1970,95524
+30,White Male,1970,94716
+35,White Male,1970,93843
+40,White Male,1970,92631
+45,White Male,1970,90725
+50,White Male,1970,87690
+55,White Male,1970,83001
+60,White Male,1970,75969
+65,White Male,1970,66343
+70,White Male,1970,54138
+75,White Male,1970,40324
+80,White Male,1970,25885
+85,White Male,1970,13527
+90,White Male,1970,5125
+95,White Male,1970,1274
+100,White Male,1970,189
+0,White Female,1970,100000
+1,White Female,1970,98468
+5,White Female,1970,98203
+10,White Female,1970,98042
+15,White Female,1970,97902
+20,White Female,1970,97618
+25,White Female,1970,97299
+30,White Female,1970,96945
+35,White Female,1970,96474
+40,White Female,1970,95762
+45,White Female,1970,94649
+50,White Female,1970,92924
+55,White Female,1970,90383
+60,White Female,1970,86726
+65,White Female,1970,81579
+70,White Female,1970,74101
+75,White Female,1970,63290
+80,White Female,1970,48182
+85,White Female,1970,30490
+90,White Female,1970,14406
+95,White Female,1970,4526
+100,White Female,1970,872
+0,African American All,1970,100000
+1,African American All,1970,96731
+5,African American All,1970,96207
+10,African American All,1970,95928
+15,African American All,1970,95661
+20,African American All,1970,94887
+25,African American All,1970,93513
+30,African American All,1970,91934
+35,African American All,1970,89977
+40,African American All,1970,87304
+45,African American All,1970,83700
+50,African American All,1970,78938
+55,African American All,1970,72826
+60,African American All,1970,65250
+65,African American All,1970,56102
+70,African American All,1970,45785
+75,African American All,1970,34262
+80,African American All,1970,23710
+85,African American All,1970,15044
+90,African American All,1970,8087
+95,African American All,1970,3252
+100,African American All,1970,1036
+0,African American Male,1970,100000
+1,African American Male,1970,96394
+5,African American Male,1970,95826
+10,African American Male,1970,95497
+15,African American Male,1970,95161
+20,African American Male,1970,94053
+25,African American Male,1970,91904
+30,African American Male,1970,89584
+35,African American Male,1970,86885
+40,African American Male,1970,83441
+45,African American Male,1970,78976
+50,African American Male,1970,73282
+55,African American Male,1970,66101
+60,African American Male,1970,57457
+65,African American Male,1970,47485
+70,African American Male,1970,36925
+75,African American Male,1970,25921
+80,African American Male,1970,16560
+85,African American Male,1970,9648
+90,African American Male,1970,4696
+95,African American Male,1970,1721
+100,African American Male,1970,489
+0,African American Female,1970,100000
+1,African American Female,1970,97076
+5,African American Female,1970,96598
+10,African American Female,1970,96369
+15,African American Female,1970,96172
+20,African American Female,1970,95729
+25,African American Female,1970,95035
+30,African American Female,1970,94114
+35,African American Female,1970,92807
+40,African American Female,1970,90817
+45,African American Female,1970,88001
+50,African American Female,1970,84168
+55,African American Female,1970,79177
+60,African American Female,1970,72820
+65,African American Female,1970,64716
+70,African American Female,1970,54873
+75,African American Female,1970,43193
+80,African American Female,1970,31756
+85,African American Female,1970,21358
+90,African American Female,1970,12210
+95,African American Female,1970,5217
+100,African American Female,1970,1803
+0,All,1960,100000
+1,All,1960,97407
+5,All,1960,96998
+10,All,1960,96765
+15,All,1960,96551
+20,All,1960,96111
+25,All,1960,95517
+30,All,1960,94905
+35,All,1960,94144
+40,All,1960,93064
+45,All,1960,91378
+50,All,1960,88756
+55,All,1960,84711
+60,All,1960,79067
+65,All,1960,71147
+70,All,1960,60857
+75,All,1960,48170
+80,All,1960,33576
+85,All,1960,18542
+90,All,1960,7080
+95,All,1960,1524
+100,All,1960,183
+0,All Male,1960,100000
+1,All Male,1960,97087
+5,All Male,1960,96643
+10,All Male,1960,96375
+15,All Male,1960,96107
+20,All Male,1960,95491
+25,All Male,1960,94631
+30,All Male,1960,93826
+35,All Male,1960,92889
+40,All Male,1960,91572
+45,All Male,1960,89492
+50,All Male,1960,86199
+55,All Male,1960,81039
+60,All Male,1960,73887
+65,All Male,1960,64177
+70,All Male,1960,52244
+75,All Male,1960,38950
+80,All Male,1960,25300
+85,All Male,1960,12845
+90,All Male,1960,4609
+95,All Male,1960,970
+100,All Male,1960,117
+0,All Female,1960,100000
+1,All Female,1960,97744
+5,All Female,1960,97371
+10,All Female,1960,97173
+15,All Female,1960,97016
+20,All Female,1960,96756
+25,All Female,1960,96418
+30,All Female,1960,95996
+35,All Female,1960,95409
+40,All Female,1960,94560
+45,All Female,1960,93265
+50,All Female,1960,91327
+55,All Female,1960,88451
+60,All Female,1960,84430
+65,All Female,1960,78462
+70,All Female,1960,70100
+75,All Female,1960,58394
+80,All Female,1960,43063
+85,All Female,1960,25269
+90,All Female,1960,10056
+95,All Female,1960,2193
+100,All Female,1960,264
+0,White All,1960,100000
+1,White All,1960,97714
+5,White All,1960,97353
+10,White All,1960,97131
+15,White All,1960,96928
+20,White All,1960,96508
+25,White All,1960,95965
+30,White All,1960,95440
+35,White All,1960,94798
+40,White All,1960,93870
+45,White All,1960,92374
+50,White All,1960,89958
+55,White All,1960,86173
+60,White All,1960,80811
+65,White All,1960,73102
+70,White All,1960,62834
+75,White All,1960,49895
+80,White All,1960,34697
+85,White All,1960,19017
+90,White All,1960,7149
+95,White All,1960,1521
+100,White All,1960,183
+0,White Male,1960,100000
+1,White Male,1960,97408
+5,White Male,1960,97015
+10,White Male,1960,96758
+15,White Male,1960,96503
+20,White Male,1960,95908
+25,White Male,1960,95106
+30,White Male,1960,94401
+35,White Male,1960,93589
+40,White Male,1960,92427
+45,White Male,1960,90533
+50,White Male,1960,87424
+55,White Male,1960,82463
+60,White Male,1960,75485
+65,White Male,1960,65834
+70,White Male,1960,53825
+75,White Male,1960,40207
+80,White Male,1960,25993
+85,White Male,1960,13065
+90,White Male,1960,4600
+95,White Male,1960,956
+100,White Male,1960,115
+0,White Female,1960,100000
+1,White Female,1960,98036
+5,White Female,1960,97709
+10,White Female,1960,97525
+15,White Female,1960,97375
+20,White Female,1960,97135
+25,White Female,1960,96844
+30,White Female,1960,96499
+35,White Female,1960,96026
+40,White Female,1960,95326
+45,White Female,1960,94228
+50,White Female,1960,92522
+55,White Female,1960,89967
+60,White Female,1960,86339
+65,White Female,1960,80739
+70,White Female,1960,72507
+75,White Female,1960,60461
+80,White Female,1960,44676
+85,White Female,1960,26046
+90,White Female,1960,10219
+95,White Female,1960,2203
+100,White Female,1960,265
+0,African American All,1960,100000
+1,African American All,1960,95732
+5,African American All,1960,95051
+10,African American All,1960,94745
+15,African American All,1960,94460
+20,African American All,1960,93880
+25,African American All,1960,92925
+30,African American All,1960,91699
+35,African American All,1960,90046
+40,African American All,1960,87766
+45,African American All,1960,84501
+50,African American All,1960,80172
+55,African American All,1960,73893
+60,African American All,1960,65795
+65,African American All,1960,56038
+70,African American All,1960,45434
+75,African American All,1960,34531
+80,African American All,1960,24815
+85,African American All,1960,15337
+90,African American All,1960,7195
+95,African American All,1960,1777
+100,African American All,1960,214
+0,African American Male,1960,100000
+1,African American Male,1960,95301
+5,African American Male,1960,94570
+10,African American Male,1960,94234
+15,African American Male,1960,93874
+20,African American Male,1960,93108
+25,African American Male,1960,91825
+30,African American Male,1960,90270
+35,African American Male,1960,88331
+40,African American Male,1960,85744
+45,African American Male,1960,82075
+50,African American Male,1960,77239
+55,African American Male,1960,70351
+60,African American Male,1960,61669
+65,African American Male,1960,51392
+70,African American Male,1960,39914
+75,African American Male,1960,29064
+80,African American Male,1960,19994
+85,African American Male,1960,11620
+90,African American Male,1960,5174
+95,African American Male,1960,1240
+100,African American Male,1960,149
+0,African American Female,1960,100000
+1,African American Female,1960,96172
+5,African American Female,1960,95543
+10,African American Female,1960,95265
+15,African American Female,1960,95057
+20,African American Female,1960,94660
+25,African American Female,1960,94005
+30,African American Female,1960,93070
+35,African American Female,1960,91670
+40,African American Female,1960,89676
+45,African American Female,1960,86793
+50,African American Female,1960,82979
+55,African American Female,1960,77362
+60,African American Female,1960,69941
+65,African American Female,1960,60825
+70,African American Female,1960,51274
+75,African American Female,1960,40540
+80,African American Female,1960,30315
+85,African American Female,1960,19744
+90,African American Female,1960,9675
+95,African American Female,1960,2438
+100,African American Female,1960,293
+0,All,1950,100000
+1,All,1950,97024
+5,All,1950,96482
+10,All,1950,96177
+15,All,1950,95885
+20,All,1950,95366
+25,All,1950,94676
+30,All,1950,93919
+35,All,1950,92976
+40,All,1950,91648
+45,All,1950,89634
+50,All,1950,86591
+55,All,1950,82176
+60,All,1950,75921
+65,All,1950,67555
+70,All,1950,56987
+75,All,1950,43903
+80,All,1950,29313
+85,All,1950,15785
+90,All,1950,6144
+95,All,1950,1511
+100,All,1950,199
+0,All Male,1950,100000
+1,All Male,1950,96661
+5,All Male,1950,96077
+10,All Male,1950,95726
+15,All Male,1950,95366
+20,All Male,1950,94695
+25,All Male,1950,93791
+30,All Male,1950,92861
+35,All Male,1950,91760
+40,All Male,1950,90207
+45,All Male,1950,87819
+50,All Male,1950,84158
+55,All Male,1950,78781
+60,All Male,1950,71246
+65,All Male,1950,61566
+70,All Male,1950,49950
+75,All Male,1950,36756
+80,All Male,1950,25237
+85,All Male,1950,11750
+90,All Male,1950,4197
+95,All Male,1950,955
+100,All Male,1950,121
+0,All Female,1950,100000
+1,All Female,1950,97406
+5,All Female,1950,96908
+10,All Female,1950,96652
+15,All Female,1950,96431
+20,All Female,1950,96066
+25,All Female,1950,95583
+30,All Female,1950,94933
+35,All Female,1950,94206
+40,All Female,1950,93101
+45,All Female,1950,91469
+50,All Female,1950,89075
+55,All Female,1950,85694
+60,All Female,1950,80890
+65,All Female,1950,74119
+70,All Female,1950,64873
+75,All Female,1950,52111
+80,All Female,1950,36486
+85,All Female,1950,20668
+90,All Female,1950,8548
+95,All Female,1950,2207
+100,All Female,1950,298
+0,White All,1950,100000
+1,White All,1950,97278
+5,White All,1950,96790
+10,White All,1950,96502
+15,White All,1950,96228
+20,White All,1950,95763
+25,White All,1950,95169
+30,White All,1950,94536
+35,White All,1950,93750
+40,White All,1950,92616
+45,White All,1950,90847
+50,White All,1950,88110
+55,White All,1950,84027
+60,White All,1950,78066
+65,White All,1950,69850
+70,White All,1950,59189
+75,White All,1950,45688
+80,White All,1950,30438
+85,White All,1950,16239
+90,White All,1950,6201
+95,White All,1950,1500
+100,White All,1950,196
+0,White Male,1950,100000
+1,White Male,1950,96931
+5,White Male,1950,96403
+10,White Male,1950,96069
+15,White Male,1950,95728
+20,White Male,1950,95104
+25,White Male,1950,94294
+30,White Male,1950,93489
+35,White Male,1950,92543
+40,White Male,1950,91173
+45,White Male,1950,89002
+50,White Male,1950,85601
+55,White Male,1950,80496
+60,White Male,1950,73172
+65,White Male,1950,63541
+70,White Male,1950,51735
+75,White Male,1950,38104
+80,White Male,1950,24005
+85,White Male,1950,12015
+90,White Male,1950,4209
+95,White Male,1950,942
+100,White Male,1950,118
+0,White Female,1950,100000
+1,White Female,1950,97645
+5,White Female,1950,97199
+10,White Female,1950,96960
+15,White Female,1950,96756
+20,White Female,1950,96454
+25,White Female,1950,96072
+30,White Female,1950,95605
+35,White Female,1950,94977
+40,White Female,1950,94080
+45,White Female,1950,92725
+50,White Female,1950,90685
+55,White Female,1950,87699
+60,White Female,1950,83279
+65,White Female,1950,76773
+70,White Female,1950,67545
+75,White Female,1950,54397
+80,White Female,1950,38026
+85,White Female,1950,21348
+90,White Female,1950,8662
+95,White Female,1950,2200
+100,White Female,1950,294
+0,African American All,1950,100000
+1,African American All,1950,95407
+5,African American All,1950,94482
+10,African American All,1950,94060
+15,African American All,1950,93646
+20,African American All,1950,92738
+25,African American All,1950,91321
+30,African American All,1950,89584
+35,African American All,1950,87402
+40,African American All,1950,84478
+45,African American All,1950,80507
+50,African American All,1950,74976
+55,African American All,1950,67660
+60,African American All,1950,58593
+65,African American All,1950,48649
+70,African American All,1950,38616
+75,African American All,1950,28968
+80,African American All,1950,20003
+85,African American All,1950,12433
+90,African American All,1950,6394
+95,African American All,1950,2010
+100,African American All,1950,301
+0,African American Male,1950,100000
+1,African American Male,1950,94911
+5,African American Male,1950,93921
+10,African American Male,1950,93453
+15,African American Male,1950,92965
+20,African American Male,1950,91941
+25,African American Male,1950,90285
+30,African American Male,1950,88327
+35,African American Male,1950,85940
+40,African American Male,1950,82832
+45,African American Male,1950,78686
+50,African American Male,1950,72891
+55,African American Male,1950,65122
+60,African American Male,1950,55535
+65,African American Male,1950,45198
+70,African American Male,1950,35018
+75,African American Male,1950,25472
+80,African American Male,1950,16904
+85,African American Male,1950,9898
+90,African American Male,1950,4642
+95,African American Male,1950,1342
+100,African American Male,1950,192
+0,African American Female,1950,100000
+1,African American Female,1950,95913
+5,African American Female,1950,95055
+10,African American Female,1950,94679
+15,African American Female,1950,94343
+20,African American Female,1950,93544
+25,African American Female,1950,92336
+30,African American Female,1950,90799
+35,African American Female,1950,88805
+40,African American Female,1950,86052
+45,African American Female,1950,82257
+50,African American Female,1950,77007
+55,African American Female,1950,70196
+60,African American Female,1950,61758
+65,African American Female,1950,52358
+70,African American Female,1950,42612
+75,African American Female,1950,32981
+80,African American Female,1950,23712
+85,African American Female,1950,15550
+90,African American Female,1950,8590
+95,African American Female,1950,2875
+100,African American Female,1950,445
+0,All,1940,100000
+1,All,1940,95290
+5,All,1940,94220
+10,All,1940,93710
+15,All,1940,93235
+20,All,1940,92435
+25,All,1940,91335
+30,All,1940,90078
+35,All,1940,88573
+40,All,1940,86650
+45,All,1940,84069
+50,All,1940,80487
+55,All,1940,75557
+60,All,1940,68924
+65,All,1940,60366
+70,All,1940,49655
+75,All,1940,36735
+80,All,1940,22883
+85,All,1940,11073
+90,All,1940,3796
+95,All,1940,857
+100,All,1940,123
+0,All Male,1940,100000
+1,All Male,1940,94762
+5,All Male,1940,93624
+10,All Male,1940,93054
+15,All Male,1940,92508
+20,All Male,1940,91617
+25,All Male,1940,90385
+30,All Male,1940,89009
+35,All Male,1940,87371
+40,All Male,1940,85246
+45,All Male,1940,82336
+50,All Male,1940,78254
+55,All Male,1940,72627
+60,All Male,1940,65142
+65,All Male,1940,55776
+70,All Male,1940,44588
+75,All Male,1940,31864
+80,All Male,1940,18995
+85,All Male,1940,8693
+90,All Male,1940,2787
+95,All Male,1940,586
+100,All Male,1940,78
+0,All Female,1940,100000
+1,All Female,1940,95848
+5,All Female,1940,94848
+10,All Female,1940,94402
+15,All Female,1940,94000
+20,All Female,1940,93293
+25,All Female,1940,92322
+30,All Female,1940,91182
+35,All Female,1940,89810
+40,All Female,1940,88092
+45,All Female,1940,85856
+50,All Female,1940,82828
+55,All Female,1940,78708
+60,All Female,1940,73093
+65,All Female,1940,65523
+70,All Female,1940,55449
+75,All Female,1940,42425
+80,All Female,1940,27524
+85,All Female,1940,13972
+90,All Female,1940,5044
+95,All Female,1940,1195
+100,All Female,1940,179
+0,White All,1940,100000
+1,White All,1940,95685
+5,White All,1940,94713
+10,White All,1940,94228
+15,White All,1940,93792
+20,White All,1940,93117
+25,White All,1940,92213
+30,White All,1940,91185
+35,White All,1940,89941
+40,White All,1940,88318
+45,White All,1940,86069
+50,White All,1940,82833
+55,White All,1940,78218
+60,White All,1940,71785
+65,White All,1940,63201
+70,White All,1940,52165
+75,White All,1940,38610
+80,White All,1940,23976
+85,White All,1940,11483
+90,White All,1940,3819
+95,White All,1940,801
+100,White All,1940,98
+0,White Male,1940,100000
+1,White Male,1940,95188
+5,White Male,1940,94150
+10,White Male,1940,93601
+15,White Male,1940,93089
+20,White Male,1940,92293
+25,White Male,1940,91241
+30,White Male,1940,90092
+35,White Male,1940,88713
+40,White Male,1940,86880
+45,White Male,1940,84285
+50,White Male,1940,80521
+55,White Male,1940,75156
+60,White Male,1940,67787
+65,White Male,1940,58305
+70,White Male,1940,46739
+75,White Male,1940,33404
+80,White Male,1940,19860
+85,White Male,1940,9013
+90,White Male,1940,2812
+95,White Male,1940,552
+100,White Male,1940,65
+0,White Female,1940,100000
+1,White Female,1940,96211
+5,White Female,1940,95309
+10,White Female,1940,94890
+15,White Female,1940,94534
+20,White Female,1940,93984
+25,White Female,1940,93228
+30,White Female,1940,92320
+35,White Female,1940,91211
+40,White Female,1940,89805
+45,White Female,1940,87920
+50,White Female,1940,85267
+55,White Female,1940,81520
+60,White Female,1940,76200
+65,White Female,1940,68701
+70,White Female,1940,58363
+75,White Female,1940,44685
+80,White Female,1940,28882
+85,White Female,1940,14487
+90,White Female,1940,5061
+95,White Female,1940,1109
+100,White Female,1940,139
+0,African American All,1940,100000
+1,African American All,1940,92584
+5,African American All,1940,90983
+10,African American All,1940,90339
+15,African American All,1940,89591
+20,African American All,1940,87839
+25,African American All,1940,85210
+30,African American All,1940,82194
+35,African American All,1940,78683
+40,African American All,1940,74466
+45,African American All,1940,69284
+50,African American All,1940,62702
+55,African American All,1940,54846
+60,African American All,1940,46318
+65,African American All,1940,37838
+70,African American All,1940,29654
+75,African American All,1940,21798
+80,African American All,1940,14408
+85,African American All,1940,8326
+90,African American All,1940,4077
+95,African American All,1940,1557
+100,African American All,1940,399
+0,African American Male,1940,100000
+1,African American Male,1940,91772
+5,African American Male,1940,90082
+10,African American Male,1940,89393
+15,African American Male,1940,88610
+20,African American Male,1940,86968
+25,African American Male,1940,84227
+30,African American Male,1940,80979
+35,African American Male,1940,77221
+40,African American Male,1940,72780
+45,African American Male,1940,67346
+50,African American Male,1940,60495
+55,African American Male,1940,52426
+60,African American Male,1940,43833
+65,African American Male,1940,35371
+70,African American Male,1940,27236
+75,African American Male,1940,19456
+80,African American Male,1940,12186
+85,African American Male,1940,6444
+90,African American Male,1940,2836
+95,African American Male,1940,961
+100,African American Male,1940,209
+0,African American Female,1940,100000
+1,African American Female,1940,93416
+5,African American Female,1940,91906
+10,African American Female,1940,91308
+15,African American Female,1940,90594
+20,African American Female,1940,88736
+25,African American Female,1940,86198
+30,African American Female,1940,83384
+35,African American Female,1940,80092
+40,African American Female,1940,76084
+45,African American Female,1940,71157
+50,African American Female,1940,64885
+55,African American Female,1940,57314
+60,African American Female,1940,48928
+65,African American Female,1940,40504
+70,African American Female,1940,32354
+75,African American Female,1940,24502
+80,African American Female,1940,17039
+85,African American Female,1940,10622
+90,African American Female,1940,5652
+95,African American Female,1940,2345
+100,African American Female,1940,659
+0,All,1930,100000
+1,All,1930,94028
+5,All,1930,91978
+10,All,1930,91106
+15,All,1930,90385
+20,All,1930,89089
+25,All,1930,87269
+30,All,1930,85302
+35,All,1930,83118
+40,All,1930,80557
+45,All,1930,77343
+50,All,1930,73321
+55,All,1930,68182
+60,All,1930,61563
+65,All,1930,53195
+70,All,1930,42768
+75,All,1930,30789
+80,All,1930,18580
+85,All,1930,8542
+90,All,1930,2998
+95,All,1930,636
+100,All,1930,62
+0,All Male,1930,100000
+1,All Male,1930,93440
+5,All Male,1930,91294
+10,All Male,1930,90346
+15,All Male,1930,89561
+20,All Male,1930,88220
+25,All Male,1930,86359
+30,All Male,1930,84346
+35,All Male,1930,82075
+40,All Male,1930,79357
+45,All Male,1930,75882
+50,All Male,1930,71518
+55,All Male,1930,65981
+60,All Male,1930,58909
+65,All Male,1930,50154
+70,All Male,1930,39516
+75,All Male,1930,27718
+80,All Male,1930,16172
+85,All Male,1930,7107
+90,All Male,1930,2283
+95,All Male,1930,451
+100,All Male,1930,40
+0,All Female,1930,100000
+1,All Female,1930,94728
+5,All Female,1930,92789
+10,All Female,1930,92008
+15,All Female,1930,91364
+20,All Female,1930,90116
+25,All Female,1930,88328
+30,All Female,1930,86398
+35,All Female,1930,84304
+40,All Female,1930,81927
+45,All Female,1930,79041
+50,All Female,1930,75456
+55,All Female,1930,70832
+60,All Female,1930,64795
+65,All Female,1930,56924
+70,All Female,1930,46774
+75,All Female,1930,34600
+80,All Female,1930,21578
+85,All Female,1930,10322
+90,All Female,1930,3656
+95,All Female,1930,807
+100,All Female,1930,82
+0,White All,1930,100000
+1,White All,1930,94392
+5,White All,1930,92466
+10,White All,1930,91627
+15,White All,1930,90982
+20,White All,1930,89933
+25,White All,1930,88454
+30,White All,1930,86836
+35,White All,1930,85004
+40,White All,1930,82803
+45,White All,1930,79989
+50,White All,1930,76340
+55,White All,1930,71551
+60,White All,1930,65100
+65,White All,1930,56655
+70,White All,1930,45841
+75,White All,1930,33406
+80,White All,1930,20260
+85,White All,1930,9325
+90,White All,1930,3066
+95,White All,1930,636
+100,White All,1930,58
+0,White Male,1930,100000
+1,White Male,1930,93768
+5,White Male,1930,91738
+10,White Male,1930,90810
+15,White Male,1930,90074
+20,White Male,1930,88904
+25,White Male,1930,87371
+30,White Male,1930,85707
+35,White Male,1930,83812
+40,White Male,1930,81457
+45,White Male,1930,78345
+50,White Male,1930,74288
+55,White Male,1930,68981
+60,White Male,1930,61933
+65,White Male,1930,52964
+70,White Male,1930,41880
+75,White Male,1930,29471
+80,White Male,1930,17221
+85,White Male,1930,7572
+90,White Male,1930,2356
+95,White Male,1930,461
+100,White Male,1930,40
+0,White Female,1930,100000
+1,White Female,1930,95037
+5,White Female,1930,93216
+10,White Female,1930,92466
+15,White Female,1930,91894
+20,White Female,1930,90939
+25,White Female,1930,89524
+30,White Female,1930,87972
+35,White Female,1930,86248
+40,White Female,1930,84256
+45,White Female,1930,81780
+50,White Female,1930,78572
+55,White Female,1930,74321
+60,White Female,1930,68462
+65,White Female,1930,60499
+70,White Female,1930,49932
+75,White Female,1930,37024
+80,White Female,1930,23053
+85,White Female,1930,10937
+90,White Female,1930,3719
+95,White Female,1930,797
+100,White Female,1930,74
+0,African American All,1930,100000
+1,African American All,1930,92035
+5,African American All,1930,89303
+10,African American All,1930,88258
+15,African American All,1930,87156
+20,African American All,1930,84386
+25,African American All,1930,80320
+30,African American All,1930,75962
+35,African American All,1930,71141
+40,African American All,1930,65974
+45,African American All,1930,59827
+50,African American All,1930,53141
+55,African American All,1930,45558
+60,African American All,1930,37654
+65,African American All,1930,30015
+70,African American All,1930,22505
+75,African American All,1930,15546
+80,African American All,1930,9589
+85,African American All,1930,4900
+90,African American All,1930,2044
+95,African American All,1930,638
+100,African American All,1930,120
+0,African American Male,1930,100000
+1,African American Male,1930,91268
+5,African American Male,1930,88412
+10,African American Male,1930,87311
+15,African American Male,1930,86152
+20,African American Male,1930,83621
+25,African American Male,1930,79516
+30,African American Male,1930,75083
+35,African American Male,1930,70049
+40,African American Male,1930,64710
+45,African American Male,1930,58432
+50,African American Male,1930,51748
+55,African American Male,1930,44436
+60,African American Male,1930,36790
+65,African American Male,1930,29314
+70,African American Male,1930,21741
+75,African American Male,1930,14419
+80,African American Male,1930,8239
+85,African American Male,1930,3660
+90,African American Male,1930,1246
+95,African American Male,1930,307
+100,African American Male,1930,41
+0,African American Female,1930,100000
+1,African American Female,1930,92796
+5,African American Female,1930,90185
+10,African American Female,1930,89201
+15,African American Female,1930,88088
+20,African American Female,1930,85078
+25,African American Female,1930,81067
+30,African American Female,1930,76816
+35,African American Female,1930,72192
+40,African American Female,1930,67271
+45,African American Female,1930,61365
+50,African American Female,1930,54920
+55,African American Female,1930,47074
+60,African American Female,1930,38761
+65,African American Female,1930,30852
+70,African American Female,1930,23341
+75,African American Female,1930,16576
+80,African American Female,1930,10822
+85,African American Female,1930,6033
+90,African American Female,1930,2774
+95,African American Female,1930,941
+100,African American Female,1930,193
+0,All,1920,100000
+1,All,1920,92515
+5,All,1920,83389
+10,All,1920,88129
+15,All,1920,87144
+20,All,1920,85441
+25,All,1920,83146
+30,All,1920,80642
+35,All,1920,77961
+40,All,1920,75114
+45,All,1920,72036
+50,All,1920,68429
+55,All,1920,63947
+60,All,1920,58079
+65,All,1920,50560
+70,All,1920,41090
+75,All,1920,29729
+80,All,1920,18298
+85,All,1920,8683
+90,All,1920,2941
+95,All,1920,646
+100,All,1920,67
+0,All Male,1920,100000
+1,All Male,1920,91745
+5,All Male,1920,88505
+10,All Male,1920,87184
+15,All Male,1920,86156
+20,All Male,1920,84440
+25,All Male,1920,82252
+30,All Male,1920,79890
+35,All Male,1920,77514
+40,All Male,1920,74432
+45,All Male,1920,71244
+50,All Male,1920,67553
+55,All Male,1920,62965
+60,All Male,1920,56917
+65,All Male,1920,49218
+70,All Male,1920,39668
+75,All Male,1920,28316
+80,All Male,1920,17128
+85,All Male,1920,7920
+90,All Male,1920,2527
+95,All Male,1920,556
+100,All Male,1920,62
+0,All Female,1920,100000
+1,All Female,1920,93383
+5,All Female,1920,90380
+10,All Female,1920,89186
+15,All Female,1920,88247
+20,All Female,1920,86556
+25,All Female,1920,84135
+30,All Female,1920,81463
+35,All Female,1920,78713
+40,All Female,1920,75907
+45,All Female,1920,72954
+50,All Female,1920,69452
+55,All Female,1920,65099
+60,All Female,1920,59438
+65,All Female,1920,52126
+70,All Female,1920,42741
+75,All Female,1920,31344
+80,All Female,1920,19613
+85,All Female,1920,9515
+90,All Female,1920,3314
+95,All Female,1920,728
+100,All Female,1920,72
+0,White All,1920,100000
+1,White All,1920,92780
+5,White All,1920,89771
+10,White All,1920,88536
+15,White All,1920,87633
+20,White All,1920,86159
+25,White All,1920,84106
+30,White All,1920,81787
+35,White All,1920,79277
+40,White All,1920,76642
+45,White All,1920,73705
+50,White All,1920,70250
+55,White All,1920,65875
+60,White All,1920,60013
+65,White All,1920,52411
+70,White All,1920,42736
+75,White All,1920,31086
+80,White All,1920,19149
+85,White All,1920,9078
+90,White All,1920,2991
+95,White All,1920,643
+100,White All,1920,62
+0,White Male,1920,100000
+1,White Male,1920,91975
+5,White Male,1920,88842
+10,White Male,1920,87530
+15,White Male,1920,86546
+20,White Male,1920,84997
+25,White Male,1920,83061
+30,White Male,1920,80888
+35,White Male,1920,78441
+40,White Male,1920,75733
+45,White Male,1920,72696
+50,White Male,1920,69107
+55,White Male,1920,64574
+60,White Male,1920,58498
+65,White Male,1920,50663
+70,White Male,1920,40873
+75,White Male,1920,29205
+80,White Male,1920,17655
+85,White Male,1920,8154
+90,White Male,1920,2568
+95,White Male,1920,556
+100,White Male,1920,61
+0,White Female,1920,100000
+1,White Female,1920,93608
+5,White Female,1920,90721
+10,White Female,1920,89564
+15,White Female,1920,88712
+20,White Female,1920,87281
+25,White Female,1920,85163
+30,White Female,1920,82740
+35,White Female,1920,80206
+40,White Female,1920,77624
+45,White Female,1920,74871
+50,White Female,1920,71547
+55,White Female,1920,67323
+60,White Female,1920,61704
+65,White Female,1920,54299
+70,White Female,1920,44638
+75,White Female,1920,32777
+80,White Female,1920,20492
+85,White Female,1920,9909
+90,White Female,1920,3372
+95,White Female,1920,721
+100,White Female,1920,63
+0,African American All,1920,100000
+1,African American All,1920,90379
+5,African American All,1920,86174
+10,African American All,1920,84690
+15,African American All,1920,83180
+20,African American All,1920,79641
+25,African American All,1920,74973
+30,African American All,1920,70492
+35,African American All,1920,65865
+40,African American All,1920,61244
+45,African American All,1920,56442
+50,African American All,1920,51422
+55,African American All,1920,45803
+60,African American All,1920,39418
+65,African American All,1920,32738
+70,African American All,1920,25585
+75,African American All,1920,18011
+80,African American All,1920,11376
+85,African American All,1920,5794
+90,African American All,1920,2317
+95,African American All,1920,689
+100,African American All,1920,129
+0,African American Male,1920,100000
+1,African American Male,1920,89499
+5,African American Male,1920,85195
+10,African American Male,1920,83768
+15,African American Male,1920,82332
+20,African American Male,1920,79057
+25,African American Male,1920,74540
+30,African American Male,1920,70344
+35,African American Male,1920,65873
+40,African American Male,1920,61353
+45,African American Male,1920,56589
+50,African American Male,1920,51880
+55,African American Male,1920,46581
+60,African American Male,1920,40506
+65,African American Male,1920,34042
+70,African American Male,1920,26923
+75,African American Male,1920,18854
+80,African American Male,1920,11615
+85,African American Male,1920,5605
+90,African American Male,1920,2040
+95,African American Male,1920,552
+100,African American Male,1920,77
+0,African American Female,1920,100000
+1,African American Female,1920,91251
+5,African American Female,1920,87149
+10,African American Female,1920,85607
+15,African American Female,1920,83954
+20,African American Female,1920,80154
+25,African American Female,1920,75359
+30,African American Female,1920,70633
+35,African American Female,1920,65857
+40,African American Female,1920,61130
+45,African American Female,1920,56230
+50,African American Female,1920,50780
+55,African American Female,1920,44742
+60,African American Female,1920,37954
+65,African American Female,1920,31044
+70,African American Female,1920,24107
+75,African American Female,1920,17216
+80,African American Female,1920,11151
+85,African American Female,1920,5972
+90,African American Female,1920,2579
+95,African American Female,1920,818
+100,African American Female,1920,179
+0,All,1910,100000
+1,All,1910,88538
+5,All,1910,83887
+10,All,1910,82458
+15,All,1910,81506
+20,All,1910,80074
+25,All,1910,78046
+30,All,1910,75779
+35,All,1910,73127
+40,All,1910,70042
+45,All,1910,66561
+50,All,1910,62460
+55,All,1910,57555
+60,All,1910,51138
+65,All,1910,43194
+70,All,1910,33816
+75,All,1910,23552
+80,All,1910,13712
+85,All,1910,6001
+90,All,1910,1868
+95,All,1910,361
+100,All,1910,40
+0,All Male,1910,100000
+1,All Male,1910,87505
+5,All Male,1910,82718
+10,All Male,1910,81249
+15,All Male,1910,80261
+20,All Male,1910,78792
+25,All Male,1910,76675
+30,All Male,1910,74378
+35,All Male,1910,71614
+40,All Male,1910,68297
+45,All Male,1910,64518
+50,All Male,1910,60118
+55,All Male,1910,54970
+60,All Male,1910,48343
+65,All Male,1910,40264
+70,All Male,1910,31023
+75,All Male,1910,21213
+80,All Male,1910,11942
+85,All Male,1910,5059
+90,All Male,1910,1502
+95,All Male,1910,289
+100,All Male,1910,33
+0,All Female,1910,100000
+1,All Female,1910,89623
+5,All Female,1910,85117
+10,All Female,1910,83728
+15,All Female,1910,82813
+20,All Female,1910,81418
+25,All Female,1910,79481
+30,All Female,1910,77247
+35,All Female,1910,74719
+40,All Female,1910,71894
+45,All Female,1910,68755
+50,All Female,1910,65001
+55,All Female,1910,60392
+60,All Female,1910,54226
+65,All Female,1910,46438
+70,All Female,1910,36916
+75,All Female,1910,26155
+80,All Female,1910,15682
+85,All Female,1910,7051
+90,All Female,1910,2269
+95,All Female,1910,441
+100,All Female,1910,49
+0,White All,1910,100000
+1,White All,1910,88709
+5,White All,1910,84147
+10,White All,1910,82734
+15,White All,1910,81816
+20,White All,1910,80407
+25,White All,1910,78392
+30,White All,1910,76167
+35,White All,1910,73568
+40,White All,1910,70525
+45,White All,1910,67090
+50,White All,1910,62994
+55,White All,1910,58163
+60,White All,1910,51822
+65,White All,1910,43904
+70,White All,1910,34484
+75,White All,1910,24151
+80,White All,1910,14100
+85,White All,1910,6178
+90,White All,1910,1918
+95,White All,1910,364
+100,White All,1910,38
+0,White Male,1910,100000
+1,White Male,1910,87674
+5,White Male,1910,82972
+10,White Male,1910,81519
+15,White Male,1910,80549
+20,White Male,1910,79116
+25,White Male,1910,77047
+30,White Male,1910,74810
+35,White Male,1910,72108
+40,White Male,1910,68848
+45,White Male,1910,65115
+50,White Male,1910,60741
+55,White Male,1910,55622
+60,White Male,1910,48987
+65,White Male,1910,40862
+70,White Male,1910,31527
+75,White Male,1910,21585
+80,White Male,1910,12160
+85,White Male,1910,5145
+90,White Male,1910,1523
+95,White Male,1910,289
+100,White Male,1910,31
+0,White Female,1910,100000
+1,White Female,1910,89774
+5,White Female,1910,85349
+10,White Female,1910,83979
+15,White Female,1910,83093
+20,White Female,1910,81750
+25,White Female,1910,79865
+30,White Female,1910,77676
+35,White Female,1910,75200
+40,White Female,1910,72425
+45,White Female,1910,69341
+50,White Female,1910,65629
+55,White Female,1910,61053
+60,White Female,1910,54900
+65,White Female,1910,47086
+70,White Female,1910,37482
+75,White Female,1910,26569
+80,White Female,1910,15929
+85,White Female,1910,7152
+90,White Female,1910,2291
+95,White Female,1910,434
+100,White Female,1910,44
+0,African American All,1910,100000
+1,African American All,1910,79784
+5,African American All,1910,70691
+10,African American All,1910,68437
+15,African American All,1910,66410
+20,African American All,1910,63165
+25,African American All,1910,59608
+30,African American All,1910,56112
+35,African American All,1910,52125
+40,African American All,1910,47866
+45,African American All,1910,43054
+50,African American All,1910,37800
+55,African American All,1910,32233
+60,African American All,1910,26046
+65,African American All,1910,19806
+70,African American All,1910,14021
+75,African American All,1910,9139
+80,African American All,1910,5158
+85,African American All,1910,2414
+90,African American All,1910,913
+95,African American All,1910,324
+100,African American All,1910,77
+0,African American Male,1910,100000
+1,African American Male,1910,78065
+5,African American Male,1910,68589
+10,African American Male,1910,66377
+15,African American Male,1910,64478
+20,African American Male,1910,61426
+25,African American Male,1910,57736
+30,African American Male,1910,54073
+35,African American Male,1910,49865
+40,African American Male,1910,45414
+45,African American Male,1910,40563
+50,African American Male,1910,35427
+55,African American Male,1910,29754
+60,African American Male,1910,23750
+65,African American Male,1910,17806
+70,African American Male,1910,12295
+75,African American Male,1910,7494
+80,African American Male,1910,3894
+85,African American Male,1910,1747
+90,African American Male,1910,595
+95,African American Male,1910,189
+100,African American Male,1910,40
+0,African American Female,1910,100000
+1,African American Female,1910,81493
+5,African American Female,1910,72768
+10,African American Female,1910,70508
+15,African American Female,1910,68218
+20,African American Female,1910,64764
+25,African American Female,1910,61430
+30,African American Female,1910,58281
+35,African American Female,1910,54595
+40,African American Female,1910,50568
+45,African American Female,1910,45947
+50,African American Female,1910,40886
+55,African American Female,1910,35415
+60,African American Female,1910,28908
+65,African American Female,1910,22302
+70,African American Female,1910,15871
+75,African American Female,1910,10657
+80,African American Female,1910,6324
+85,African American Female,1910,3029
+90,African American Female,1910,1206
+95,African American Female,1910,448
+100,African American Female,1910,112
+0,All,1900,100000
+1,All,1900,87552
+5,All,1900,81804
+10,All,1900,80052
+15,All,1900,78963
+20,All,1900,77239
+25,All,1900,74768
+30,All,1900,72043
+35,All,1900,69078
+40,All,1900,65890
+45,All,1900,62436
+50,All,1900,58514
+55,All,1900,53852
+60,All,1900,47946
+65,All,1900,40911
+70,All,1900,32390
+75,All,1900,22960
+80,All,1900,13529
+85,All,1900,6053
+90,All,1900,1867
+95,All,1900,344
+100,All,1900,31
+0,All Male,1900,100000
+1,All Male,1900,86426
+5,All Male,1900,80548
+10,All Male,1900,78775
+15,All Male,1900,77681
+20,All Male,1900,75984
+25,All Male,1900,73472
+30,All Male,1900,70747
+35,All Male,1900,67752
+40,All Male,1900,64447
+45,All Male,1900,60849
+50,All Male,1900,56736
+55,All Male,1900,51939
+60,All Male,1900,45895
+65,All Male,1900,38736
+70,All Male,1900,30217
+75,All Male,1900,21076
+80,All Male,1900,12084
+85,All Male,1900,5179
+90,All Male,1900,1508
+95,All Male,1900,262
+100,All Male,1900,22
+0,All Female,1900,100000
+1,All Female,1900,88733
+5,All Female,1900,83119
+10,All Female,1900,81390
+15,All Female,1900,80307
+20,All Female,1900,78555
+25,All Female,1900,76119
+30,All Female,1900,73394
+35,All Female,1900,70463
+40,All Female,1900,67407
+45,All Female,1900,64121
+50,All Female,1900,60415
+55,All Female,1900,55908
+60,All Female,1900,50155
+65,All Female,1900,43246
+70,All Female,1900,34721
+75,All Female,1900,24994
+80,All Female,1900,15129
+85,All Female,1900,7063
+90,All Female,1900,2306
+95,All Female,1900,452
+100,All Female,1900,43
+0,White All,1900,100000
+1,White All,1900,87762
+5,White All,1900,82071
+10,White All,1900,80371
+15,White All,1900,79344
+20,White All,1900,77998
+25,White All,1900,75202
+30,White All,1900,72317
+35,White All,1900,69522
+40,White All,1900,66082
+45,White All,1900,62920
+50,White All,1900,58647
+55,White All,1900,54450
+60,White All,1900,48288
+65,White All,1900,41505
+70,White All,1900,32902
+75,White All,1900,23356
+80,White All,1900,13794
+85,White All,1900,6192
+90,White All,1900,1919
+95,White All,1900,355
+100,White All,1900,31
+0,White Male,1900,100000
+1,White Male,1900,86655
+5,White Male,1900,80864
+10,White Male,1900,79109
+15,White Male,1900,78037
+20,White Male,1900,76376
+25,White Male,1900,73907
+30,White Male,1900,71219
+35,White Male,1900,68245
+40,White Male,1900,64954
+45,White Male,1900,61369
+50,White Male,1900,57274
+55,White Male,1900,52491
+60,White Male,1900,46452
+65,White Male,1900,39245
+70,White Male,1900,30640
+75,White Male,1900,21387
+80,White Male,1900,12266
+85,White Male,1900,5252
+90,White Male,1900,1523
+95,White Male,1900,263
+100,White Male,1900,22
+0,White Female,1900,100000
+1,White Female,1900,88939
+5,White Female,1900,83426
+10,White Female,1900,81723
+15,White Female,1900,80680
+20,White Female,1900,78978
+25,White Female,1900,76588
+30,White Female,1900,73887
+35,White Female,1900,70971
+40,White Female,1900,67935
+45,White Female,1900,64677
+50,White Female,1900,61005
+55,White Female,1900,56509
+60,White Female,1900,50752
+65,White Female,1900,43806
+70,White Female,1900,35206
+75,White Female,1900,25362
+80,White Female,1900,15349
+85,White Female,1900,7149
+90,White Female,1900,2322
+95,White Female,1900,448
+100,White Female,1900,41
+0,African American All,1900,100000
+1,African American All,1900,76609
+5,African American All,1900,66222
+10,African American All,1900,63410
+15,African American All,1900,61060
+20,African American All,1900,57931
+25,African American All,1900,54512
+30,African American All,1900,51287
+35,African American All,1900,48007
+40,African American All,1900,44518
+45,African American All,1900,40628
+50,African American All,1900,36103
+55,African American All,1900,31404
+60,African American All,1900,25698
+65,African American All,1900,20474
+70,African American All,1900,14960
+75,African American All,1900,9956
+80,African American All,1900,5750
+85,African American All,1900,2782
+90,African American All,1900,1054
+95,African American All,1900,296
+100,African American All,1900,57
+0,African American Male,1900,100000
+1,African American Male,1900,74674
+5,African American Male,1900,64385
+10,African American Male,1900,61730
+15,African American Male,1900,59667
+20,African American Male,1900,56733
+25,African American Male,1900,53285
+30,African American Male,1900,49867
+35,African American Male,1900,46541
+40,African American Male,1900,42989
+45,African American Male,1900,39230
+50,African American Male,1900,34766
+55,African American Male,1900,29987
+60,African American Male,1900,24194
+65,African American Male,1900,19015
+70,African American Male,1900,13829
+75,African American Male,1900,8892
+80,African American Male,1900,4831
+85,African American Male,1900,2030
+90,African American Male,1900,634
+95,African American Male,1900,137
+100,African American Male,1900,18
+0,African American Female,1900,100000
+1,African American Female,1900,78525
+5,African American Female,1900,68056
+10,African American Female,1900,65111
+15,African American Female,1900,62384
+20,African American Female,1900,59053
+25,African American Female,1900,55795
+30,African American Female,1900,52773
+35,African American Female,1900,49567
+40,African American Female,1900,46146
+45,African American Female,1900,42279
+50,African American Female,1900,37681
+55,African American Female,1900,33124
+60,African American Female,1900,27524
+65,African American Female,1900,21995
+70,African American Female,1900,16140
+75,African American Female,1900,11066
+80,African American Female,1900,6708
+85,African American Female,1900,3567
+90,African American Female,1900,1492
+95,African American Female,1900,462
+100,African American Female,1900,97
