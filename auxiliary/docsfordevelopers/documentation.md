@@ -8,7 +8,7 @@
 
 ### Folder structure
 
-* `/auxiliary` contains folders with related resources that are not used/needed for the package use/build but are useful (to the package authors) for maintenance/development/advertising/tracking of the package
+* `/auxiliary` contains folders with resources that are not used/needed to use the package use, but which are useful (to the package authors) for maintenance/development of the package.
 * `/doc` contains the vignettes, this folder is auto-generated and should not be edited, see below.
 * `/docs` contains the package website created by the pkgdown package. Rebuild with pkgdown::build_site(). Don't edit manually.
 * `/inst` contains several important subfolders, further described below. 
@@ -17,17 +17,18 @@
 * `/pkgdown` contains extra files for styling of pkgdown created website. Edit to change layout of package website.
 * `/R` contains the main R functions. Here just a few helper functions. See more details below.
 * `/tests` contains code/unit tests, done with the testthat package. Add tests as new functionality is added.
-* `/vignettes` contains the vignette - this is copied to /inst/doc during package building. edits should be done to the file in the /vignettes folder, not the /inst/doc folder.
+* `/vignettes` contains the vignettes - those are copied to /inst/doc during package building. edits should be done to the file in the /vignettes folder, not the /inst/doc folder.
 
 
-### Functions/files in the R folder
+### Functions/files in the `R` folder
 * All functions/files in this folder are small helper functions to help use and deploy the package. The main content is in the /inst folder.
 
-### Materials inside the /inst folder
-The /inst folder contains these subfolders 
+### Materials inside the `inst` folder
+The `inst` folder contains these subfolders 
 
-* `/tutorials` contains all labs in subfolders.
-
+* `tutorials` contains all labs in subfolders.
+* `alllabs` contains all labs as a single zip file.
+* 
 
 
 ## Information for package development

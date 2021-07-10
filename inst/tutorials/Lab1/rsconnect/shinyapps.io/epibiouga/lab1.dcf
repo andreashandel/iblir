@@ -1,0 +1,11 @@
+name: lab1
+title:
+username:
+account: epibiouga
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4372417
+bundleId: 4806825
+url: https://epibiouga.shinyapps.io/lab1/
+when: 1625941581.57644
+lastSyncTime: 1625941581.57644

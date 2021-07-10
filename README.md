@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# DSAIDE <img src="man/figures/logo.png" align="right" alt="" width="120" />
+# iblir <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 <!-- badges: start -->
 
@@ -36,18 +36,20 @@ To start the tutorials/labs, you type
 
     run_tutorial('LabN', package = 'iblir')
 
-where N is the lab number, e.g. `Lab1`, `Lab2`.
+where N is the lab number (1-13), e.g., `Lab1`, `Lab2`.
 
 A startup message also tells you this.
 
 ## Further information
 
-To come.
+See the **Getting started** tutorial/vignette for additional
+information.
 
 ## Citation and Contributors
 
-The main content of this package was developed by [Brian McKay](). The
-package is maintained by [Brian McKay]() and [Andreas
+The main content of this package was developed by [Brian
+McKay](https://brianmckay.netlify.app/). The package is maintained by
+[Brian McKay](https://brianmckay.netlify.app/) and [Andreas
 Handel](https://www.andreashandel.com/). A full list of contributors and
 a Bibtex entry for the citation [can be found
 here](https://andreashandel.github.io/iblir/authors.html).

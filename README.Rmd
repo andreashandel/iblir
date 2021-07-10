@@ -53,7 +53,7 @@ A startup message also tells you this.
 
 ## Further information
 
-To come.
+See the __Getting started__ tutorial/vignette for additional information.
 
 ## Citation and Contributors
 
