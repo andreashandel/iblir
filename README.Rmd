@@ -46,7 +46,7 @@ To start the tutorials/labs, you type
 ```
 run_tutorial('LabN', package = 'iblir')
 ```
-where N is the lab number, e.g. `Lab1`, `Lab2`.
+where N is the lab number (1-13), e.g., `Lab1`, `Lab2`.
 
 A startup message also tells you this.
 

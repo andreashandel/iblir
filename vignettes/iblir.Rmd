@@ -126,11 +126,16 @@ There are several ways the labs can be used
 
 ### Local
 
-
-### RStudio Cloud
-
+To run the labs local, simply install and load the package. The greeting message will tell you how to load each lab. The Package website also provides this information.
 
 ### Own Shiny server
+
+Load the package, then run the `get_labs` function. It will point you to a zip file with all the labs. Copy that zip file to your shiny server, ideally into its own folder (e.g. a folder called `iblir`). Then extract. You should end up with a folder for each lab, e.g. '/srv/shiny-server/iblir/Lab1', '/srv/shiny-server/iblir/Lab2', and so on. Make sure the `iblir` package is installed on your server. Then students should be able to go to the server and Lab address to access each lab, e.g., by going to `shinyserver.myplace.edu/iblir/Lab1` and so on.
+
+One option to run your own Shiny server is to use DigitalOcean and e.g. the [analogsea](https://pacha.dev/analogsea/) package.
+
+
+### RStudio Cloud
 
 
 ### shinyapps.io

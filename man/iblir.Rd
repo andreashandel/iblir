@@ -8,8 +8,6 @@
 The package provides a number of shiny/learnr apps
 }
 \details{
-Start the main menu of the package by calling iblirmenu().
-
 To learn more about how to use the package, see the vignette
 or the short introduction on the package github repository.
 https://github.com/andreashandel/iblir
