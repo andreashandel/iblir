@@ -19,6 +19,7 @@ to come
 * Remove additional Rmd file from labs 1 and 10.
 * Further clean up all labs, remove any unused files. 
 * Go through all content in the dropbox folder, process it and either integrate into package or discard. Some of that content but not all is currently in auxiliary/oldcontent
+* Update logo
 
 
 ### Could do

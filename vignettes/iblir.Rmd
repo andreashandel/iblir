@@ -119,14 +119,14 @@ a.	Hypothesis tests and Confidence Intervals
 
 
 
-## Deploptments
+## Deployments
 
 There are several ways the labs can be used
 
 
 ### Local
 
-To run the labs local, simply install and load the package. The greeting message will tell you how to load each lab. The Package website also provides this information.
+This is described above. Simply install and load the package. The greeting message will tell you how to load each lab. The Package website also provides this information.
 
 ### RStudio Cloud
 
