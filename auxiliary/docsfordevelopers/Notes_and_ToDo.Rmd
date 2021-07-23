@@ -5,11 +5,14 @@ output: html_document
 
 ## Notes
 
+to build package website, run pkgdown::build_site()
+to build vignettes, run devtools::build_vignettes()
 to come
 
 
 
 ## To-Do
+
 
 ### Need to do
 

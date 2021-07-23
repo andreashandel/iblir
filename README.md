@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# iblir <img src="man/figures/logo.png" align="right" alt="" width="120" />
+# iblir - Introductory Biostatistics Labs in R <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 <!-- badges: start -->
 
@@ -26,7 +26,8 @@ Start by installing R and RStudio. The package is not yet on CRAN, so
 you need to install it from GitHub as follows.
 
     install.packages('remotes')
-    remotes::install_github('andreashandel/iblir')
+    library('remotes')
+    install_github('andreashandel/iblir')
 
 Then load the package
 

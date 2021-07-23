@@ -92,24 +92,26 @@
 <div id="summary" class="section level2">
 <h2 class="hasAnchor">
 <a href="#summary" class="anchor"></a>Summary</h2>
-<p>Home of the future vignette.</p>
+<p>This document provides a brief introduction to the <strong>Introductory Biostatistics Labs in R (iblir)</strong> package.</p>
 </div>
 <div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting Started</h2>
 <p>The package is not yet on CRAN, so you need to install it from GitHub as follows.</p>
 <pre><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages('remotes')
-remotes::install_github('andreashandel/iblir')</a></code></pre>
-<p>Then load the package</p>
+library('remotes')
+install_github('andreashandel/iblir')</a></code></pre>
+<p>After the package is installed, you can load it</p>
 <pre><code><a href="https://andreashandel.github.io/iblir/">library('iblir')</a></code></pre>
 <p>To start the tutorials/labs, you type</p>
 <pre><code>run_tutorial('LabN', package = 'iblir')</code></pre>
 <p>where N is the lab number, e.g. <code>Lab1</code>, <code>Lab2</code>.</p>
 <p>A startup message also tells you this.</p>
+<p>The labs should open in your browser, and you can go through them.</p>
 </div>
-<div id="content" class="section level2">
+<div id="lab-content" class="section level2">
 <h2 class="hasAnchor">
-<a href="#content" class="anchor"></a>Content</h2>
+<a href="#lab-content" class="anchor"></a>Lab Content</h2>
 <p>LAB 1: Introduction to the online lab format and Introduction to R and “Data”.</p>
 <p>LAB 2: Focuses on interpreting and making histograms in R. 1. Interpreting Histograms 2. Which variable types to use with histograms 3. Making histograms 4. Impact of bin selection and 4 methods to help get the right size</p>
 <p>LAB 3: Focuses on interpreting and making box plots in R 1. Interpreting Box plots 2. Making Box plots 3. Comparing box plots</p>
@@ -124,10 +126,10 @@ remotes::install_github('andreashandel/iblir')</a></code></pre>
 <p>LAB 12: Two Sample t-test 1. Two-sample t-test in R a. Hypothesis tests and Confidence Intervals 2. Violin Plots in R</p>
 <p>LAB 13: Hypothesis Tests and Confidence Intervals for Proportions 1. One Proportion tests in R a. Hypothesis tests and Confidence Intervals 2. Two Proportion tests in R a. Hypothesis tests and Confidence Intervals</p>
 </div>
-<div id="deployments" class="section level2">
+<div id="ways-to-use-iblir" class="section level2">
 <h2 class="hasAnchor">
-<a href="#deployments" class="anchor"></a>Deployments</h2>
-<p>There are several ways the labs can be used</p>
+<a href="#ways-to-use-iblir" class="anchor"></a>Ways to use iblir</h2>
+<p>There are several ways the labs/the package can be used.</p>
 <div id="local" class="section level3">
 <h3 class="hasAnchor">
 <a href="#local" class="anchor"></a>Local</h3>
@@ -136,13 +138,14 @@ remotes::install_github('andreashandel/iblir')</a></code></pre>
 <div id="rstudio-cloud" class="section level3">
 <h3 class="hasAnchor">
 <a href="#rstudio-cloud" class="anchor"></a>RStudio Cloud</h3>
-<p>This is basically the same as local, but students don’t have to install <code>R</code> and <code>RStudio</code> and can instead do everything in their browser. To use it this way, set up a new RStudio Cloud project, install the <code>iblir</code> package (which will also install a ton of others). Then give students the link to the workspace. They log in, load the package and can use it as if they were to run it locally.</p>
+<p>This is basically the same as local, but students don’t have to install <code>R</code> and <code>RStudio</code> and can instead do everything in their browser. To use it this way, set up a new RStudio Cloud project, install the <code>iblir</code> package (which will also install a ton of others). Then give students the link to the workspace. They log in, load the package and can use it as if they were running it locally.</p>
 <p>Note that the free RStudio Cloud account might not be enough and you might need to upgrade to a paid account.</p>
 </div>
-<div id="own-shiny-server" class="section level3">
+<div id="you-own-shiny-server" class="section level3">
 <h3 class="hasAnchor">
-<a href="#own-shiny-server" class="anchor"></a>Own Shiny server</h3>
-<p>Load the package, then run the <code><a href="../reference/get_labs.html">get_labs()</a></code> function. It will point you to a zip file with all the labs. Copy that zip file to your shiny server, ideally into its own folder (e.g. a folder called <code>iblir</code>). Then extract. You should end up with a folder for each lab, e.g. ‘/srv/shiny-server/iblir/Lab1’, ‘/srv/shiny-server/iblir/Lab2’, and so on. Make sure the <code>iblir</code> package is installed on your server. Then students should be able to go to the server and Lab address to access each lab, e.g., by going to <code>shinyserver.myplace.edu/iblir/Lab1</code> and so on.</p>
+<a href="#you-own-shiny-server" class="anchor"></a>You own Shiny server</h3>
+<p>Load the package, then run the <code><a href="../reference/get_labs.html">get_labs()</a></code> function. It will open a file browser and point you to a zip file with all the labs. Copy that zip file to your shiny server, ideally into its own folder (e.g. a folder called <code>iblir</code>). Then extract. You should end up with a folder for each lab, e.g. <code>/srv/shiny-server/iblir/Lab1</code>, <code>/srv/shiny-server/iblir/Lab2</code>, and so on. Make sure the <code>iblir</code> package is installed on your server. Also, make sure permissions for the folders are set correctly.</p>
+<p>Once all is set up, students should be able to go to the Server/Lab URL to access each lab, e.g., by going to <code>shinyserver.myplace.edu/iblir/Lab1</code> and so on.</p>
 <p>One option to run your own Shiny server is to use DigitalOcean and e.g. the <a href="https://pacha.dev/analogsea/">analogsea</a> package.</p>
 </div>
 <div id="shinyapps-io" class="section level3">

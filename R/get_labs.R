@@ -1,9 +1,9 @@
 #' @title Get a zip file with all labs for deployment
 #'
-#' @description This function gives the user a zip file with all labs
-#' this can be deployed to a shiny server
+#' @description This function opens a file explorer
+#' pointing the user to the location of zip file with all labs
 #'
-#' @return Location of the zip file which the user can save.
+#' @return nothing
 #' @export
 
 
