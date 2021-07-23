@@ -7,8 +7,9 @@ output: html_document
 
 to build package website, run pkgdown::build_site()
 to build vignettes, run devtools::build_vignettes()
-to come
 
+continuous integration info:
+https://www.rostrum.blog/2020/08/09/ghactions-pkgs/
 
 
 ## To-Do

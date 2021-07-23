@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/andreashandel/iblir/workflows/R-CMD-check/badge.svg)](https://github.com/andreashandel/iblir/actions)
 [![test-coverage](https://github.com/andreashandel/iblir/workflows/test-coverage/badge.svg)](https://github.com/andreashandel/iblir/actions)
 [![Codecov coverage](https://codecov.io/gh/andreashandel/iblir/branch/main/graph/badge.svg)](https://codecov.io/gh/andreashandel/iblir?branch=main)
+[![Codecov test coverage](https://codecov.io/gh/andreashandel/iblir/branch/main/graph/badge.svg)](https://codecov.io/gh/andreashandel/iblir?branch=main)
 <!-- badges: end -->
 
 **This package is still under active development. If you see this message, assume that several parts of the package don't quite work yet.**
