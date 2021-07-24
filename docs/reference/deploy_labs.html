@@ -128,14 +128,18 @@
     <p>This function sends each lab to shinyapps.io</p>
     </div>
 
-    <pre class="usage"><span class='fu'>deploy_labs</span><span class='op'>(</span>labvec <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>13</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>deploy_labs</span><span class='op'>(</span>labvec <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>13</span>, labfolder <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>labvec</th>
-      <td><p>vector with numbers indicating which labs to deploy. default is all.</p></td>
+      <td><p>optional vector with numbers indicating which labs to deploy. Default is all. Ignored if <code>labfolder</code> is provided.</p></td>
+    </tr>
+    <tr>
+      <th>labfolder</th>
+      <td><p>optional string pointing to a folder in which the labs are located. if not provided, the location for the default labs is used.</p></td>
     </tr>
     </table>
 

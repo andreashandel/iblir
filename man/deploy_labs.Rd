@@ -4,10 +4,12 @@
 \alias{deploy_labs}
 \title{Deploy all labs to shinyapps.io}
 \usage{
-deploy_labs(labvec = 1:13)
+deploy_labs(labvec = 1:13, labfolder = NULL)
 }
 \arguments{
-\item{labvec}{vector with numbers indicating which labs to deploy. default is all.}
+\item{labvec}{optional vector with numbers indicating which labs to deploy. Default is all. Ignored if \code{labfolder} is provided.}
+
+\item{labfolder}{optional string pointing to a folder in which the labs are located. if not provided, the location for the default labs is used.}
 }
 \value{
 nothing

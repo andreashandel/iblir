@@ -1,18 +1,23 @@
 ---
 title: "iblir Package Tutorial"
-author: "<a href=http://handelgroup.uga.edu>Andreas Handel</a>"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
     fig_caption: yes
 vignette: >
-  %\VignetteIndexEntry{DSAIDE Package Tutorial}
+  %\VignetteIndexEntry{iblir Package Tutorial}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r, include = FALSE}
+# avoid check where vignette filename must equal the vignette title
+options(rmarkdown.html_vignette.check_title = FALSE)
+```
+
+
 ``` {r, include = FALSE}
-packagename = 'iblir'
+pkg = 'iblir' #so we can easily switch names if we decide to rename
 ```
 
 
@@ -125,7 +130,7 @@ a.	Hypothesis tests and Confidence Intervals
 
 ## Ways to use iblir
 
-There are several ways the labs/the package can be used.
+There are several ways **`r pkg`** can be used.
 
 
 ### Local
@@ -156,9 +161,26 @@ Next, run the `deploy_labs()` function, which will send each lab to your Shiny s
 The labs will be on shinyapps.io at URLs like this one : `https://YOURACCOUNTNAME.shinyapps.io/lab1/` etc.
 
 
+## Ways to modify the labs
+
+If you want to make changes to the labs, there are several options. **The preferred option is if you directly contribute to **`r pkg`** by the usual process (see _Contributing to the package_ below).** If for some reason you want to make changes that you think cannot or should not be part of this package, here are two options.
+
+
+### Modify labs in existing package
+
+Start by running the `get_labs()` function. Unzip the folder, make any changes to the labs you like. You can then copy all your labs to your own shiny server as described above. If you want to deploy to shinyapps.io, call the `deploy_labs()` function with an additional input specifying the folder in which all your new labs are stored, e.g., `deploy_labs(labfolder = `C:\tmp\mylabs\')`. 
+
+
+### Make a new package
+
+The above option works if you put the labs on a server, but not if you want students to use them locally or through RStudio Cloud. To enable that, you can make your own package based on **`r pkg`**. Fork the package on GitHub, then clone it to your local machine. In the package repository, all labs are inside the `/inst/tutorials/` folder. Make any changes you like. Once everything is ready and works, send your new package to GitHub and ask your students to install your version of the package (via `install_github('yourgithubaccount/iblir')`), or install your package on RStudio Cloud and invite students to the workspace. Of course, you can also take all your new labs, put them in a zip file, and replace the existing `alllabs.zip` inside the `/inst/allabs/` folder with your zip file. Each lab should still be named `LabN`, where `N` is some number, and the name and location of the zip file need to be like the original. If you do that, you can use the `get_labs()` and `deploy_labs()` functions as described above.
+
+
+
+
 ## Contributing to the package
 
-The package is on GitHub and you can use the usual GitHub process to file bug reports, send feature requests, contribute updates and bug fixes, etc. If you have any comments or feedback, I very much welcome them. Please file a [GitHub issue](https://github.com/andreashandel/iblir/issues) and let me know what you think.
+The package is on GitHub and you can use the usual GitHub process to file bug reports, send feature requests, contribute updates and bug fixes, etc. If you have any comments or feedback, we very much welcome them. Please file a [GitHub issue](https://github.com/andreashandel/iblir/issues) and let us know. If you make improvements/additions to the package, send a pull request. If your planned changes are substantial, it might be best to contact us first to discuss and make sure your planned modifications can be seamlessly integrated.
 
 
 ## Further information

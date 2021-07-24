@@ -78,9 +78,8 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>iblir Package Tutorial</h1>
-                        <h4 class="author"><a href="http://handelgroup.uga.edu">Andreas Handel</a></h4>
             
-            <h4 class="date">2021-07-23</h4>
+            <h4 class="date">2021-07-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/andreashandel/iblir/blob/master/vignettes/iblir.Rmd"><code>vignettes/iblir.Rmd</code></a></small>
       <div class="hidden name"><code>iblir.Rmd</code></div>
@@ -129,7 +128,7 @@ install_github('andreashandel/iblir')</a></code></pre>
 <div id="ways-to-use-iblir" class="section level2">
 <h2 class="hasAnchor">
 <a href="#ways-to-use-iblir" class="anchor"></a>Ways to use iblir</h2>
-<p>There are several ways the labs/the package can be used.</p>
+<p>There are several ways <strong>iblir</strong> can be used.</p>
 <div id="local" class="section level3">
 <h3 class="hasAnchor">
 <a href="#local" class="anchor"></a>Local</h3>
@@ -155,10 +154,25 @@ install_github('andreashandel/iblir')</a></code></pre>
 <p>Next, run the <code><a href="../reference/deploy_labs.html">deploy_labs()</a></code> function, which will send each lab to your Shiny server. By default, all labs are deployed, but you can specify which ones by providing the function with a vector of lab numbers, e.g. <code><a href="../reference/deploy_labs.html">deploy_labs(labvec = c(2,5))</a></code> will deploy only labs 2 and 5. The labs will be on shinyapps.io at URLs like this one : <code>https://YOURACCOUNTNAME.shinyapps.io/lab1/</code> etc.</p>
 </div>
 </div>
+<div id="ways-to-modify-the-labs" class="section level2">
+<h2 class="hasAnchor">
+<a href="#ways-to-modify-the-labs" class="anchor"></a>Ways to modify the labs</h2>
+<p>If you want to make changes to the labs, there are several options. <strong>The preferred option is if you directly contribute to </strong>iblir** by the usual process (see <em>Contributing to the package</em> below).** If for some reason you want to make changes that you think cannot or should not be part of this package, here are two options.</p>
+<div id="modify-labs-in-existing-package" class="section level3">
+<h3 class="hasAnchor">
+<a href="#modify-labs-in-existing-package" class="anchor"></a>Modify labs in existing package</h3>
+<p>Start by running the <code><a href="../reference/get_labs.html">get_labs()</a></code> function. Unzip the folder, make any changes to the labs you like. You can then copy all your labs to your own shiny server as described above. If you want to deploy to shinyapps.io, call the <code><a href="../reference/deploy_labs.html">deploy_labs()</a></code> function with an additional input specifying the folder in which all your new labs are stored, e.g., <code>deploy_labs(labfolder =</code>C:')`.</p>
+</div>
+<div id="make-a-new-package" class="section level3">
+<h3 class="hasAnchor">
+<a href="#make-a-new-package" class="anchor"></a>Make a new package</h3>
+<p>The above option works if you put the labs on a server, but not if you want students to use them locally or through RStudio Cloud. To enable that, you can make your own package based on <strong>iblir</strong>. Fork the package on GitHub, then clone it to your local machine. In the package repository, all labs are inside the <code>/inst/tutorials/</code> folder. Make any changes you like. Once everything is ready and works, send your new package to GitHub and ask your students to install your version of the package (via <code>install_github('yourgithubaccount/iblir')</code>), or install your package on RStudio Cloud and invite students to the workspace. Of course, you can also take all your new labs, put them in a zip file, and replace the existing <code>alllabs.zip</code> inside the <code>/inst/allabs/</code> folder with your zip file. Each lab should still be named <code>LabN</code>, where <code>N</code> is some number, and the name and location of the zip file need to be like the original. If you do that, you can use the <code><a href="../reference/get_labs.html">get_labs()</a></code> and <code><a href="../reference/deploy_labs.html">deploy_labs()</a></code> functions as described above.</p>
+</div>
+</div>
 <div id="contributing-to-the-package" class="section level2">
 <h2 class="hasAnchor">
 <a href="#contributing-to-the-package" class="anchor"></a>Contributing to the package</h2>
-<p>The package is on GitHub and you can use the usual GitHub process to file bug reports, send feature requests, contribute updates and bug fixes, etc. If you have any comments or feedback, I very much welcome them. Please file a <a href="https://github.com/andreashandel/iblir/issues">GitHub issue</a> and let me know what you think.</p>
+<p>The package is on GitHub and you can use the usual GitHub process to file bug reports, send feature requests, contribute updates and bug fixes, etc. If you have any comments or feedback, we very much welcome them. Please file a <a href="https://github.com/andreashandel/iblir/issues">GitHub issue</a> and let us know. If you make improvements/additions to the package, send a pull request. If your planned changes are substantial, it might be best to contact us first to discuss and make sure your planned modifications can be seamlessly integrated.</p>
 </div>
 <div id="further-information" class="section level2">
 <h2 class="hasAnchor">

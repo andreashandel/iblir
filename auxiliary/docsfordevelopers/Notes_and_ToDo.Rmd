@@ -3,26 +3,16 @@ title: "Notes and ToDo"
 output: html_document
 ---
 
-## Notes
-
-to build package website, run pkgdown::build_site()
-to build vignettes, run devtools::build_vignettes()
-
-continuous integration info:
-https://www.rostrum.blog/2020/08/09/ghactions-pkgs/
-
-
 ## To-Do
-
 
 ### Need to do
 
+* Test that all ways of using/modifying the labs as described in the vignette works.
 * Test that all labs work, both locally and remote.
-* Change labs such that each one only loads the 'iblir' package. That package in turn should list all required packages in the DESCRIPTION file.
-* Figure out and describe 
+* Change labs such that each one only loads the 'iblir' package, no other packages. That iblir package in turn should list all required packages in the DESCRIPTION file.
 * Remove additional Rmd file from labs 1 and 10.
 * Further clean up all labs, remove any unused files. 
-* Go through all content in the dropbox folder, process it and either integrate into package or discard. Some of that content but not all is currently in auxiliary/oldcontent
+* Go through all content in the dropbox folder, process it and either integrate into package or discard/archive. Some of that content but not all is currently in auxiliary/oldcontent
 * Update logo
 
 
@@ -30,4 +20,12 @@ https://www.rostrum.blog/2020/08/09/ghactions-pkgs/
 
 * Add more features to deploy_labs, e.g. user can specify which account.
 * Make a (GitHub) website that can serve as landing page for courses.
-* Figure out a way that for local deployment, users just call one function which opens a graphical menu from which to choose labs.
+* Figure out a way that for local deployment in which users just call one function which opens a graphical menu from which to choose labs.
+* write more testthat tests
+
+
+## General Notes and Thoughts
+
+* see the documentation.md file for general information
+
+
