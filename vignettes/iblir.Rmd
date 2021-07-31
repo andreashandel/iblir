@@ -137,6 +137,9 @@ There are several ways **`r pkg`** can be used.
 
 This is described above. Simply install and load the package. The greeting message will tell you how to load each lab. The Package website also provides this information.
 
+If you use RStudio, an alternative is to look for the `Tutorial` tab in the upper right window. Once **`r pkg`** is loaded, you should see its tutorials listed there, and you can click the `Start Tutorial` button. You'll likely want to open the lab in a full browser window by clicking the `Show in new window` icon in the top left corner of the tutorial.
+
+
 ### RStudio Cloud
 
 This is basically the same as local, but students don't have to install `R` and `RStudio` and can instead do everything in their browser. 

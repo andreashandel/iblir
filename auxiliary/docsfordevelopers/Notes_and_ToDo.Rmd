@@ -28,4 +28,9 @@ output: html_document
 
 * see the documentation.md file for general information
 
+* Example of another R package consisting of learnR tutorials:
+http://milton-the-cat.rocks/home/adventr.html
+
+
+
 
