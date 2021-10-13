@@ -18,12 +18,17 @@ Depends:
     R (>= 3.6),
     learnr
 Imports:
+    datasauRus,
     DT,
     fs,
     ggplot2,
+    ggpubr,
     labelled,
+    plotROC,
+    pROC,
     rsconnect,
-    shiny
+    shiny,
+    shinythemes
 Suggests: 
     covr,
     devtools,
