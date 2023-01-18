@@ -2,8 +2,8 @@ Package: iblir
 Type: Package
 Title: Introductory Biostatistics Labs in R
 Description: learnr/Shiny apps that teach basic biostatistical topics. 
-Version: 0.0.1
-Date: 2021-07-23
+Version: 0.0.2
+Date: 2023-01-18
 Authors@R: c(
     person("Andreas", "Handel", email = "ahandel@uga.edu", role = c("cre"), comment = c(ORCID = "0000-0002-4622-1146") ),
     person("Brian", "McKay",  role = "aut")
@@ -13,9 +13,9 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: TRUE
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 Depends:
-    R (>= 3.6),
+    R (>= 4.1),
     learnr
 Imports:
     datasauRus,
