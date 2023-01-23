@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,18 +40,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">iblir</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/iblir.html">Get started</a>
 </li>
@@ -59,7 +55,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/andreashandel/iblir/">
+  <a href="https://github.com/andreashandel/iblir/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -76,21 +72,23 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="iblir---introductory-biostatistics-labs-in-r-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#iblir---introductory-biostatistics-labs-in-r-" class="anchor"></a>iblir - Introductory Biostatistics Labs in R <img src="reference/figures/logo.png" align="right" alt="" width="120">
+<div class="section level1">
+<div class="page-header"><h1 id="iblir---introductory-biostatistics-labs-in-r-">iblir - Introductory Biostatistics Labs in R <img src="reference/figures/logo.png" align="right" alt="" width="120"><a class="anchor" aria-label="anchor" href="#iblir---introductory-biostatistics-labs-in-r-"></a>
 </h1></div>
 <!-- badges: start -->
 
 <p><strong>This package is still under active development. If you see this message, assume that several parts of the package don’t quite work yet.</strong></p>
-<div id="description" class="section level2">
-<h2 class="hasAnchor">
-<a href="#description" class="anchor"></a>Description</h2>
-<p><code>iblir</code> is an R package containing a set of <code>learnr</code> tutorials that cover basic biostatistical concepts.</p>
+<div class="section level2">
+<h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
+</h2>
+<p><code>iblir</code> is an R package containing a set of <a href="https://rstudio.github.io/learnr/" class="external-link"><code>learnr</code></a>/Shiny tutorials that cover basic biostatistical concepts.</p>
 </div>
-<div id="getting-started" class="section level2">
-<h2 class="hasAnchor">
-<a href="#getting-started" class="anchor"></a>Getting Started</h2>
+<div class="section level2">
+<h2 id="information-for-users">Information for users<a class="anchor" aria-label="anchor" href="#information-for-users"></a>
+</h2>
+<div class="section level3">
+<h3 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
+</h3>
 <p>Start by installing R and RStudio. The package is not yet on CRAN, so you need to install it from GitHub as follows.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">'remotes'</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">'remotes'</span>)</span>
@@ -102,61 +100,84 @@
 <p>where N is the lab number (1-13), e.g., <code>Lab1</code>, <code>Lab2</code>.</p>
 <p>A startup message also tells you this.</p>
 </div>
-<div id="further-information" class="section level2">
-<h2 class="hasAnchor">
-<a href="#further-information" class="anchor"></a>Further information</h2>
+<div class="section level3">
+<h3 id="further-information">Further information<a class="anchor" aria-label="anchor" href="#further-information"></a>
+</h3>
 <p>See the <strong>Getting started</strong> tutorial/vignette for additional information.</p>
 </div>
-<div id="citation-and-contributors" class="section level2">
-<h2 class="hasAnchor">
-<a href="#citation-and-contributors" class="anchor"></a>Citation and Contributors</h2>
-<p>The main content of this package was developed by <a href="https://brianmckay.netlify.app/">Brian McKay</a>. The package is maintained by <a href="https://brianmckay.netlify.app/">Brian McKay</a> and <a href="https://www.andreashandel.com/">Andreas Handel</a>. A full list of contributors and a Bibtex entry for the citation <a href="https://andreashandel.github.io/iblir/authors.html">can be found here</a>.</p>
+</div>
+<div class="section level2">
+<h2 id="information-for-teachers">Information for teachers<a class="anchor" aria-label="anchor" href="#information-for-teachers"></a>
+</h2>
+<p>See the <strong>Getting started</strong> tutorial/vignette for some brief information on different ways the package can be used and deployed for teaching.</p>
+</div>
+<div class="section level2">
+<h2 id="information-for-developers">Information for developers<a class="anchor" aria-label="anchor" href="#information-for-developers"></a>
+</h2>
+<p>See the <strong>Getting started</strong> tutorial/vignette for some brief information on different ways to add labs or modify the content of existing labs.</p>
+</div>
+<div class="section level2">
+<h2 id="citation-and-contributors">Citation and Contributors<a class="anchor" aria-label="anchor" href="#citation-and-contributors"></a>
+</h2>
+<p>The main content of this package was developed by <a href="https://brianmckay.netlify.app/" class="external-link">Brian McKay</a>. The package is maintained by <a href="https://brianmckay.netlify.app/" class="external-link">Brian McKay</a> and <a href="https://www.andreashandel.com/" class="external-link">Andreas Handel</a>. A full list of contributors and a Bibtex entry for the citation <a href="https://andreashandel.github.io/iblir/authors.html" class="external-link">can be found here</a>.</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/andreashandel/iblir/">https://​github.com/​andreashandel/​iblir/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/andreashandel/iblir/issues">https://​github.com/​andreashandel/​iblir/​issues</a>
-</li>
+<li><a href="https://github.com/andreashandel/iblir/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/andreashandel/iblir/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
+<li><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Andreas Handel <br><small class="roles"> Maintainer </small> <a href="https://orcid.org/0000-0002-4622-1146" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing iblir</a></li>
+</ul>
+</div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Andreas Handel <br><small class="roles"> Maintainer </small> <a href="https://orcid.org/0000-0002-4622-1146" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Brian McKay <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/andreashandel/iblir/actions"><img src="https://github.com/andreashandel/iblir/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://github.com/andreashandel/iblir/actions"><img src="https://github.com/andreashandel/iblir/workflows/test-coverage/badge.svg" alt="test-coverage"></a></li>
-<li><a href="https://codecov.io/gh/andreashandel/iblir?branch=main"><img src="https://codecov.io/gh/andreashandel/iblir/branch/main/graph/badge.svg" alt="Codecov coverage"></a></li>
+<li><a href="https://github.com/andreashandel/iblir/actions" class="external-link"><img src="https://github.com/andreashandel/iblir/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/andreashandel/iblir/actions" class="external-link"><img src="https://github.com/andreashandel/iblir/workflows/test-coverage/badge.svg" alt="test-coverage"></a></li>
+<li><a href="https://codecov.io/gh/andreashandel/iblir?branch=main" class="external-link"><img src="https://codecov.io/gh/andreashandel/iblir/branch/main/graph/badge.svg" alt="Codecov coverage"></a></li>
+<li><a href="https://codecov.io/gh/andreashandel/iblir?branch=main" class="external-link"><img src="https://codecov.io/gh/andreashandel/iblir/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Andreas Handel, Brian McKay.</p>
+  <p></p>
+<p>Developed by Andreas Handel, Brian McKay.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -164,6 +185,8 @@
 
   
 
+
+  
 
   </body>
 </html>

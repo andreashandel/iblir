@@ -6,8 +6,11 @@ output:
     fig_caption: yes
 vignette: >
   %\VignetteIndexEntry{iblir Package Tutorial}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r, include = FALSE}
@@ -15,186 +18,250 @@ vignette: >
 options(rmarkdown.html_vignette.check_title = FALSE)
 ```
 
-
-``` {r, include = FALSE}
+```{r, include = FALSE}
 pkg = 'iblir' #so we can easily switch names if we decide to rename
 ```
 
-
 ## Summary
 
-This document provides a brief introduction to the **Introductory Biostatistics Labs in R (iblir)** package.
+This document provides a brief introduction to the **Introductory
+Biostatistics Labs in R (iblir)** package.
 
+## Information for users
 
-## Getting Started
+### Getting Started
 
-The package is not yet on CRAN, so you need to install it from GitHub as follows.
+The package is not yet on CRAN, so you need to install it from GitHub as
+follows.
 
-``` 
-install.packages('remotes')
-library('remotes')
-install_github('andreashandel/iblir')
-```
+    install.packages('remotes')
+    library('remotes')
+    install_github('andreashandel/iblir')
 
 After the package is installed, you can load it
 
-```
-library('iblir')
-```
+    library('iblir')
 
 To start the tutorials/labs, you type
-```
-run_tutorial('LabN', package = 'iblir')
-```
+
+    run_tutorial('LabN', package = 'iblir')
+
 where N is the lab number, e.g. `Lab1`, `Lab2`.
 
 A startup message also tells you this.
 
-The labs should open in your browser, and you can go through them.
+The lab should open in your browser, and you can go through it.
 
+Once finished with a lab, close the tab in your browser. Then go back to
+`RStudio` and stop the lab by pressing the `Stop` sign in the upper
+right corner of the `Background Jobs` tabs. You can then go back to the
+`Console` tab and use `run_tutorial()` again to start another lab.
 
-## Lab Content
+If you use RStudio, there is an alternative to calling `run_tutorial()`.
+Once **`r pkg`** is loaded, you should see its tutorials listed in the
+`Tutorial` tab in the upper right window.
 
+You can click the `Start Tutorial` button to start a lab. It will open
+in the built-in browser. You'll likely want to open the lab in a full
+browser window by clicking the `Show in new window` icon in the top left
+corner of the tutorial. Note that this method uses RStudio's built-in
+browser, which is not always quite as good as a real web browser. So if
+things don't fully work, switch to the method of using `run_tutorial()`
+and make sure it opens in your real browser.
 
-LAB 1: Introduction to the online lab format and Introduction to R and “Data”.  
+### Lab Content
 
-LAB 2: Focuses on interpreting and making histograms in R. 
-1.	Interpreting Histograms 
-2.	Which variable types to use with histograms
-3.	Making histograms 
-4.	Impact of bin selection and 4 methods to help get the right size
+LAB 1: Introduction to the online lab format and Introduction to R and
+"Data".
 
-LAB 3: Focuses on interpreting and making box plots in R
-1.	Interpreting Box plots
-2.	Making Box plots
-3.	Comparing box plots
+LAB 2: Focuses on interpreting and making histograms in R. 1.
+Interpreting Histograms 2. Which variable types to use with histograms
+3. Making histograms 4. Impact of bin selection and 4 methods to help
+get the right size
 
-LAB 4: Introduces students to the steps of a basic data analysis
-1.	Data Cleaning 
-2.	Variable types in R
-3.	Making Tables 
-4.	Making Figures with numeric summaries
+LAB 3: Focuses on interpreting and making box plots in R 1. Interpreting
+Box plots 2. Making Box plots 3. Comparing box plots
 
-LAB 5: Life Tables
-1.	Life expectancy 
-2.	Survival Curves
-3.	Hazard Functions
+LAB 4: Introduces students to the steps of a basic data analysis 1. Data
+Cleaning 2. Variable types in R 3. Making Tables 4. Making Figures with
+numeric summaries
 
-LAB 6: Diagnostic and Screening Tests
-1.	Diagnostic and Screening tests
-2.	Sensitivity, Specificity, and Accuracy
-3.	ROC curves 
-4.	AUC calculations
-5.	Cut-off values
+LAB 5: Life Tables 1. Life expectancy 2. Survival Curves 3. Hazard
+Functions
 
-LAB 7: Discrete Distributions
-1.	The Binomial Distribution
-a.	Calculating Probability and Percentiles
-2.	The Poisson Distribution
-a.	Calculating Probability and Percentiles
+LAB 6: Diagnostic and Screening Tests 1. Diagnostic and Screening tests
+2. Sensitivity, Specificity, and Accuracy 3. ROC curves 4. AUC
+calculations 5. Cut-off values
 
-LAB 8: Normal Distribution
-1.	Calculating Probability and Percentiles
+LAB 7: Discrete Distributions 1. The Binomial Distribution a.
+Calculating Probability and Percentiles 2. The Poisson Distribution a.
+Calculating Probability and Percentiles
 
-LAB 9: Random Sampling and Central Limit Theorem
-1.	Review of distributions
-a.	Setting to show that they can be approximated by normal distribution
-2.	Random sampling
-a.	So that getting good estimates with random samples does not require very large samples in many cases 
-3.	Central Limit Theorem 
-a.	Apply it to the data in the exercises and see if resulting distributions are normal
+LAB 8: Normal Distribution 1. Calculating Probability and Percentiles
 
-LAB 10: One Sample T Methods
-1.	1-sample t-tests
-a.	Hypothesis testing and Confidence Intervals
-2.	Making new variables in R
-a.	Using a variable in the data set to make a new one
+LAB 9: Random Sampling and Central Limit Theorem 1. Review of
+distributions a. Setting to show that they can be approximated by normal
+distribution 2. Random sampling a. So that getting good estimates with
+random samples does not require very large samples in many cases 3.
+Central Limit Theorem a. Apply it to the data in the exercises and see
+if resulting distributions are normal
 
-LAB 11: Paired t Test
-1.	Paired t-tests in R
-a.	Hypothesis tests and Confidence Intervals
-2.	Visualizing paired data in R
+LAB 10: One Sample T Methods 1. 1-sample t-tests a. Hypothesis testing
+and Confidence Intervals 2. Making new variables in R a. Using a
+variable in the data set to make a new one
 
-LAB 12: Two Sample t-test
-1.	Two-sample t-test in R 
-a.	Hypothesis tests and Confidence Intervals
-2.	Violin Plots in R
+LAB 11: Paired t Test 1. Paired t-tests in R a. Hypothesis tests and
+Confidence Intervals 2. Visualizing paired data in R
 
-LAB 13: Hypothesis Tests and Confidence Intervals for Proportions
-1.	One Proportion tests in R
-a.	Hypothesis tests and Confidence Intervals
-2.	Two Proportion tests in R
-a.	Hypothesis tests and Confidence Intervals
+LAB 12: Two Sample t-test 1. Two-sample t-test in R a. Hypothesis tests
+and Confidence Intervals 2. Violin Plots in R
 
+LAB 13: Hypothesis Tests and Confidence Intervals for Proportions 1. One
+Proportion tests in R a. Hypothesis tests and Confidence Intervals 2.
+Two Proportion tests in R a. Hypothesis tests and Confidence Intervals
 
+## Information for teachers
 
-## Ways to use iblir
-
-There are several ways **`r pkg`** can be used.
-
+There are several ways **`r pkg`** can be used to teach the labs. Each
+is briefly described below.
 
 ### Local
 
-This is described above. Simply install and load the package. The greeting message will tell you how to load each lab. The Package website also provides this information.
+This way of using **`r pkg`** is described above. Simply install and
+load the package. The greeting message will tell you how to load each
+lab. The Package website also provides this information.
 
-If you use RStudio, an alternative is to look for the `Tutorial` tab in the upper right window. Once **`r pkg`** is loaded, you should see its tutorials listed there, and you can click the `Start Tutorial` button. You'll likely want to open the lab in a full browser window by clicking the `Show in new window` icon in the top left corner of the tutorial.
 
+### Posit (formerly RStudio) Cloud
 
-### RStudio Cloud
+_This assumes you know how to set up projects in Posit Cloud. This is not very hard._
 
-This is basically the same as local, but students don't have to install `R` and `RStudio` and can instead do everything in their browser. 
-To use it this way, set up a new RStudio Cloud project, install the `iblir` package (which will also install a ton of others). Then give students the link to the workspace. They log in, load the package and can use it as if they were running it locally.
+With this approach, students run `R` and `RStudio` in the cloud through their browser, and don't have to install anything on their local computer.
 
-Note that the free RStudio Cloud account might not be enough and you might need to upgrade to a paid account.
+For this approach, set up a new [PositCloud](https://posit.cloud) project and install the `iblir`
+package (which will also install a ton of others). Then give students
+the link to the workspace. They log in, load the package and can use it
+as if they were running it locally.
 
-### You own Shiny server
+Note that a free RStudio Cloud account might not be enough and you
+might need to upgrade to a paid account.
 
-Load the package, then run the `get_labs()` function. It will open a file browser and point you to a zip file with all the labs. Copy that zip file to your shiny server, ideally into its own folder (e.g. a folder called `iblir`). Then extract. You should end up with a folder for each lab, e.g. `/srv/shiny-server/iblir/Lab1`, `/srv/shiny-server/iblir/Lab2`, and so on. Make sure the `iblir` package is installed on your server. Also, make sure permissions for the folders are set correctly.
-
-Once all is set up, students should be able to go to the Server/Lab URL to access each lab, e.g., by going to `shinyserver.myplace.edu/iblir/Lab1` and so on.
-
-One option to run your own Shiny server is to use DigitalOcean and e.g. the [analogsea](https://pacha.dev/analogsea/) package.
 
 
 ### shinyapps.io
 
-Follow the [shinyapps.io user guide](https://docs.rstudio.com/shinyapps.io/index.html) to set up your account and configure `rsconnect`.
-
-Next, run the `deploy_labs()` function, which will send each lab to your Shiny server. By default, all labs are deployed, but you can specify which ones by providing the function with a vector of lab numbers, e.g. `deploy_labs(labvec = c(2,5))` will deploy only labs 2 and 5. 
-The labs will be on shinyapps.io at URLs like this one : `https://YOURACCOUNTNAME.shinyapps.io/lab1/` etc.
+_This assumes you have a shinyapps.io account and now how to deploy apps. This is not too complicated._
 
 
-## Ways to modify the labs
+Follow the [shinyapps.io user
+guide](https://docs.posit.co/shinyapps.io/) to set up your
+account and configure `rsconnect`.
 
-If you want to make changes to the labs, there are several options. **The preferred option is if you directly contribute to **`r pkg`** by the usual process (see _Contributing to the package_ below).** If for some reason you want to make changes that you think cannot or should not be part of this package, here are two options.
+Next, load **`r pkg`** on your local computer and run the `deploy_labs()` function, which will send each lab to your
+Shiny server. By default, all labs are deployed, but you can specify
+which ones by providing the function with a vector of lab numbers, e.g.
+`deploy_labs(labvec = c(2,5))` will deploy only labs 2 and 5. The labs
+will be on shinyapps.io at URLs like this one :
+`https://YOURACCOUNTNAME.shinyapps.io/lab1/` etc.
 
 
-### Modify labs in existing package
 
-Start by running the `get_labs()` function. Unzip the folder, make any changes to the labs you like. You can then copy all your labs to your own shiny server as described above. If you want to deploy to shinyapps.io, call the `deploy_labs()` function with an additional input specifying the folder in which all your new labs are stored, e.g., `deploy_labs(labfolder = `C:\tmp\mylabs\')`. 
+### Your own Shiny server
+
+_This assumes you have your own Shiny server up and running. This requires a good bit of technical expertise. One option to run your own Shiny server is to use DigitalOcean and e.g.
+the [analogsea](https://pacha.dev/analogsea/) package._
 
 
-### Make a new package
+Load **`r pkg`**, then run the `get_labs()` function. It will open a
+file browser and point you to a zip file with all the labs. Copy that
+zip file to your shiny server, ideally into its own folder (e.g. a
+folder called `iblir`). Then extract. You should end up with a folder
+for each lab, e.g. `/srv/shiny-server/iblir/Lab1`,
+`/srv/shiny-server/iblir/Lab2`, and so on. Make sure the `iblir` package
+is installed on your server. Also, make sure permissions for the folders
+are set correctly.
 
-The above option works if you put the labs on a server, but not if you want students to use them locally or through RStudio Cloud. To enable that, you can make your own package based on **`r pkg`**. Fork the package on GitHub, then clone it to your local machine. In the package repository, all labs are inside the `/inst/tutorials/` folder. Make any changes you like. Once everything is ready and works, send your new package to GitHub and ask your students to install your version of the package (via `install_github('yourgithubaccount/iblir')`), or install your package on RStudio Cloud and invite students to the workspace. Of course, you can also take all your new labs, put them in a zip file, and replace the existing `alllabs.zip` inside the `/inst/allabs/` folder with your zip file. Each lab should still be named `LabN`, where `N` is some number, and the name and location of the zip file need to be like the original. If you do that, you can use the `get_labs()` and `deploy_labs()` functions as described above.
+Once all is set up, students should be able to go to the Server/Lab URL
+to access each lab, e.g., by going to
+`shinyserver.myplace.edu/iblir/Lab1` and so on.
 
+
+
+## Information for developers (or teachers)
+
+If you want to make changes to the labs, here is some brief information to get you started. 
+
+**If you enhance or add to the labs, we would love to receive your contributions and make them part of `r pkg`! For more see `Contributing to the Package` below.**
+
+
+### Edit the package
+
+The best way is if you edit the whole package. 
+
+First, to make sure you have all needed package dependencies, install **`r pkg`** from GitHub as described above (no need to load it).
+
+Now, fork **`r pkg`** on GitHub, then clone it to your local machine. Open the package repository by opening `iblir.Rproj` with RStudio. 
+
+All labs are within the `/inst/tutorials/` folder of the package repository. Each consists of a main R Markdown (`.Rmd`) file, and as needed a folder `images` for images and a folder `www` for other files. If you want to modify an existing lab, open the corresponding `.Rmd` file and edit it. If you want to add a new lab, start a new folder and follow the content and structure of the existing labs to create a new one. Keep the naming consistent (i.e., call it `LabN` with `N` whatever the next number is).
+
+As you make changes, run `Install` from the `Build` tab in the upper right pane of RStudio to rebuild and re-install your updated package. Test it to make sure everything works. You can also run the `Check` command to make sure the package is fine (you can ignore notes). If you use some new `R` packages for your lab, you need to open the `DESCRIPTION` file in the main folder and add the new package to the `Imports` list.
+
+Once everything is ready and works, take all the labs, put them in a zip file, and replace the existing `alllabs.zip` inside the `/inst/allabs/` folder with your zip file.
+
+Finally, push your updated package to GitHub. 
+
+Students/teachers can now use your version of the package in exactly the same ways as described above, with the only difference that any install command should now point to your fork of the package (e.g., install via `install_github('yourgithubaccount/iblir')`).
+
+As a last step, **please contribute your enhancements to the packag! See below.**
+
+
+### Modify labs but not the package
+
+Again, we recommend using the approach just described.
+But if for some reason you are not comfortable editing the package, here is another way to make adjustments.
+
+Start by loading **`r pkg`** and running the `get_labs()` function. 
+
+Unzip the folder, find the lab you want to change, and make any changes you like. You can also add a new lab as described in the prior section.
+Test your changes to make sure everything works.
+
+Once all works, you can then copy your new labs to your own shiny server as described above. If you want to deploy to
+shinyapps.io, call the `deploy_labs()` function with an additional input specifying the folder in which all your new labs are stored, e.g.,
+`deploy_labs(labfolder =`C:\tmp\mylabs')\`.
+
+**This only works if you deploy the labs to a Shiny server. For local use or through Posit Cloud, you need to use the previous method.**
+
+
+### More information
+
+Inside the repository, go to the `/auxiliary/docsfordevelopers` folder.
 
 
 
 ## Contributing to the package
 
-The package is on GitHub and you can use the usual GitHub process to file bug reports, send feature requests, contribute updates and bug fixes, etc. If you have any comments or feedback, we very much welcome them. Please file a [GitHub issue](https://github.com/andreashandel/iblir/issues) and let us know. If you make improvements/additions to the package, send a pull request. If your planned changes are substantial, it might be best to contact us first to discuss and make sure your planned modifications can be seamlessly integrated.
+If you made changes/improvements to the package as described above, please send a pull request. We would love to get contributions from others.
+
+If you plan on making large changes, it might be best to file an issue first and let us know. Then we can discuss and make sure your planned modifications can be
+seamlessly integrated.
+
+If you don't feel comfortable editing the package, but have some other feedback, e.g., bug reports, feature requests, please file a [GitHub
+issue](https://github.com/andreashandel/iblir/issues). Any contribution is very welcome.
+
 
 
 ## Further information
 
-See the [package website](https://andreashandel.github.io/iblir/) for useful additional information.
-
+See the [package website](https://andreashandel.github.io/iblir/) for
+useful additional information.
 
 ## Contributors
 
-The main content of this package was developed by [Brian McKay](https://brianmckay.netlify.app/). The package is maintained by [Brian McKay](https://brianmckay.netlify.app/) and [Andreas Handel](https://www.andreashandel.com/). A full list of contributors and a Bibtex entry for the citation [can be found here](https://andreashandel.github.io/iblir/authors.html).
-
-
+The main content of this package was developed by [Brian
+McKay](https://brianmckay.netlify.app/). The package is maintained by
+[Brian McKay](https://brianmckay.netlify.app/) and [Andreas
+Handel](https://www.andreashandel.com/). A full list of contributors and
+a Bibtex entry for the citation [can be found
+here](https://andreashandel.github.io/iblir/authors.html).
 
 ## References
