@@ -10,6 +10,7 @@ output: html_document
 * Test that all ways of using/modifying the labs as described in the vignette works robustly.
 * Test that all labs work, both locally and remote.
 * Change labs such that each one only loads the 'iblir' package, no other packages. That iblir package in turn should list all required packages in the DESCRIPTION file.
+* Check all 3rd party materials (images/cartoons/data/etc.) to make sure it's allows re-use and could be included in a GPL or CC licensed package. 
 * Remove additional Rmd file from labs 1 and 10.
 * Further clean up all labs, remove any unused files. Possibly have all files for labs just in a single folder, e.g. just `www`? 
 * Update logo
@@ -18,8 +19,8 @@ output: html_document
 ### Could do
 
 * Add more features to deploy_labs, e.g. user can specify which account.
-* Auto-generate a (GitHub) website that can serve as landing page for the labs for a course.
-* Figure out a way that for local deployment in which users just call one function which opens a graphical menu from which to choose labs.
+* Make it such that there is an app or page that can be deployed and easily points to all other labs. Should live on server inside main directory. E.g. we want server.com/iblir/ to load a page with links to all apps (if that is wanted, could be turned off).
+* Figure out a way that for local deployment in which users just call one function which opens a graphical menu from which to choose labs. Probably same approach as above. E.g. a function called start_iblir() could do that as a wrapper around learnr::run_tutorial().
 * write more testthat tests
 
 
