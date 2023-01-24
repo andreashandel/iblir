@@ -2,4 +2,6 @@
 
 export(deploy_labs)
 export(get_labs)
+export(prepare_labs)
+export(start_iblir)
 import(learnr)

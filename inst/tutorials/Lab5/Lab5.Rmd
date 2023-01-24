@@ -9,11 +9,7 @@ runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
-library(learnr)
-library(tidyr)
-library(dplyr)
-library(ggplot2)
-library(knitr)
+library(iblir)
 knitr::opts_chunk$set(echo = FALSE)
 ```
 

@@ -9,7 +9,11 @@ output: html_document
 
 * Test that all ways of using/modifying the labs as described in the vignette works robustly.
 * Test that all labs work, both locally and remote.
-* Change labs such that each one only loads the 'iblir' package, no other packages. That iblir package in turn should list all required packages in the DESCRIPTION file.
+
+* Change labs such that each one only loads the 'iblir' package, no other packages. 
+The iblir package in turn should list all required packages in the DESCRIPTION file.
+DONE, NEEDS TO BE TESTED.
+
 * Check all 3rd party materials (images/cartoons/data/etc.) to make sure it's allows re-use and could be included in a GPL or CC licensed package. 
 * Remove additional Rmd file from labs 1 and 10.
 * Further clean up all labs, remove any unused files. Possibly have all files for labs just in a single folder, e.g. just `www`? 

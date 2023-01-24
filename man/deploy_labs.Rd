@@ -18,6 +18,6 @@ nothing
 This function sends each lab to shinyapps.io
 }
 \details{
-You need to make sure you have your shinyapps.io account set up and connected
-The \code{rsconnect} package needs to be installed.
+You need to make sure you have your shinyapps.io account set up and connected.
+The \code{rsconnect} package needs to be installed as well.
 }

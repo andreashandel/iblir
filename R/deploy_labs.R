@@ -1,9 +1,7 @@
 #' @title Deploy all labs to shinyapps.io
-#'
 #' @description This function sends each lab to shinyapps.io
-#' @details You need to make sure you have your shinyapps.io account set up and connected
-#' The \code{rsconnect} package needs to be installed.
-#'
+#' @details You need to make sure you have your shinyapps.io account set up and connected.
+#' The \code{rsconnect} package needs to be installed as well.
 #' @param labvec optional vector with numbers indicating which labs to deploy. Default is all. Ignored if \code{labfolder} is provided.
 #' @param labfolder optional string pointing to a folder in which the labs are located. if not provided, the location for the default labs is used.
 #' @return nothing

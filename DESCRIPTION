@@ -3,7 +3,7 @@ Type: Package
 Title: Introductory Biostatistics Labs in R
 Description: learnr/Shiny apps that teach basic biostatistical topics. 
 Version: 0.0.2
-Date: 2023-01-18
+Date: 2023-01-24
 Authors@R: c(
     person("Andreas", "Handel", email = "ahandel@uga.edu", role = c("cre"), comment = c(ORCID = "0000-0002-4622-1146") ),
     person("Brian", "McKay",  role = "aut")
@@ -19,24 +19,28 @@ Depends:
     learnr
 Imports:
     datasauRus,
+    dplyr,
     DT,
     fs,
     ggplot2,
     ggpubr,
+    Hmisc,
+    knitr,
     labelled,
     plotROC,
     pROC,
+    rmarkdown,
     rsconnect,
     shiny,
-    shinythemes
+    shinythemes,
+    tableone,
+    tidyr
 Suggests: 
     covr,
     devtools,
-    knitr,
     pkgdown,
-    rmarkdown,
     roxygen2,
-    testthat,
+    testthat
 VignetteBuilder: knitr
 URL: https://andreashandel.github.io/iblir/
 BugReports: https://github.com/andreashandel/iblir/issues

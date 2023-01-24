@@ -19,7 +19,7 @@ options(rmarkdown.html_vignette.check_title = FALSE)
 ```
 
 ```{r, include = FALSE}
-pkg = 'iblir' #so we can easily switch names if we decide to rename
+pkg <- "iblir" # so we can easily switch names if we decide to rename
 ```
 
 ## Summary
@@ -31,8 +31,8 @@ Biostatistics Labs in R (iblir)** package.
 
 ### Getting Started
 
-The package is not yet on CRAN, so you need to install it from GitHub as
-follows.
+The package is not yet on CRAN, so you need to install it from GitHub by typing 
+the following in the `Console` tab in `RStudio`. (If you get questions about 'install packages from source', say **No.**)
 
     install.packages('remotes')
     library('remotes')
@@ -42,11 +42,16 @@ After the package is installed, you can load it
 
     library('iblir')
 
-To start the tutorials/labs, you type
+To see a list of all available labs (called tutorials by the `learnr` package which is used here), type
 
-    run_tutorial('LabN', package = 'iblir')
+    available_tutorials(package = 'iblir')
 
-where N is the lab number, e.g. `Lab1`, `Lab2`.
+As you can see, the tutorials/labs all have names `LabN`, where N is the lab number, e.g. `Lab1`, `Lab2`.
+
+To start a specific tutorial/lab us the `run_tutorial()` function. For example, to start Lab 1, type
+
+    run_tutorial('Lab1', package = 'iblir')
+
 
 A startup message also tells you this.
 

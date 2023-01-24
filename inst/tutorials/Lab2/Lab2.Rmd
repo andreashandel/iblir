@@ -9,8 +9,8 @@ runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
+library(iblir)
 knitr::opts_chunk$set(echo = FALSE)
-library(learnr)
 ```
 
 ## Introduction
